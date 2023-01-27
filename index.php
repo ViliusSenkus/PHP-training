@@ -1,21 +1,22 @@
 <?php
+// echo '<pre>';
+// print_r($_GET);
+// echo '</pre>';
 
-echo '<pre>';
-print_r($_GET);
-echo '</pre>';
-
-//nuoroda į kitą folderį gaunama iš <a href>.
 $folder = ".";
+$currentFolder = "+";
+
+//kintamajam  $folder priskiriama nauja rekšmė, gaunama iš paklikinto folderio
+// <a href='?folder=folderio_pavadinimas atributo   (tiktai pačio folderio pavadinimas)
 if (isset($_GET['folder'])) {
       $folder .= "/" . $_GET['folder'];
-      echo "sujungtas foldertis - $folder \n";
 }
+$budas1=ltrim($_SERVER['REQUEST_URI'], "/My_Projects").$folder;
 
 $fullCurrentFolder = $_SERVER['REQUEST_URI'];
 $currentFolderArray = explode('=', $fullCurrentFolder);
-$currentFolder = $currentFolderArray[count($currentFolderArray) - 1];
-echo "dabartinis folderis yra - $currentFolder";
-
+$currentFolder = $currentFolder.$currentFolderArray[count($currentFolderArray) - 1];
+echo $currentFolder;
 
 //failo sukūrimas
 if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
@@ -76,7 +77,11 @@ function _sortData($dataArr)
             </header>
 
             <main>
-                  <div>Direktorija kurioje esame ir kelias iki jos</div>
+                  <div><?php 
+                        echo "<p>$budas1.</p>";
+                        echo "<p>$currentFolder</p>";
+                        ?>
+                  </div>
                   <table>
                         <thead>
                               <th><input type="checkbox" disabled></th>
