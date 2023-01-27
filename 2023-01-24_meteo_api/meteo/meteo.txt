@@ -1,0 +1,1 @@
+Tai yra iš PHP įdėtas tekstas, pridedamas kai failas sukuriamas pirmą kartą dar biski tekso dar biski tekso dar biski tekso
