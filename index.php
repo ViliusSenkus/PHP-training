@@ -6,35 +6,15 @@ echo '</pre>';
 
 //nuoroda į kitą folderį gaunama iš <a href>.
 $folder = ".";
-$dabartinisFolder = ".";
-
 if (isset($_GET['folder'])) {
       $folder .= "/" . $_GET['folder'];
       echo "sujungtas foldertis - $folder \n";
 }
 
-function _currentFolder($data)
-{
-      //gaunam eilutę /My_Projects/?folder=...esamo folderio pavadinimas
-      $fullCurrentFolder = $_SERVER['REQUEST_URI'];  
-
-      //gaunam esamo folderio pavadinimą paskutiniame masyvo elemente (sąlyga, kad folderio pavadinimas neturi ženklo "=")
-      $currentFolderArray = explode('=', $fullCurrentFolder);
-      $currentFolder = $currentFolderArray[count($currentFolderArray) - 1];
-
-      //pasiimam kelią iki dabartinio folderio:
-            //susiskaldom elementą pagal  "/" taip atskirdami folderius
-      $way = explode("/", $currentFolder[0]);
-            //atmetam pirmus elementus, kadangi My_Projects turi pakeisti "."
-      array_splice($way, 0, 1);
-      $string=implode("/", $way);
-
-      $dabartinisFolder = $string.$data;
-      return $dabartinisFolder;
-}
-
-echo "mes esame cia " . _currentFolder($folder);
-
+$fullCurrentFolder = $_SERVER['REQUEST_URI'];
+$currentFolderArray = explode('=', $fullCurrentFolder);
+$currentFolder = $currentFolderArray[count($currentFolderArray) - 1];
+echo "dabartinis folderis yra - $currentFolder";
 
 
 //failo sukūrimas
@@ -59,19 +39,7 @@ function _sortData($dataArr)
 }
 
 
-//perdaryti į du masyvus - vienas folderių kitas failų, kad atvaizduoti iš eilės.
-// echo '<pre>';
-// print_r($folderData);
-// echo '</pre>';
-// foreach ($folderData as $value) {
-//       if (is_dir($folder."/" . $value)) {
-//             echo "<br /> folderis - " . $value;
-//       } else {
-//             echo "<br /> failas   - " . $value;
-//       }
-// }
 // reikia išėjus iš pagrindinio folderio pridėti esamą kelią prieš GET.
-
 //ikonų sudėjimui iš interneto "https://img.icons8.com/external-fauzidea-flat-fauzidea/32/null/external-php-file-file-extension-fauzidea-flat-fauzidea.png", "r");
 
 ?>
