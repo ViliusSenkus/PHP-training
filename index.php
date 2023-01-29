@@ -140,8 +140,8 @@ if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
                                                 } ?>
 
                                           </td>
-                                          <td>Dydis</td>
-                                          <td>Data</td>
+                                          <td><?php echo filesize($data)."B"; ?></td>
+                                          <td><?php echo date("Y-m-d", filemtime($data)); ?></td>
                                           <td>
                                                 <button>delete</button>
                                                 <button>rename</button>
