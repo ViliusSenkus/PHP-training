@@ -26,7 +26,8 @@ echo "x lygus $x";
 if (isset($_GET['y'])) {
       z();
 }
-function z() {
+function z()
+{
       static $z = 0;
       $z += 1;
       echo $z;
@@ -41,10 +42,11 @@ function z() {
 </form>
 
 <?php
-function myTest() {
-  static $x = 0;
-  echo $x;
-  $x++;
+function myTest()
+{
+      static $x = 0;
+      echo $x;
+      $x++;
 }
 
 myTest();
@@ -52,4 +54,17 @@ myTest();
 myTest();
 z();
 
+
+
+
+echo "<p><br />" . $_SERVER['QUERY_STRING'] ." - Returns the query string if the page is accessed via a query string <br />";
+echo $_SERVER['HTTP_HOST'] . " - Returns the Host header from the current request<br /";
+echo $_SERVER['HTTP_REFERER'] . " - Returns the complete URL of the current page (not reliable because not all user-agents support it)<br />";
+echo $_SERVER['SCRIPT_FILENAME'] . " - Returns the absolute pathname of the currently executing script<br />";
+
+echo "<pre>";
+var_dump($_SERVER);
+echo "</pre>";
+
+echo $_SERVER['PHP_SELF'];
 ?>
