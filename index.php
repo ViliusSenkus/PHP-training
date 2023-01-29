@@ -15,14 +15,18 @@ $full_URI = $_SERVER['REQUEST_URI'];
       //pakeičia adreso eilutę į dabartinį folderį (veikia tik vieną laiptelį žemyn).
 $folderBegining = preg_replace("~/My_Projects/~" , ".", $full_URI,);
 $now_URI = preg_replace("/\?folder=/", "/", $folderBegining);
+$folder = $now_URI;
+echo '<br />dabar $folder - ' . $folder;
 if ($folder ==="." || $folder==="./."){
       $now_URI = "Highest directory possible";
+}else{
+      
 }
 
+//Folderio duomenų paėmimas ir išrūšiavimas
 $folderData = scandir($folder);
 $folderData = _sortData($folderData);
-function _sortData($dataArr)
-{ //folderių ir failų sudėjimas iš eilės
+function _sortData($dataArr){
       foreach ($dataArr as $data) {
             if (is_dir($data)) {
                   $foldersArr[] = $data;
@@ -33,6 +37,11 @@ function _sortData($dataArr)
       $sortedArr = array_merge($foldersArr, $filesArr);
       return $sortedArr;
 }
+
+
+//nuorodos sukurimas:
+$url="folder=$folder";
+echo "<br /> $url";
 
 //ikonų sudėjimui iš interneto "https://img.icons8.com/external-fauzidea-flat-fauzidea/32/null/external-php-file-file-extension-fauzidea-flat-fauzidea.png", "r");
 
@@ -112,7 +121,7 @@ if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
                                                       <div class="icon">
                                                             <img src="https://img.icons8.com/emoji/32/null/file-folder-emoji.png" />
                                                       </div>
-                                                      <a href="?folder=<?php echo $data ?>"><?php echo $data; ?></a>
+                                                      <a href="?<?php echo "$url/$data" ?>"><?php echo $data; ?></a>
                                                       <?php
 
                                                 } else {
