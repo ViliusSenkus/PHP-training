@@ -1,28 +1,23 @@
 <?php
-// echo '<pre>';
-// print_r($_GET);
-// echo '</pre>';
-
 $folder = ".";
 $currentFolder = "+";
 
-//kintamajam  $folder priskiriama nauja rekšmė, gaunama iš paklikinto folderio
-// <a href='?folder=folderio_pavadinimas atributo   (tiktai pačio folderio pavadinimas)
+//su $_GET pagalba kintamajam  $folder priskiriama nauja rekšmė, gaunama iš nuorodos į folderį (<a href=/?folder=".....") .
 if (isset($_GET['folder'])) {
       $folder .= "/" . $_GET['folder'];
 }
-$budas1=ltrim($_SERVER['REQUEST_URI'], "/My_Projects").$folder;
 
-$fullCurrentFolder = $_SERVER['REQUEST_URI'];
-$currentFolderArray = explode('=', $fullCurrentFolder);
-$currentFolder = $currentFolder.$currentFolderArray[count($currentFolderArray) - 1];
-echo $currentFolder;
+echo '$folder - ' . $folder;
 
-//failo sukūrimas
-if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
-      file_put_contents($folder . "/" . $_POST['fileName'], $_POST['fileContent']);
+//folderio kuriame esame adreso sugeneravimas ir priskyrimas $currentFolder
+$full_URI = $_SERVER['REQUEST_URI'];
+
+      //pakeičia adreso eilutę į dabartinį folderį (veikia tik vieną laiptelį žemyn).
+$folderBegining = preg_replace("~/My_Projects/~" , ".", $full_URI,);
+$now_URI = preg_replace("/\?folder=/", "/", $folderBegining);
+if ($folder ==="." || $folder==="./."){
+      $now_URI = "Highest directory possible";
 }
-
 
 $folderData = scandir($folder);
 $folderData = _sortData($folderData);
@@ -39,9 +34,16 @@ function _sortData($dataArr)
       return $sortedArr;
 }
 
-
-// reikia išėjus iš pagrindinio folderio pridėti esamą kelią prieš GET.
 //ikonų sudėjimui iš interneto "https://img.icons8.com/external-fauzidea-flat-fauzidea/32/null/external-php-file-file-extension-fauzidea-flat-fauzidea.png", "r");
+
+
+//failo sukūrimas
+if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
+      file_put_contents($folder . "/" . $_POST['fileName'], $_POST['fileContent']);
+}
+
+
+
 
 ?>
 
@@ -78,8 +80,7 @@ function _sortData($dataArr)
 
             <main>
                   <div><?php 
-                        echo "<p>$budas1.</p>";
-                        echo "<p>$currentFolder</p>";
+                        echo "<p>$now_URI</p>";
                         ?>
                   </div>
                   <table>
