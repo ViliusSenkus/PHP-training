@@ -1,17 +1,29 @@
 <?php
-$folder="./";
+$folder = ".";
+
+//su $_GET pagalba kintamajam  $folder priskiriama nauja rekšmė, gaunama iš nuorodos į folderį (<a href=/?folder=".....") .
 if (isset($_GET['folder'])) {
-
-      $split = (explode("/", $_GET['folder']));
-
-      if ($split[count($split)-2]=="."){
-            array_splice($split,(count($split)-3),2);
-            $folder = implode("/", $split);
-      }else{
-            $folder = $_GET['folder'];
-      }
-
+      $folder = $_GET['folder'];
 }
+
+echo 'folderis po geto - ' . $folder. '<br />';
+
+//folderio kuriame esame adreso sugeneravimas ir priskyrimas $currentFolder
+$full_URI = $_SERVER['REQUEST_URI'];
+
+      //pakeičia adreso eilutę į dabartinį folderį (veikia tik vieną laiptelį žemyn).
+$temp = preg_replace("~/My_Projects/~" , "./", $full_URI,);
+$now_URI = preg_replace("/\?folder=/", "", $temp);
+
+echo "now_URIs - $now_URI <br />";
+$folder = $now_URI;
+
+// echo '<br />dabar $folder - ' . $folder;
+// if ($folder ==="/My_Projects" || $folder==="./."){
+//       $now_URI = "Highest directory possible";
+// }else{
+      
+// }
 
 //Folderio duomenų paėmimas ir išrūšiavimas
 $folderData = scandir($folder);
@@ -28,6 +40,11 @@ function _sortData($dataArr){
       return $sortedArr;
 }
 
+
+//nuorodos sukurimas:
+$url="folder=$folder";
+echo "<br /> nuoroda url - $url";
+
 //ikonų sudėjimui iš interneto "https://img.icons8.com/external-fauzidea-flat-fauzidea/32/null/external-php-file-file-extension-fauzidea-flat-fauzidea.png", "r");
 
 
@@ -35,7 +52,13 @@ function _sortData($dataArr){
 if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
       file_put_contents($folder . "/" . $_POST['fileName'], $_POST['fileContent']);
 }
+
+
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,14 +90,8 @@ if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
             </header>
 
             <main>
-                  <div>
-                        Now you are 
-                        <?php 
-                        if ($folder=="./"){
-                              echo "home";
-                        }else{
-                        echo "here: $folder";
-                        }
+                  <div><?php 
+                        echo "<p>$now_URI</p>";
                         ?>
                   </div>
                   <table>
@@ -88,7 +105,7 @@ if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
                         <tbody>
                               <?php foreach ($folderData as $data) {
                                     if (
-                                          //disabling possibility to go higher than home folder
+                                          //possibility to go higher than project is hidden
                                           $folder == "./" and
                                           $data === $folderData[0] or
                                           $data === $folderData[1]
@@ -100,14 +117,13 @@ if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
                                                 <input type="checkbox" name="check">
                                           </td>
                                           <td>
-                                               
-                                    <!-- deciding if $data is folder or file and performing adequate actions -->
-                                          <?php
-                                                if (is_dir($folder.$data)) { ?>
+                                                <?php
+
+                                                if (is_dir($folder . "/" . $data)) { ?>
                                                       <div class="icon">
                                                             <img src="https://img.icons8.com/emoji/32/null/file-folder-emoji.png" />
                                                       </div>
-                                                      <a href="?folder=<?= $folder.$data ?>/"><?= $data; ?></a>
+                                                      <a href="?<?php echo "$url/$data" ?>"><?php echo $data; ?></a>
                                                       <?php
 
                                                 } else {
@@ -126,8 +142,8 @@ if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
                                                 } ?>
 
                                           </td>
-                                          <td><?php echo filesize($folder.$data)."B"; ?></td>
-                                          <td><?php echo date("Y-m-d", filemtime($folder.$data)); ?></td>
+                                          <td><?php echo filesize($data)."B"; ?></td>
+                                          <td><?php echo date("Y-m-d", filemtime($data)); ?></td>
                                           <td>
                                                 <button>delete</button>
                                                 <button>rename</button>
@@ -173,6 +189,12 @@ if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
             </footer>
 
       </div>
+
+      <?php
+      echo '<pre>';
+      print_r($_SERVER);
+      echo '</pre>';
+      ?>
 </body>
 
 </html>
