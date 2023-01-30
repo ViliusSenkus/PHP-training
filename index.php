@@ -99,8 +99,8 @@ if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
                                           <td>
                                                 <input type="checkbox" name="check">
                                           </td>
-                                          <td>
-                                               
+
+                                          <td>    
                                     <!-- deciding if $data is folder or file and performing adequate actions -->
                                           <?php
                                                 if (is_dir($folder.$data)) { ?>
@@ -123,10 +123,24 @@ if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
                                                             <img src="<?php echo $icon ?>" />
                                                       </div>
                                                       <?php echo $data;
-                                                } ?>
-
+                                                }
+                                          ?>
                                           </td>
-                                          <td><?php echo filesize($folder.$data)."B"; ?></td>
+
+                                          <td>
+                                          <?php
+                                          // counting and representing size in more acceptable format
+                                                $size=filesize($folder.$data);
+                                                if ($size < 1000) {
+                                                      echo $size."&nbsp;&nbsp;B";
+                                                }elseif($size >= 1000 AND $size<1000000){
+                                                      echo round(($size/1000),2,PHP_ROUND_HALF_UP)." KB";
+                                                }else{
+                                                      echo round(($size / 1000000),2,PHP_ROUND_HALF_UP) . " GB";
+                                                }
+                                          ?>
+                                                      
+                                          </td>
                                           <td><?php echo date("Y-m-d", filemtime($folder.$data)); ?></td>
                                           <td>
                                                 <button>delete</button>

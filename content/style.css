@@ -94,10 +94,11 @@ td:nth-child(2){
 }
 td:nth-child(3),
 td:nth-child(4){
-      width: 88px;
+      width: 128px;
       text-align: right;
 }
 td:nth-child(5){
+      width:120px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
