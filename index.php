@@ -13,23 +13,25 @@ if (isset($_GET['folder'])) {
 
 }
 
-//Folderio duomenų paėmimas ir išrūšiavimas
+//Sorting/Ordering Folders then Files:
 $folderData = scandir($folder);
-// $folderData = _sortData($folderData);
-// function _sortData($dataArr)
-// {
-//       foreach ($dataArr as $data) {
-//             if (is_dir($data)) {
-//                   $foldersArr[] = $data;
-//             } else {
-//                   $filesArr[] = $data;
-//             }
-//       }
-//       $sortedArr = array_merge($foldersArr, $filesArr);
-//       return $sortedArr;
-// }
 
-//ikonų sudėjimui iš interneto "https://img.icons8.com/external-fauzidea-flat-fauzidea/32/null/external-php-file-file-extension-fauzidea-flat-fauzidea.png", "r");
+if (count($folderData) > 1) {
+      $filesArr = array();
+      foreach ($folderData as $data) {
+            if (is_dir($data)) {
+                  $foldersArr[] = $data;
+            } else {
+                  $filesArr[] = $data;
+            }
+      }
+      $folderData = array_merge($foldersArr, $filesArr);
+}
+
+/*
+Alternative web icons:
+"https://img.icons8.com/external-fauzidea-flat-fauzidea/32/null/external-php-file-file-extension-fauzidea-flat-fauzidea.png";
+*/
 
 ?>
 
@@ -88,11 +90,12 @@ $folderData = scandir($folder);
                   </div>
 
                   <?php
+                  //Files and Folders creation
                   if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
                         if (!isset($_POST['fileContent'])) {
                               $_POST['fileContent'] = "";
                         }
-                        file_put_contents($folder .$_POST['fileName'], $_POST['fileContent']);
+                        file_put_contents($folder . $_POST['fileName'], $_POST['fileContent']);
                         header('Location:' . $_SERVER['REQUEST_URI']);
                   }
                   if (isset($_POST['folderName']) && $_POST['folderName'] != "") {
@@ -102,10 +105,10 @@ $folderData = scandir($folder);
                   ?>
 
                   <div>
-                        Now you are
+                        You are
                         <?php
                         if ($folder == "./") {
-                              echo "home";
+                              echo "Home";
                         } else {
                               echo "here: $folder";
                         }
@@ -122,7 +125,7 @@ $folderData = scandir($folder);
                         <tbody>
                               <?php foreach ($folderData as $data) {
                                     if (
-                                          //disabling possibility to go higher than home folder
+                                          //disabling access to higher than home folder
                                           $folder == "./" and
                                           $data === $folderData[0] or
                                           $data === $folderData[1]
@@ -141,8 +144,15 @@ $folderData = scandir($folder);
                                                       <div class="icon">
                                                             <img src="https://img.icons8.com/emoji/32/null/file-folder-emoji.png" />
                                                       </div>
-                                                      <a href="?folder=<?= $folder . $data ?>/"><?= $data; ?></a>
-                                                      <?php
+                                                            <a href="?folder=<?= $folder . $data ?>/">
+                                                                  <?php
+                                                                        if($data=="."){
+                                                                              echo "◄ Back";
+                                                                        }else{
+                                                                              echo $data;
+                                                                        } ?>
+                                                            </a>
+                                                            <?php
 
                                                 } else {
                                                       $explode = explode(".", $data);
@@ -153,10 +163,10 @@ $folderData = scandir($folder);
                                                             $icon = "content/icons/none.png";
                                                       }
                                                       ?>
-                                                      <div class="icon">
-                                                            <img src="<?php echo $icon ?>" />
-                                                      </div>
-                                                      <?php echo $data;
+                                                            <div class="icon">
+                                                                  <img src="<?php echo $icon ?>" />
+                                                            </div>
+                                                            <?php echo $data;
                                                 }
                                                 ?>
                                           </td>
@@ -176,7 +186,7 @@ $folderData = scandir($folder);
 
                                           </td>
                                           <td>
-                                                <?php echo date("Y-m-d", filemtime($folder . $data)); ?>
+                                                <?php echo date("Y-m-d H:i:s", filemtime($folder . $data)); ?>
                                           </td>
                                           <td>
                                                 <button>delete</button>
