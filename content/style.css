@@ -185,7 +185,8 @@ footer li{
       font-weight: 200;
 }
 .new_file,
-.new_folder{
+.new_folder,
+.rename{
       width: 450px;
       display: none;
       transition: display 0.7s;

@@ -88,6 +88,16 @@ Alternative web icons:
                               <button type="submit">Create</button>
                         </form>
                   </div>
+                 
+                  <div class="rename">
+                        <form method="POST">
+                              <div class="inputField">
+                                    <label>New Name</label>
+                                    <input type="text" name="newName" />
+                              </div>
+                              <button type="submit">Rename</button>
+                        </form>
+                  </div>
 
                   <?php
                   //Files and Folders creation
@@ -129,9 +139,9 @@ Alternative web icons:
                                           $folder == "./" and
                                           $data === $folderData[0] or
                                           $data === $folderData[1]
-                                    ) {
-                                          continue;
-                                    } ?>
+                                    ) : continue;
+                                    endif;
+                              ?>
                                     <tr>
                                           <td>
                                                 <input type="checkbox" name="check">
@@ -144,16 +154,15 @@ Alternative web icons:
                                                       <div class="icon">
                                                             <img src="https://img.icons8.com/emoji/32/null/file-folder-emoji.png" />
                                                       </div>
-                                                            <a href="?folder=<?= $folder . $data ?>/">
+                                                            <a href="?folder=<?= $folder.$data ?>/">
                                                                   <?php
-                                                                        if($data=="."){
-                                                                              echo "◄ Back";
-                                                                        }else{
-                                                                              echo $data;
-                                                                        } ?>
+                                                                        if($data==".")
+                                                                              {echo "◄ Back";}
+                                                                        else
+                                                                              {echo $data;}
+                                                                  ?>
                                                             </a>
                                                             <?php
-
                                                 } else {
                                                       $explode = explode(".", $data);
                                                       $extention = $explode[count($explode) - 1];
@@ -164,11 +173,11 @@ Alternative web icons:
                                                       }
                                                       ?>
                                                             <div class="icon">
-                                                                  <img src="<?php echo $icon ?>" />
+                                                                  <img src="<?= $icon ?>" />
                                                             </div>
-                                                            <?php echo $data;
-                                                }
-                                                ?>
+                                                            <a href="<?= $folder.$data ?>" target="_blank"><?= $data ?></a>;
+                                                <?php } ?>
+                                                
                                           </td>
 
                                           <td>
@@ -189,15 +198,36 @@ Alternative web icons:
                                                 <?php echo date("Y-m-d H:i:s", filemtime($folder . $data)); ?>
                                           </td>
                                           <td>
-                                                <button>delete</button>
-                                                <button>rename</button>
+                                                <?php 
+                                                      if (is_dir($folder.$data) || $data == basename(__FILE__)){
+                                                       continue;
+                                                      }
+                                                
+                                                ?>
+                                                <a href="?delete=<?= $folder.$data ?>"><button>delete</button></a>
+                                                <a href="?rename=<?= $folder.$data ?>&folder=<?= $folder?>"><button>rename</button>
                                           </td>
                                     </tr>
                               <?php } ?>
                         </tbody>
                   </table>
-            </main>
 
+<?php
+ //ištrynimas
+ // if(isset($_GET['delete']) && $_GET['delete'] != "" ){
+ //       unlink($folder.$data);
+ //       header('Location:' . $_SERVER['REQUEST_URI']);
+ // }
+
+ //editinimas
+
+?>
+
+
+
+
+            </main>
+                                                      <?= (basename(__FILE__));?>
             <footer>
                   <div>
                         <ul>Resources used:
