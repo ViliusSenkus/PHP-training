@@ -47,6 +47,7 @@ Alternative web icons:
       <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@200;400;600&display=swap"
             rel="stylesheet">
       <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="content/style.css" />
       <title>Document</title>
 </head>
@@ -204,8 +205,21 @@ Alternative web icons:
                                                       }
                                                 
                                                 ?>
-                                                <a href="?delete=<?= $folder.$data ?>"><button>delete</button></a>
-                                                <a href="?rename=<?= $folder.$data ?>&folder=<?= $folder?>"><button>rename</button>
+
+                                                      <svg name="del" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                            <path fill="#EE6666" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
+                                                      </svg>
+
+                                                
+
+                                                      <svg name="ren" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                                            <path fill="#5588EE" d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V285.7l-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z"/>
+                                                      </svg>
+
+                                                
+                                                <svg name="copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                      <path fill="#666666" d="M0 448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H224c-53 0-96-43-96-96V160H64c-35.3 0-64 28.7-64 64V448zm224-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64z"/>
+                                                </svg>
                                           </td>
                                     </tr>
                               <?php } ?>
@@ -243,18 +257,23 @@ Alternative web icons:
             </footer>
 
             <script>
-                  document.querySelector('[name="nfo"]').addEventListener("click", () => {
-                        if (document.querySelector('.new_file').style.display = "block") {
-                              document.querySelector('.new_file').style.display = "none";
-                        }
+                  document.querySelector('[name="nfo"]').addEventListener("click", () => {      
+                        document.querySelector('.new_file').style.display = "none";
                         document.querySelector('.new_folder').style.display = "block";
+                        document.querySelector('.rename').style.display="none";
                   });
                   document.querySelector('[name="nfi"]').addEventListener("click", () => {
-                        if (document.querySelector('.new_folder').style.display = "block") {
-                              document.querySelector('.new_folder').style.display = "none";
-                        }
                         document.querySelector('.new_file').style.display = "block";
+                        document.querySelector('.new_folder').style.display = "none";
+                        document.querySelector('.rename').style.display = "none";
+                        
                   });
+                  document.querySelector('[name="ren"]').addEventListener("click", () =>{
+                        document.querySelector('.new_file').style.display = "none";
+                        document.querySelector('.new_folder').style.display = "none";
+                        document.querySelector('.rename').style.display = "block";
+                  });
+                
 
             </script>
 

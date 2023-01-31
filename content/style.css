@@ -191,3 +191,9 @@ footer li{
       display: none;
       transition: display 0.7s;
 }
+
+svg{
+      width:20px;
+      height: 20px;
+      margin: auto 2px;
+}
