@@ -11,12 +11,17 @@
             </nav>
             <?php
             if (isset($_SESSION["connected"]) && $_SESSION["connected"] === true) {
-                  echo '<button type="button" class="btn btn-outline-danger m-3">Atsijungti';
+                  echo  '<a href="?log=off" type="button" class="btn btn-outline-danger m-3">Atsijungti';
+                  
+                  // echo '<button type="button" class="btn btn-outline-danger m-3">Atsijungti';
             } else {
-                  echo '<button type="button" class="btn btn-outline-success m-3">Prisijungti';
+                  echo  '<a href="?log=on" type="button" class="btn btn-outline-success m-3">Prisijungti';
+                  
+                  // echo '<button type="button" class="btn btn-outline-success m-3">Prisijungti';
             }
             ?>
-            </button>
+            <!-- </button> -->
+            </a>
       </div>
       <hr>
 </header>

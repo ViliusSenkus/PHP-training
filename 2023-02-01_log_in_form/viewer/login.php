@@ -70,7 +70,7 @@ if (
 </div>
 
 
-<div class="form-signin w-25 m-auto 
+<div class="form-signin w-50 m-auto 
       <?php
       if (isset($_SESSION["connected"]) && $_SESSION["connected"] == true) {
             echo "d-none";
@@ -80,19 +80,18 @@ if (
       ?>
       ">
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <h1 class="h3 mb-3 fw-normal">Please log in</h1>
+            <h3 class="mb-3 fw-normal">įveskite prisijungimo duomenis</h3>
 
-            <div class="form-floating">
+            <div class="form-floating mb-1">
                   <input type="text" class="form-control" id="floatingInput" name="id">
                   <label for="floatingInput">Your ID</label>
             </div>
-            <div class="form-floating">
+            <div class="form-floating mb-1">
 
                   <input type="password" class="form-control" id="floatingPassword" name="psw">
                   <label for="floatingPassword">Password</label>
             </div>
 
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
       </form>
 </div>

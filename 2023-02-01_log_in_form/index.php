@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-echo "<pre> SESSION duomenys:";
+echo "<pre> SESSION duomenys: ";
 print_r($_SESSION);
-echo "<br/> POST duomenys";
+echo "<br/> POST duomenys: ";
 print_r($_POST);
 echo "</pre>";
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +22,8 @@ echo "</pre>";
 
       <style>
             footer{
-                  position: absolute;
-                  bottom: 10px;
+                  position: fixed;
+                  bottom: 0;
             }
       </style>
 
@@ -38,6 +38,12 @@ echo "</pre>";
       }else{
             $file = "";
       }
+
+      if (isset($_GET['log']) && $_GET['log']=="off"){
+            session_destroy();
+            header('Location:./' );
+      }
+      
 
       switch ($file) {
             case "card":
@@ -59,7 +65,6 @@ echo "</pre>";
 
       include("viewer/footer.php");
       ?>
-
 
 </body>
 
