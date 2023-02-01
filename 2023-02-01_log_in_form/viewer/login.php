@@ -9,10 +9,6 @@ $Client = array(
       "ammount" => 9.99
 );
 
-$userId = "";
-$userPsw = "";
-// $_SESSION["connected"] = false;
-
 //tikriname ar suvesti formos duomenys
 if (
       isset($_POST["id"]) &&
@@ -92,6 +88,6 @@ if (
                   <label for="floatingPassword">Password</label>
             </div>
 
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button> <!-- čia reikia į get'ą perduoti log=on -->
       </form>
 </div>

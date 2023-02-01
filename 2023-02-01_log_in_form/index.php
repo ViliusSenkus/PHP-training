@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-echo "<pre> SESSION duomenys: ";
-print_r($_SESSION);
-echo "<br/> POST duomenys: ";
-print_r($_POST);
-echo "</pre>";
-?>
+// echo "<pre> SESSION duomenys: ";
+// print_r($_SESSION);
+// echo "<br/> POST duomenys: ";
+// print_r($_POST);
+// echo "</pre>";
+// ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,19 +31,13 @@ echo "</pre>";
 
 <body class="text-center">
       <?php 
-      include("viewer/header.php");
+      include("viewer/header.php");  
 
       if (isset($_GET["file"]) && $_GET["file"] != ""){
             $file = $_GET["file"];
       }else{
             $file = "";
       }
-
-      if (isset($_GET['log']) && $_GET['log']=="off"){
-            session_destroy();
-            header('Location:./' );
-      }
-      
 
       switch ($file) {
             case "card":
@@ -61,7 +55,6 @@ echo "</pre>";
             default:
                   include("viewer/login.php");
       }
-
 
       include("viewer/footer.php");
       ?>

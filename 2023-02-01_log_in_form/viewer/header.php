@@ -10,6 +10,10 @@
                   </div>
             </nav>
             <?php
+
+           
+            //MYGTUKAS - NUORODA
+
             if (isset($_SESSION["connected"]) && $_SESSION["connected"] === true) {
                   echo  '<a href="?log=off" type="button" class="btn btn-outline-danger m-3">Atsijungti';
                   
@@ -19,6 +23,12 @@
                   
                   // echo '<button type="button" class="btn btn-outline-success m-3">Prisijungti';
             }
+            
+            if (isset($_GET['log']) && $_GET['log']=="off"){
+                  session_destroy();
+                  header('Location:./' );
+            }
+
             ?>
             <!-- </button> -->
             </a>
