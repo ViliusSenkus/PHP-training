@@ -6,7 +6,36 @@ session_start();
 // echo "<br/> POST duomenys: ";
 // print_r($_POST);
 // echo "</pre>";
-// ?>
+// 
+
+$Client = array(
+      "id" => "65451351",
+      "psw" => "1234",
+      "account" => " LT5515615616515615",
+      "name" => "Motiejus",
+      "surname" => "Aleksandravičius",
+      "ammount" => 9.99
+);
+
+//tikriname ar suvesti formos duomenys
+if (
+      isset($_POST["id"]) &&
+      isset($_POST["psw"]) &&
+      $_POST["id"] != "" &&
+      $_POST["psw"] != ""
+) {
+      // jeigu duomenys suvesti tikriname ar jie atitinka vartotoją. Atitikus pririšame prie sesijos.
+      if ($_POST["id"] == $Client["id"] && $_POST["psw"] == $Client["psw"]) {
+            $_SESSION["clientID"] = $Client["id"];
+            $_SESSION["clientPsw"] = $Client["psw"];
+            $_SESSION["connected"] = true;
+      } else {
+            $_SESSION["clientID"] = "";
+            $_SESSION["clientPsw"] = "";
+            $_SESSION["connected"] = false;
+      }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
