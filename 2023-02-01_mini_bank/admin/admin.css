@@ -9,7 +9,7 @@ body{
       font-size: 18px;
 }
 .container{
-      width:1000px;
+      width:1200px;
       margin: 0 auto;
 }
 
@@ -51,7 +51,6 @@ nav a:hover{
 table{
       
       border-collapse: collapse;
-      width: 100%;
       margin: 0 auto;
 }
 th,
@@ -59,7 +58,30 @@ td{
       border: 1px solid black;
 }
 
+td:first-child,
+td:last-child{
+      text-align: right;
+      padding-right:5px;
+}
+td:nth-child(2) input,
+td:nth-child(3) input,
+td:nth-child(7) input{
+      width:120px;    
+}
+td:nth-child(4) input,
+td:nth-child(5) input,
+td:nth-child(6) input{
+      width: 200px;
+}
 
+table input{
+      background-color: #d6d6d6;
+      border:none;
+      font-size: 18px;
+      font-family: 'Times New Roman', Times, serif;
+      color: black;
+      text-align: right;
+}
 
 
 
@@ -81,7 +103,7 @@ label{
       width: 120px;
       text-align: right;
 }
-input{
+form input{
       width: 360px;
 }
 

@@ -1,5 +1,6 @@
 <?php 
 session_start();
+$num = 0;
 
 //Tikriname ar puslapį pasiekinėja adminas. jeigu ne - gražiname į pirmą puslapį.
 if ( !isset($_SESSION["admin"]) || $_SESSION["admin"] != true){
@@ -52,26 +53,58 @@ if ( !isset($_SESSION["admin"]) || $_SESSION["admin"] != true){
                         </theader>
                         <tbody>
 
-<?php 
-      
-?>
+<?php
+// $user = array(
+//       "id" => "65451351",
+//       "psw" => "1234",
+//       "account" => " LT5515615616515615",
+//       "name" => "Motiejus",
+//       "surname" => "Aleksandravičius",
+//       "ammount" => 9.99
+// );
+
+$jsonData = file_get_contents("db.json");
+$clientsArray = json_decode($jsonData, true);
+
+// print_r($clientsArray[1]);
+// $clientsArray[] = $user;
+
+// $jsonArray = json_encode($clientsArray);
+// file_put_contents("db.json", $jsonArray);
+
+foreach($clientsArray as $key => $data){ ?>
+    <tr>
+            <td>
+                  <?= $key ?>
+            </td>
+            <td>
+                  <input type="text" name="<?= $data['id'] ?>" value="<?= $data['id'] ?>" disabled />
+            </td>
+            <td>
+                  <input type="text" name="<?= $data['psw'] ?>" value="<?= $data['psw'] ?>" disabled />
+            </td>
+            <td>
+                  <input type="text" name="<?= $data['account'] ?>" value="<?= $data['account'] ?>" disabled />
+            </td>
+            <td>
+                  <input type="text" name="<?= $data['name'] ?>" value="<?= $data['name'] ?>" disabled />
+            </td>
+            <td>
+                  <input type="text" name="<?= $data['surname'] ?>" value="<?= $data['surname'] ?>" disabled />
+            </td>
+            <td>
+                  <input type="text" name="<?= $data['ammount'] ?>" value="<?= $data['ammount'] ?>" disabled />
+            </td>
+
+            <td>
+                  <a href="? <?=$key?> ">Edit</a>
+                  <a href="? <?=$key?> ">Delete</a>
+            </td>
+      </tr>
+<?php } ?>
 
 
-                        <!--  Lentelės/Eilučių prototipas(šablonas)(reikės sudėti į foreach pagal json duomenis)                           
-                              <tr>
-                                    <td>
-                                          json.key                                       
-                                    </td>
-                                    <td>
-                                          <input type="text" name="json.id" value="json.id" disabled />
-                                    </td>
-                                    ...
-                                    <td>
-                                          <a href="?json.key">Edit</a>
-                                          <a href="?json.key">Delete</a>
-                                    </td>
-                              </tr> 
-                        -->
+
                         </tbody>
                   </table>
             </div>
@@ -114,13 +147,3 @@ if ( !isset($_SESSION["admin"]) || $_SESSION["admin"] != true){
       </footer>
 </body>
 </html>
-
-
-Jeigu adminas neprisijungęs, grąžinkite jį atgal į prisijungimo puslapį,
-
-"id" => "65451351",
-"psw" => "1234",
-"account" => " LT5515615616515615",
-"name" => "Motiejus",
-"surname" => "Aleksandravičius",
-"ammount" => 9.
