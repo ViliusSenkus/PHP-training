@@ -93,16 +93,22 @@ echo "</pre>";
 $jsonData = file_get_contents("db.json");
 $clientsArray = json_decode($jsonData, true);
 
-foreach($clientsArray as $key => $data){ ?>
+foreach($clientsArray as $key => $data){ 
+      $disable="disabled";
+      if (isset($_GET['edit']) && $_GET['edit'] != "") {
+            if ($_GET['edit'] == $key) {
+                  $disable = "";
+            }
+      }?>
     <tr>
             <td>
                   <?= $key ?>
             </td>
             <td>
-                  <input type="text" name="<?= $data['id'] ?>" value="<?= $data['id'] ?>" disabled />
+                  <input type="text" name="<?= $data['id'] ?>" value="<?= $data['id'] ?>" <?= $disable ?>/>
             </td>
             <td>
-                  <input type="text" name="<?= $data['psw'] ?>" value="<?= $data['psw'] ?>" disabled />
+                  <input type="text" name="<?= $data['psw'] ?>" value="<?= $data['psw'] ?>" <?= $disable ?> />
             </td>
             <td>
                   <input type="text" name="<?= $data['account'] ?>" value="<?= $data['account'] ?>" disabled />
