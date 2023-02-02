@@ -92,16 +92,6 @@ Alternative web icons:
                         </form>
                   </div>
 
-                  <div class="rename">
-                        <form method="POST">
-                              <div class="inputField">
-                                    <label>New Name</label>
-                                    <input type="text" name="newName" />
-                              </div>
-                              <button type="submit">Rename</button>
-                        </form>
-                  </div>
-
                   <div class="upload">
                         <form method="POST" enctype="multipart/form-data">
                               <div class="inputField">
@@ -111,6 +101,31 @@ Alternative web icons:
                         </form>
                   </div>
 
+                  <?php
+                  if (isset($_GET['edit']) && $_GET['edit'] !=""){?>
+                  <div class="rename">
+                        <form method="GET">
+                              <div class="inputField">
+                                    <label>New Name</label>
+                                    <input type="text" name="newName" value="<?=$_GET["edit"]?>" />
+                                    <input type="hidden" name="oldName" value="<?=$_GET["edit"]?>">
+                                    <input type="hidden" name="folder" value="<?=$_GET["folder"]?>">
+                              </div>
+                              <button type="submit">Rename</button>
+                        </form>
+                  </div>
+                  <?php } ?>
+
+                  <?php if (isset($_GET["newName"]) && $_GET["newName"] !="" ){
+
+                        echo $_GET["folder"] . $_GET["oldName"];
+                        echo "</br>";
+                        echo $_GET["folder"] . $_GET["newName"];
+                        // rename($_GET["folder"].$_GET["oldName"], $_GET["folder"].$_GET["newName"]);
+                        // header('LocaTION :' . $_SERVER["REQUEST_URI"]);
+                  }
+                  ?>
+                 
 <?php
 //Files and Folders creation
 if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
@@ -234,7 +249,7 @@ if (isset($_FILES["newUpload"]) && $_FILES["newUpload"]["tmp_name"] != "") {
                                                 </svg>
 
 
-                                                <a href="?edit=<?= $folder . $data ?>&folder=<?= $folder ?>">
+                                                <a href="?edit=<?= $data ?>&folder=<?= $folder ?>">
                                                       <svg name="ren" xmlns="http://www.w3.org/2000/svg"
                                                             viewBox="0 0 576 512">
                                                             <path fill="#5588EE"
@@ -246,9 +261,11 @@ if (isset($_FILES["newUpload"]) && $_FILES["newUpload"]["tmp_name"] != "") {
                                                       <path fill="#666666"
                                                             d="M0 448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H224c-53 0-96-43-96-96V160H64c-35.3 0-64 28.7-64 64V448zm224-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64z" />
                                                 </svg>
+                                          <?=$folder." --- ".$data;?> 
+                                          
                                           </td>
                                     </tr>
-                              <?php } ?>
+                              <?php } ?>    <!--end of ForEach (table creation)-->
                         </tbody>
                   </table>
 
@@ -286,28 +303,18 @@ if (isset($_FILES["newUpload"]) && $_FILES["newUpload"]["tmp_name"] != "") {
                   document.querySelector('[name="nfo"]').addEventListener("click", () => {
                         document.querySelector('.new_file').style.display = "none";
                         document.querySelector('.new_folder').style.display = "block";
-                        document.querySelector('.rename').style.display = "none";
                         document.querySelector('.upload').style.display = "none";
 
                   });
                   document.querySelector('[name="nfi"]').addEventListener("click", () => {
                         document.querySelector('.new_file').style.display = "block";
                         document.querySelector('.new_folder').style.display = "none";
-                        document.querySelector('.rename').style.display = "none";
                         document.querySelector('.upload').style.display = "none";
 
-                  });
-                  document.querySelector('[name="ren"]').addEventListener("click", (e) => {
-                        e.preventDefault();
-                        document.querySelector('.new_file').style.display = "none";
-                        document.querySelector('.new_folder').style.display = "none";
-                        document.querySelector('.rename').style.display = "block";
-                        document.querySelector('.upload').style.display = "none";
                   });
                   document.querySelector('[name="upl"]').addEventListener("click", () => {
                         document.querySelector('.new_file').style.display = "none";
                         document.querySelector('.new_folder').style.display = "none";
-                        document.querySelector('.rename').style.display = "none";
                         document.querySelector('.upload').style.display = "block";
                   });
 

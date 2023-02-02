@@ -199,6 +199,11 @@ footer li{
       transition: display 0.7s;
 }
 
+.rename {
+      display: block;
+}
+
+
 svg{
       width:20px;
       height: 20px;
