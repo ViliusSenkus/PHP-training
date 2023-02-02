@@ -25,7 +25,8 @@ header div{
 }
 
 [name="nfi"],
-[name="nfo"]{
+[name="nfo"],
+[name="upl"]{
       width: 150px;
       text-align: center;
       border-radius: 5px;
@@ -33,16 +34,20 @@ header div{
 }
 
 [name="nfi"]:hover,
-[name="nfo"]:hover{
+[name="nfo"]:hover,
+[name="upl"]:hover{
       background-color: #898989;
       color: white;
 }
 
 [name="nfi"]:active,
-[name="nfo"]:active{
+[name="nfo"]:active,
+[name="upl"]:active{
       box-shadow: 0px 0px 5px grey, inset 0 0 5px white;
       color: white;
 }
+
+
 
 ul{
       display: flex;
@@ -70,8 +75,6 @@ form{
       text-align: center;
 }
 
-
-
 .inputField{
      display:flex;
      flex-direction: row;
@@ -86,7 +89,6 @@ input[type="text"] {
       margin: 5px;
       font-size: 16px;
 }
-
 form button{
       width: 346px;
       margin-left:99px;
@@ -105,12 +107,16 @@ form button:active{
       color: white;
 }
 
-
 textarea{
       width:350px;
       height: 100px;
       margin: 5px;
 }
+
+[name="newUpload"]{
+      font-size: 16px;
+}
+
 
 thead{
       background-color: #dedede;
@@ -186,7 +192,8 @@ footer li{
 }
 .new_file,
 .new_folder,
-.rename{
+.rename,
+.upload{
       width: 450px;
       display: none;
       transition: display 0.7s;

@@ -61,6 +61,7 @@ Alternative web icons:
                         <ul>
                               <li name="nfo">New Directory</li>
                               <li name="nfi">New File</li>
+                              <li name="upl">Upload File</li>
                         </ul>
                   </nav>
             </header>
@@ -99,6 +100,21 @@ Alternative web icons:
                               <button type="submit">Rename</button>
                         </form>
                   </div>
+
+                  <div class="upload">
+                        <form method="POST" enctype="multipart/form-data">
+                              <div class="inputField">
+                                    <input type="file" name="newUpload" />
+                              </div>
+                              <button type="submit">Upload</button>
+                        </form>
+                  </div>
+
+                  <?php //file uploading----------------------------
+                        
+                        print_r($_FILES);
+                        
+                  ?>
 
                   <?php
                   //Files and Folders creation
@@ -261,17 +277,27 @@ Alternative web icons:
                         document.querySelector('.new_file').style.display = "none";
                         document.querySelector('.new_folder').style.display = "block";
                         document.querySelector('.rename').style.display="none";
+                        document.querySelector('.upload').style.display="none";
+                        
                   });
                   document.querySelector('[name="nfi"]').addEventListener("click", () => {
                         document.querySelector('.new_file').style.display = "block";
                         document.querySelector('.new_folder').style.display = "none";
                         document.querySelector('.rename').style.display = "none";
+                        document.querySelector('.upload').style.display="none";
                         
                   });
                   document.querySelector('[name="ren"]').addEventListener("click", () =>{
                         document.querySelector('.new_file').style.display = "none";
                         document.querySelector('.new_folder').style.display = "none";
                         document.querySelector('.rename').style.display = "block";
+                        document.querySelector('.upload').style.display="none";
+                  });
+                  document.querySelector('[name="upl"]').addEventListener("click", () =>{
+                        document.querySelector('.new_file').style.display = "none";
+                        document.querySelector('.new_folder').style.display = "none";
+                        document.querySelector('.rename').style.display = "none";
+                        document.querySelector('.upload').style.display="block";
                   });
                 
 
