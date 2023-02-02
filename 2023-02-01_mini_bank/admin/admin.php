@@ -32,7 +32,7 @@ if(isset($_POST) and count($_POST)>0){
 if (isset($_GET['delete']) && $_GET['delete'] !=""){
       $jsonData = file_get_contents("db.json");
       $clientsArray = json_decode($jsonData, true);
-      $clientsArray[] = $user; ///unset get elementą
+      unset($clientsArray[$_GET['delete']]);
       $jsonArray = json_encode($clientsArray);
       file_put_contents("db.json", $jsonArray);
 }
