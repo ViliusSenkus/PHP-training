@@ -1,5 +1,6 @@
 <?php
 $folder = "./";
+
 if (isset($_GET['folder'])) {
 
       $split = (explode("/", $_GET['folder']));
@@ -12,22 +13,6 @@ if (isset($_GET['folder'])) {
       }
 
 }
-
-//Ordering Folders then Files:
-$folderData = scandir($folder);
-
-if (count($folderData) > 1) {
-      $filesArr = array();
-      foreach ($folderData as $data) {
-            if (is_dir($data)) {
-                  $foldersArr[] = $data;
-            } else {
-                  $filesArr[] = $data;
-            }
-      }
-      $folderData = array_merge($foldersArr, $filesArr);
-}
-
 /*
 Alternative web icons:
 "https://img.icons8.com/external-fauzidea-flat-fauzidea/32/null/external-php-file-file-extension-fauzidea-flat-fauzidea.png";
@@ -51,6 +36,12 @@ Alternative web icons:
       <link rel="stylesheet" href="content/style.css" />
       <title>Document</title>
 </head>
+
+<?php
+      // echo "<pre>";
+      // print_r($_SERVER);
+      // echo "</pre>";
+?>
 
 <body>
       <div class="container">
@@ -107,26 +98,31 @@ Alternative web icons:
                         <form method="GET">
                               <div class="inputField">
                                     <label>New Name</label>
-                                    <input type="text" name="newName" value="<?=$_GET["edit"]?>" />
-                                    <input type="hidden" name="oldName" value="<?=$_GET["edit"]?>">
                                     <input type="hidden" name="folder" value="<?=$_GET["folder"]?>">
+                                    <input type="hidden" name="oldName" value="<?=$_GET["edit"]?>">
+                                    <input type="text" name="newName" value="<?=$_GET["edit"]?>" />
+                                    
                               </div>
                               <button type="submit">Rename</button>
                         </form>
                   </div>
                   <?php } ?>
 
-                  <?php if (isset($_GET["newName"]) && $_GET["newName"] !="" ){
-
-                        echo $_GET["folder"] . $_GET["oldName"];
-                        echo "</br>";
-                        echo $_GET["folder"] . $_GET["newName"];
-                        // rename($_GET["folder"].$_GET["oldName"], $_GET["folder"].$_GET["newName"]);
-                        // header('LocaTION :' . $_SERVER["REQUEST_URI"]);
-                  }
-                  ?>
-                 
 <?php
+
+
+
+//File renaming
+if (isset($_GET["newName"]) && $_GET["newName"] !="" ){
+
+      // echo $_GET["folder"] . $_GET["oldName"];
+      // echo "</br>";
+      // echo $_GET["folder"] . $_GET["newName"];
+      rename($_GET["folder"].$_GET["oldName"], $_GET["folder"].$_GET["newName"]);
+      
+      header('Location: ?folder='. $_GET["folder"]);
+}
+
 //Files and Folders creation
 if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
       if (!isset($_POST['fileContent'])) {
@@ -139,14 +135,48 @@ if (isset($_POST['folderName']) && $_POST['folderName'] != "") {
       mkdir($folder . $_POST['folderName']);
       header('Location:' . $_SERVER['REQUEST_URI']);
 }
-?>
 
-<?php 
+
 //Files upload
 if (isset($_FILES["newUpload"]) && $_FILES["newUpload"]["tmp_name"] != "") {
       $newFileAddress=$folder.$_FILES["newUpload"]["name"];
       move_uploaded_file($_FILES["newUpload"]["tmp_name"], $newFileAddress);
       header('Location:' . $_SERVER['REQUEST_URI']);
+}
+
+//Files delete
+if (isset($_GET["delete"]) && $_GET["delete"] !=""){
+      unlink($_GET["folder"] . $_GET["delete"]);
+      header('Location: ?folder=' . $_GET["folder"]);
+}
+
+//table draw
+if (isset($_GET['folder'])) {
+
+      $split = (explode("/", $_GET['folder']));
+
+      if ($split[count($split) - 2] == ".") {
+            array_splice($split, (count($split) - 3), 2);
+            $folder = implode("/", $split);
+      } else {
+            $folder = $_GET['folder'];
+      }
+
+}
+
+//Ordering Folders then Files:
+$folderData = scandir($folder);
+
+if (count($folderData) > 1) {
+      $filesArr = array();
+      foreach ($folderData as $data) {
+            if (is_dir($data)) {
+                  $foldersArr[] = $data;
+            } else {
+                  $filesArr[] = $data;
+            }
+      }
+      $folderData = array_merge($foldersArr, $filesArr);
 }
 ?>
 
@@ -242,12 +272,12 @@ if (isset($_FILES["newUpload"]) && $_FILES["newUpload"]["tmp_name"] != "") {
                                                 }
 
                                                 ?>
-
-                                                <svg name="del" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                                      <path fill="#EE6666"
-                                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                                                </svg>
-
+                                                <a href="?delete=<?= $data ?>&folder=<?= $folder ?>">
+                                                      <svg name="del" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                            <path fill="#EE6666"
+                                                                  d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                                                      </svg>
+                                                </a>
 
                                                 <a href="?edit=<?= $data ?>&folder=<?= $folder ?>">
                                                       <svg name="ren" xmlns="http://www.w3.org/2000/svg"
@@ -261,30 +291,13 @@ if (isset($_FILES["newUpload"]) && $_FILES["newUpload"]["tmp_name"] != "") {
                                                       <path fill="#666666"
                                                             d="M0 448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H224c-53 0-96-43-96-96V160H64c-35.3 0-64 28.7-64 64V448zm224-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64z" />
                                                 </svg>
-                                          <?=$folder." --- ".$data;?> 
-                                          
                                           </td>
                                     </tr>
                               <?php } ?>    <!--end of ForEach (table creation)-->
                         </tbody>
                   </table>
-
-                  <?php
-                  //ištrynimas
-                  // if(isset($_GET['delete']) && $_GET['delete'] != "" ){
-                  //       unlink($folder.$data);
-                  //       header('Location:' . $_SERVER['REQUEST_URI']);
-                  // }
-                  
-                  //editinimas
-                  
-                  ?>
-
-
-
-
             </main>
-            <?php //echo(basename(__FILE__)); ?>
+
             <footer>
                   <div>
                         <ul>Resources used:
@@ -295,6 +308,7 @@ if (isset($_FILES["newUpload"]) && $_FILES["newUpload"]["tmp_name"] != "") {
                               <li>HTML5</li>
                               <li>CSS3</li>
                               <li>PHP</li>
+                              <li>JavaScript</li>
                         </ul>
                   </div>
             </footer>
