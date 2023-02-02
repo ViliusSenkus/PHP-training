@@ -7,6 +7,37 @@ if ( !isset($_SESSION["admin"]) || $_SESSION["admin"] != true){
       header('Location: /My_Projects/2023-02-01_mini_bank/index.php');
       }
 
+
+//tikriname pridedamą informaciją. Šitoje vietoje, kad pridėjus iš karto būtų atvazduojama lentelėje
+// duomenų į JSON įrašymas
+if(isset($_POST) and count($_POST)>0){
+      $user = array(
+            "id" => $_POST["id"],
+            "psw" => $_POST["psw"],
+            "account" => $_POST["iban"],
+            "name" => $_POST["name"],
+            "surname" => $_POST["surname"],
+            "ammount" => $_POST["sum"]
+      );
+      
+      $jsonData = file_get_contents("db.json");
+      $clientsArray = json_decode($jsonData, true);
+      $clientsArray[] = $user;
+      $jsonArray = json_encode($clientsArray);
+      file_put_contents("db.json", $jsonArray);
+      header('Location : /MY_PROJECTS/2023-02-01_mini_bank/admin/admin.php');
+}
+
+//eilutės trynimas
+if (isset($_GET['delete']) && $_GET['delete'] !=""){
+      $jsonData = file_get_contents("db.json");
+      $clientsArray = json_decode($jsonData, true);
+      $clientsArray[] = $user; ///unset get elementą
+      $jsonArray = json_encode($clientsArray);
+      file_put_contents("db.json", $jsonArray);
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +62,11 @@ if ( !isset($_SESSION["admin"]) || $_SESSION["admin"] != true){
       $_SESSION["admin"] = false;
       header('Location: /My_Projects/2023-02-01_mini_bank/index.php');
       }
+      echo "<pre> SESSION duomenys: ";
+echo(__FILE__);
+echo "</pre>";
       
+
 ?>
             </nav>
       </header>
@@ -54,23 +89,9 @@ if ( !isset($_SESSION["admin"]) || $_SESSION["admin"] != true){
                         <tbody>
 
 <?php
-// $user = array(
-//       "id" => "65451351",
-//       "psw" => "1234",
-//       "account" => " LT5515615616515615",
-//       "name" => "Motiejus",
-//       "surname" => "Aleksandravičius",
-//       "ammount" => 9.99
-// );
-
+//duomenų iš JSON nuskaitymas
 $jsonData = file_get_contents("db.json");
 $clientsArray = json_decode($jsonData, true);
-
-// print_r($clientsArray[1]);
-// $clientsArray[] = $user;
-
-// $jsonArray = json_encode($clientsArray);
-// file_put_contents("db.json", $jsonArray);
 
 foreach($clientsArray as $key => $data){ ?>
     <tr>
@@ -97,8 +118,8 @@ foreach($clientsArray as $key => $data){ ?>
             </td>
 
             <td>
-                  <a href="? <?=$key?> ">Edit</a>
-                  <a href="? <?=$key?> ">Delete</a>
+                  <a href="?edit=<?=$key?> ">Edit</a>
+                  <a href="?delete=<?=$key?> ">Delete</a>
             </td>
       </tr>
 <?php } ?>
