@@ -67,6 +67,7 @@ Alternative web icons:
             </header>
 
             <main>
+                  <!-- DATA COLLECTION FORMS -->
                   <div class="new_file">
                         <form method="POST">
                               <div class="inputField">
@@ -90,7 +91,7 @@ Alternative web icons:
                               <button type="submit">Create</button>
                         </form>
                   </div>
-                 
+
                   <div class="rename">
                         <form method="POST">
                               <div class="inputField">
@@ -110,26 +111,29 @@ Alternative web icons:
                         </form>
                   </div>
 
-                  <?php //file uploading----------------------------
-                        
-                        print_r($_FILES);
-                        
-                  ?>
+<?php
+//Files and Folders creation
+if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
+      if (!isset($_POST['fileContent'])) {
+            $_POST['fileContent'] = "";
+      }
+      file_put_contents($folder . $_POST['fileName'], $_POST['fileContent']);
+      header('Location:' . $_SERVER['REQUEST_URI']);
+}
+if (isset($_POST['folderName']) && $_POST['folderName'] != "") {
+      mkdir($folder . $_POST['folderName']);
+      header('Location:' . $_SERVER['REQUEST_URI']);
+}
+?>
 
-                  <?php
-                  //Files and Folders creation
-                  if (isset($_POST['fileName']) && $_POST['fileName'] != "") {
-                        if (!isset($_POST['fileContent'])) {
-                              $_POST['fileContent'] = "";
-                        }
-                        file_put_contents($folder . $_POST['fileName'], $_POST['fileContent']);
-                        header('Location:' . $_SERVER['REQUEST_URI']);
-                  }
-                  if (isset($_POST['folderName']) && $_POST['folderName'] != "") {
-                        mkdir($folder . $_POST['folderName']);
-                        header('Location:' . $_SERVER['REQUEST_URI']);
-                  }
-                  ?>
+<?php 
+//Files upload
+if (isset($_FILES["newUpload"]) && $_FILES["newUpload"]["tmp_name"] != "") {
+      $newFileAddress=$folder.$_FILES["newUpload"]["name"];
+      move_uploaded_file($_FILES["newUpload"]["tmp_name"], $newFileAddress);
+      header('Location:' . $_SERVER['REQUEST_URI']);
+}
+?>
 
                   <div>
                         You are
@@ -156,9 +160,10 @@ Alternative web icons:
                                           $folder == "./" and
                                           $data === $folderData[0] or
                                           $data === $folderData[1]
-                                    ) : continue;
+                                    ):
+                                          continue;
                                     endif;
-                              ?>
+                                    ?>
                                     <tr>
                                           <td>
                                                 <input type="checkbox" name="check">
@@ -171,15 +176,16 @@ Alternative web icons:
                                                       <div class="icon">
                                                             <img src="https://img.icons8.com/emoji/32/null/file-folder-emoji.png" />
                                                       </div>
-                                                            <a href="?folder=<?= $folder.$data ?>/">
-                                                                  <?php
-                                                                        if($data==".")
-                                                                              {echo "◄ Back";}
-                                                                        else
-                                                                              {echo $data;}
-                                                                  ?>
-                                                            </a>
+                                                      <a href="?folder=<?= $folder . $data ?>/">
                                                             <?php
+                                                            if ($data == ".") {
+                                                                  echo "◄ Back";
+                                                            } else {
+                                                                  echo $data;
+                                                            }
+                                                            ?>
+                                                      </a>
+                                                      <?php
                                                 } else {
                                                       $explode = explode(".", $data);
                                                       $extention = $explode[count($explode) - 1];
@@ -189,12 +195,12 @@ Alternative web icons:
                                                             $icon = "content/icons/none.png";
                                                       }
                                                       ?>
-                                                            <div class="icon">
-                                                                  <img src="<?= $icon ?>" />
-                                                            </div>
-                                                            <a href="<?= $folder.$data ?>" target="_blank"><?= $data ?></a>;
+                                                      <div class="icon">
+                                                            <img src="<?= $icon ?>" />
+                                                      </div>
+                                                      <a href="<?= $folder . $data ?>" target="_blank"><?= $data ?></a>;
                                                 <?php } ?>
-                                                
+
                                           </td>
 
                                           <td>
@@ -215,26 +221,30 @@ Alternative web icons:
                                                 <?php echo date("Y-m-d H:i:s", filemtime($folder . $data)); ?>
                                           </td>
                                           <td>
-                                                <?php 
-                                                      if (is_dir($folder.$data) || $data == basename(__FILE__)){
-                                                       continue;
-                                                      }
-                                                
+                                                <?php
+                                                if (is_dir($folder . $data) || $data == basename(__FILE__)) {
+                                                      continue;
+                                                }
+
                                                 ?>
 
-                                                      <svg name="del" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                                            <path fill="#EE6666" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
-                                                      </svg>
+                                                <svg name="del" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                      <path fill="#EE6666"
+                                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                                                </svg>
 
-                                                
-                                                <a href="?edit=<?= $folder.$data ?>&folder=<?= $folder ?>">
-                                                      <svg name="ren" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                                            <path fill="#5588EE" d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V285.7l-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z"/>
+
+                                                <a href="?edit=<?= $folder . $data ?>&folder=<?= $folder ?>">
+                                                      <svg name="ren" xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 576 512">
+                                                            <path fill="#5588EE"
+                                                                  d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V285.7l-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z" />
                                                       </svg>
                                                 </a>
-                                                
-                                                      <svg name="copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                                      <path fill="#666666" d="M0 448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H224c-53 0-96-43-96-96V160H64c-35.3 0-64 28.7-64 64V448zm224-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64z"/>
+
+                                                <svg name="copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                      <path fill="#666666"
+                                                            d="M0 448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H224c-53 0-96-43-96-96V160H64c-35.3 0-64 28.7-64 64V448zm224-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64z" />
                                                 </svg>
                                           </td>
                                     </tr>
@@ -242,22 +252,22 @@ Alternative web icons:
                         </tbody>
                   </table>
 
-<?php
- //ištrynimas
- // if(isset($_GET['delete']) && $_GET['delete'] != "" ){
- //       unlink($folder.$data);
- //       header('Location:' . $_SERVER['REQUEST_URI']);
- // }
-
- //editinimas
-
-?>
+                  <?php
+                  //ištrynimas
+                  // if(isset($_GET['delete']) && $_GET['delete'] != "" ){
+                  //       unlink($folder.$data);
+                  //       header('Location:' . $_SERVER['REQUEST_URI']);
+                  // }
+                  
+                  //editinimas
+                  
+                  ?>
 
 
 
 
             </main>
-                                                      <?= (basename(__FILE__));?>
+            <?php //echo(basename(__FILE__)); ?>
             <footer>
                   <div>
                         <ul>Resources used:
@@ -273,33 +283,34 @@ Alternative web icons:
             </footer>
 
             <script>
-                  document.querySelector('[name="nfo"]').addEventListener("click", () => {      
+                  document.querySelector('[name="nfo"]').addEventListener("click", () => {
                         document.querySelector('.new_file').style.display = "none";
                         document.querySelector('.new_folder').style.display = "block";
-                        document.querySelector('.rename').style.display="none";
-                        document.querySelector('.upload').style.display="none";
-                        
+                        document.querySelector('.rename').style.display = "none";
+                        document.querySelector('.upload').style.display = "none";
+
                   });
                   document.querySelector('[name="nfi"]').addEventListener("click", () => {
                         document.querySelector('.new_file').style.display = "block";
                         document.querySelector('.new_folder').style.display = "none";
                         document.querySelector('.rename').style.display = "none";
-                        document.querySelector('.upload').style.display="none";
-                        
+                        document.querySelector('.upload').style.display = "none";
+
                   });
-                  document.querySelector('[name="ren"]').addEventListener("click", () =>{
+                  document.querySelector('[name="ren"]').addEventListener("click", (e) => {
+                        e.preventDefault();
                         document.querySelector('.new_file').style.display = "none";
                         document.querySelector('.new_folder').style.display = "none";
                         document.querySelector('.rename').style.display = "block";
-                        document.querySelector('.upload').style.display="none";
+                        document.querySelector('.upload').style.display = "none";
                   });
-                  document.querySelector('[name="upl"]').addEventListener("click", () =>{
+                  document.querySelector('[name="upl"]').addEventListener("click", () => {
                         document.querySelector('.new_file').style.display = "none";
                         document.querySelector('.new_folder').style.display = "none";
                         document.querySelector('.rename').style.display = "none";
-                        document.querySelector('.upload').style.display="block";
+                        document.querySelector('.upload').style.display = "block";
                   });
-                
+
 
             </script>
 
