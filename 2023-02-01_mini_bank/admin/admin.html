@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="admin.css" />
+      <link rel="icon" href="logo.png"
+      <title>Admin Panel</title>
+</head>
+<body>
+      <header class="container">
+            <h1>Wellcome to admin panel, Master</h1>
+            <nav>
+                  <a href="#data">Clients information</a>
+                  <a href="#newClient">Clients information</a>
+            </nav>
+      </header>
+
+      <main class="container">
+            <div id="data">
+                  <table>
+                        <theader>
+                              <tr>
+                                    <th>Serial No.</th>
+                                    <th>ID</th>
+                                    <th>Password</th>
+                                    <th>Account number (IBAN)</th>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Sum on account</th>
+                                    <th>Actions</th>
+                              </tr>
+                        </theader>
+                        <tbody>
+                         Lentelės duomenų prototipas (šablonas)
+                        <!--  Eilučių prototipas (reikės sudėti į foreach pagal json duomenis)                           
+                              <tr>
+                                    <td>
+                                          json.key                                       
+                                    </td>
+                                    <td>
+                                          <input type="text" name="json.id" value="json.id" disabled />
+                                    </td>
+                                    ...
+                                    <td>
+                                          <a href="?json.key">Edit</a>
+                                          <a href="?json.key">Delete</a>
+                                    </td>
+                              </tr> 
+                        -->
+                        </tbody>
+                  </table>
+            </div>
+            
+            
+            <div class="newClient" is="newClient">
+                  <form method="post">
+                        <div class="field">
+                              <label>id</label>
+                              <input type="text" name="id" />
+                        </div>
+                        <div class="field">
+                              <label>password</label>
+                              <input type="text" name="psw" />
+                        </div>
+                        <div class="field">
+                              <label>iban</label>
+                              <input type="text" name="iban" />
+                        </div>
+                        <div class="field">
+                              <label>name</label>
+                              <input type="text" name="name" />
+                        </div>
+                        <div class="field">
+                              <label>surname</label>
+                              <input type="text" name="surname" />
+                        </div>
+                        <div class="field">
+                              <label>Account sum</label>
+                              <input type="number" name="sum" />
+                        </div>
+                        <button type="submit">Add new client</button>
+                  </form>
+            </div>
+
+      </main>
+
+      <footer class="container">
+
+      </footer>
+</body>
+</html>
+
+
+Jeigu adminas neprisijungęs, grąžinkite jį atgal į prisijungimo puslapį,
+
+"id" => "65451351",
+"psw" => "1234",
+"account" => " LT5515615616515615",
+"name" => "Motiejus",
+"surname" => "Aleksandravičius",
+"ammount" => 9.

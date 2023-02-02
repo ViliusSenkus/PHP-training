@@ -24,15 +24,20 @@ if (
       $_POST["id"] != "" &&
       $_POST["psw"] != ""
 ) {
-      // jeigu duomenys suvesti tikriname ar jie atitinka vartotoją. Atitikus pririšame prie sesijos.
-      if ($_POST["id"] == $Client["id"] && $_POST["psw"] == $Client["psw"]) {
-            $_SESSION["clientID"] = $Client["id"];
-            $_SESSION["clientPsw"] = $Client["psw"];
-            $_SESSION["connected"] = true;
+      if ($_POST["id"] === "admin" && $_POST["psw"] === "admin"){ 
+            $_SESSION["admin"] = true;
+            header('Location: admin/admin.php');
       } else {
-            $_SESSION["clientID"] = "";
-            $_SESSION["clientPsw"] = "";
-            $_SESSION["connected"] = false;
+            // jeigu duomenys suvesti tikriname ar jie atitinka vartotoją. Atitikus pririšame prie sesijos.
+            if ($_POST["id"] == $Client["id"] && $_POST["psw"] == $Client["psw"]) {
+                  $_SESSION["clientID"] = $Client["id"];
+                  $_SESSION["clientPsw"] = $Client["psw"];
+                  $_SESSION["connected"] = true;
+            } else {
+                  $_SESSION["clientID"] = "";
+                  $_SESSION["clientPsw"] = "";
+                  $_SESSION["connected"] = false;
+            }
       }
 }
 ?>
@@ -60,7 +65,7 @@ if (
 
 <body class="text-center">
       <?php 
-      include("viewer/header.php");  
+      include("view/header.php");  
 
       if (isset($_GET["file"]) && $_GET["file"] != ""){
             $file = $_GET["file"];
@@ -70,22 +75,22 @@ if (
 
       switch ($file) {
             case "card":
-                  include("viewer/card.php");
+                  include("view/card.php");
                   break;
             case "loan":
-                  include("viewer/loan.php");
+                  include("view/loan.php");
                   break;
             case "pension":
-                  include("viewer/pension.php");
+                  include("view/pension.php");
                   break;
             case "ebank":
-                  include("viewer/login.php");
+                  include("view/login.php");
                   break;
             default:
-                  include("viewer/login.php");
+                  include("view/login.php");
       }
 
-      include("viewer/footer.php");
+      include("view/footer.php");
       ?>
 
 </body>
