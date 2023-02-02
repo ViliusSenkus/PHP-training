@@ -146,8 +146,12 @@ if (isset($_FILES["newUpload"]) && $_FILES["newUpload"]["tmp_name"] != "") {
 
 //Files delete
 if (isset($_GET["delete"]) && $_GET["delete"] !=""){
-      unlink($_GET["folder"] . $_GET["delete"]);
-      header('Location: ?folder=' . $_GET["folder"]);
+      if ($_GET["delete"]==basename(__FILE__)){
+            exit;
+      } else {
+            unlink($_GET["folder"] . $_GET["delete"]);
+            header('Location: ?folder=' . $_GET["folder"]);
+      }
 }
 
 //table draw
@@ -248,9 +252,7 @@ if (count($folderData) > 1) {
 
                                           </td>
 
-                                          <td>
-                                                <?php
-                                                // counting and representing size in more acceptable format
+                                          <td> <?php // File size
                                                 $size = filesize($folder . $data);
                                                 if ($size < 1000) {
                                                       echo $size . "&nbsp;&nbsp;B";
@@ -260,13 +262,14 @@ if (count($folderData) > 1) {
                                                       echo round(($size / 1000000), 2, PHP_ROUND_HALF_UP) . " GB";
                                                 }
                                                 ?>
+                                          </td>
 
+                                          <td> <?php // Modification date
+                                                echo date("Y-m-d H:i:s", filemtime($folder . $data)); 
+                                                ?>
                                           </td>
-                                          <td>
-                                                <?php echo date("Y-m-d H:i:s", filemtime($folder . $data)); ?>
-                                          </td>
-                                          <td>
-                                                <?php
+                                          
+                                          <td> <?php // Action Icons
                                                 if (is_dir($folder . $data) || $data == basename(__FILE__)) {
                                                       continue;
                                                 }
