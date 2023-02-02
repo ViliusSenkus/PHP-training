@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // echo "<pre> SESSION duomenys: ";
 // print_r($_SESSION);
 // echo "<br/> POST duomenys: ";
@@ -26,6 +25,7 @@ if (
 ) {
       if ($_POST["id"] === "admin" && $_POST["psw"] === "admin"){ 
             $_SESSION["admin"] = true;
+            $_SESSION["link"] = $_SERVER['REQUEST_URI'];
             header('Location: admin/admin.php');
       } else {
             // jeigu duomenys suvesti tikriname ar jie atitinka vartotoją. Atitikus pririšame prie sesijos.
