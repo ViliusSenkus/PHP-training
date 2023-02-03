@@ -5,16 +5,16 @@
                   <h5 class="text-center">Navigation</h5>
                   <ul>
                         <li class="list-group-item">
-                              <a href="?<?='file=card.php' ?>">Kortelė</a>
+                              <a href="?<?='file=card' ?>">Kortelė</a>
                         </li>
                         <li class="list-group-item">
-                              <a href="?<?='file=loan.php' ?>">Paskolos</a>
+                              <a href="?<?='file=loan' ?>">Paskolos</a>
                         </li>
                         <li class="list-group-item">
-                              <a href="?<?='file=pension.php' ?>">Pensija</a>
+                              <a href="?<?='file=pension' ?>">Pensija</a>
                         </li>
                         <li class="list-group-item">
-                              <a href="?<?='file=ebank.php' ?>">Internetinė bankininkystė</a>
+                              <a href="?<?='file=ebank' ?>">Internetinė bankininkystė</a>
                         </li>
                   </ul>
             </div>
