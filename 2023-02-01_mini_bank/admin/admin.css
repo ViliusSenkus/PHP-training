@@ -53,38 +53,73 @@ table{
       border-collapse: collapse;
       margin: 0 auto;
 }
+tr{
+     line-height: 18px;
+}
+
 th,
 td{
       border: 1px solid black;
 }
 
-td:first-child,
-td:last-child{
+td:nth-child(1),
+td:nth-child(2),
+td:nth-child(3),
+td:nth-child(4),
+td:nth-child(7){
       text-align: right;
+      padding-right:5px; 
+}
+td:nth-child(5) ,
+td:nth-child(6) {
+      text-align: left;
       padding-right:5px;
 }
+
+td:nth-child(1){
+      width:20px;
+}
+
+td:nth-child(2),
+td:nth-child(3),
+td:nth-child(5),
+td:nth-child(6),
+td:nth-child(7),
 td:nth-child(2) input,
 td:nth-child(3) input,
-td:nth-child(7) input{
-      width:120px;    
-}
-td:nth-child(4) input,
 td:nth-child(5) input,
-td:nth-child(6) input{
-      width: 200px;
+td:nth-child(6) input,
+td:nth-child(7) input {
+      width:120px;
+}
+td:nth-child(4),
+td:nth-child(4) input {
+      width: 180px;
 }
 
-table input{
-      background-color: #d6d6d6;
+
+[state="required"]{
+       border:none;
+       background-color: white!important;
+       font-size: 18px;
+       font-family: 'Times New Roman', Times, serif;
+       color: rgb(116, 116, 116);
+       text-align: right;
+}
+
+td button{
+      color: green;
+      text-decoration: underline;
       border:none;
-      font-size: 18px;
+      font-size: 16px;
       font-family: 'Times New Roman', Times, serif;
-      color: black;
-      text-align: right;
+      background-color: #efefef;
+
 }
 
-
-
+tr:nth-child(even){
+      background-color: #efefef;
+}
 
 
 form{
@@ -111,8 +146,6 @@ form button{
       width: 368px;
       margin: 2px 0;
       margin-left: 120px;
-      /* background-color: rgb(195, 195, 195);
-      border: 1px solid black; */
       font-size: 16px;
       padding: 2px 0;
 }

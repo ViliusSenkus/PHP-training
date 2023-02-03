@@ -1,33 +1,22 @@
-<?php
+<?php 
+// echo "<pre>";
+// print_r ($_SESSION);
+// echo "</pre>";
+$jsondata = file_get_contents("admin/db.json");
+$clientsArray = json_decode($jsondata, true);
 
-$Client = array(
-      "id" => "65451351",
-      "psw" => "1234",
-      "account" => " LT5515615616515615",
-      "name" => "Motiejus",
-      "surname" => "Aleksandravičius",
-      "ammount" => 9.99
-);
+foreach ($clientsArray as $key => $data){
 
-//tikriname ar suvesti formos duomenys
-if (
-      isset($_POST["id"]) &&
-      isset($_POST["psw"]) &&
-      $_POST["id"] != "" &&
-      $_POST["psw"] != ""
-) {
-      // jeigu duomenys suvesti tikriname ar jie atitinka vartotoją. Atitikus pririšame prie sesijos.
-      if ($_POST["id"] == $Client["id"] && $_POST["psw"] == $Client["psw"]) {
-            $_SESSION["clientID"] = $Client["id"];
-            $_SESSION["clientPsw"] = $Client["psw"];
-            $_SESSION["connected"] = true;
-      } else {
-            $_SESSION["clientID"] = "";
-            $_SESSION["clientPsw"] = "";
-            $_SESSION["connected"] = false;
-      }
-} ?>
+if (isset($_SESSION["clientID"]) && $_SESSION["clientID"]===$data["id"]){
+            $Client["name"] = $data["name"];
+            $Client["surname"] = $data["surname"];
+            $Client["iban"] = $data["iban"];
+            $Client["balance"] = $data["balance"];
+            $Client["key"] = $key;
+}
+}
 
+?>
 
 
 
@@ -41,7 +30,11 @@ if (
       ?>
       ">
       <h3 class="text-end me-5">
-            <?= $Client['name'] . " " . $Client['surname'] ?>
+            <?php 
+                 
+
+
+            echo $Client['name'] . " " . $Client['surname'] ?>
       </h3>
       <div class="text-center">
             <table class="table w-50 text-center table-bordered border-success mx-auto my-4">
@@ -54,14 +47,35 @@ if (
                   <tbody>
                         <tr class="table-success">
                               <td class="text-start">
-                                    <?= $Client["account"] ?>
+                                    <?= $Client["iban"] ?>
                               </td>
                               <td class="text-end">
-                                    <?= $Client["ammount"] ?>€
+                                    <?= $Client["balance"] ?>€
                               </td>
                         </tr>
                   </tbody>
             </table>
+      </div>
+      <div class="text-center">
+            <a type="button" href="?transfer=1">Atlikti mokėjimą</a>
+<?php
+      if (isset($_GET["transfer"]) && $_GET["transfer"]==1){ ?>
+            <form method="POST">
+                  <div class="form-floating mb-1">
+                        <input type="text" class="form-control" id="rec" name="reciever" />
+                        <label for="rec">Gavėjo sąskaitos numeris</label>
+                  </div>
+                  <div class="form-floating mb-1">
+                        <input type="number" class="form-control" id="sum" name="sum" value="10.00" step="0.01"/>
+                        <label for="sum">Suma</label>
+                  </div>
+                        <input type="hidden" name="trans" value="true" />
+                        <input type="hidden" name="key" value=" <?=$Client["key"]?> " />
+                  <button class="w-100 btn btn-lg btn-primary" type="submit">Patvirtinti pervedimą</button>
+            </form>
+
+<?php } ?>
+            
       </div>
 </div>
 
@@ -88,6 +102,6 @@ if (
                   <label for="floatingPassword">Password</label>
             </div>
 
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button> <!-- čia reikia į get'ą perduoti log=on -->
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
       </form>
 </div>

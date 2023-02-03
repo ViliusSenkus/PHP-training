@@ -86,14 +86,15 @@ if (
                         break;
                   }
             }
+
             if (isset($recieverKey)) { 
                   //jeigu gavėjas gautas tada tikriname ar pakankamai turima pinigų pavedimui
                   if ($transferSum <= $clientsArray[$senderKey]["balance"]) {
-                        echo "pries mokejima - ".$clientsArray[$senderKey]["balance"]."<br/>";
-                        $clientsArray[$senderKey]["balance"] -=  $transferSum;
-                        $clientsArray[$senderKey]["balance"];
-                        
-                        echo "yra tiek pinigu";
+                        $clientsArray[$senderKey]["balance"] -=  $transferSum; // isskaiciuojam
+                        $clientsArray[$recieverKey]["balance"] +=  ($transferSum-0.43); // priskaiciuojam
+                        $jsonArray = json_encode($clientsArray);
+                        file_put_contents("admin/db.json", $jsonArray);
+                        header('Location: ./');
                   } else {
                         echo "nepakanka pinigu";
                         exit;
@@ -101,7 +102,6 @@ if (
                   
             }
       }
-
 
       switch ($file) {
             case "card":
