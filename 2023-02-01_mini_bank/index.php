@@ -1,20 +1,5 @@
 <?php
 session_start();
-// echo "<pre> SESSION duomenys: ";
-// print_r($_SESSION);
-// echo "<br/> POST duomenys: ";
-// print_r($_POST);
-// echo "</pre>";
-// 
-
-$Client = array(
-      "id" => "65451351",
-      "psw" => "1234",
-      "account" => " LT5515615616515615",
-      "name" => "Motiejus",
-      "surname" => "Aleksandravičius",
-      "ammount" => 9.99
-);
 
 //tikriname ar suvesti formos duomenys
 if (
@@ -22,24 +7,34 @@ if (
       isset($_POST["psw"]) &&
       $_POST["id"] != "" &&
       $_POST["psw"] != ""
-) {
-      if ($_POST["id"] === "admin" && $_POST["psw"] === "admin"){ 
-            $_SESSION["admin"] = true;
-            $_SESSION["link"] = $_SERVER['REQUEST_URI'];
-            header('Location: admin/admin.php');
-      } else {
-            // jeigu duomenys suvesti tikriname ar jie atitinka vartotoją. Atitikus pririšame prie sesijos.
-            if ($_POST["id"] == $Client["id"] && $_POST["psw"] == $Client["psw"]) {
-                  $_SESSION["clientID"] = $Client["id"];
-                  $_SESSION["clientPsw"] = $Client["psw"];
-                  $_SESSION["connected"] = true;
-            } else {
+) { $case=$_POST["id"];
+
+      switch ($case) {
+            case "admin" : 
+                  if ($_POST["psw"] === "admin"){ 
+                        $_SESSION["admin"] = true;
+                        $_SESSION["link"] = $_SERVER['REQUEST_URI'];
+                        header('Location: admin/admin.php');
+                  };
+                  break;
+            case "" : 
                   $_SESSION["clientID"] = "";
                   $_SESSION["clientPsw"] = "";
                   $_SESSION["connected"] = false;
+                  break;
+            default:
+                  $jsonData = file_get_contents("admin/db.json");
+                  $clientsArray = json_decode($jsonData, true);
+
+                  foreach($clientsArray as $key=>$Client){
+                        if ($_POST["id"] == $Client["id"] && $_POST["psw"] == $Client["psw"]) {
+                        $_SESSION["clientID"] = $Client["id"];
+                        $_SESSION["clientPsw"] = $Client["psw"];
+                        $_SESSION["connected"] = true;
+                  } 
+                  }
             }
       }
-}
 ?>
 
 <!DOCTYPE html>
@@ -72,6 +67,41 @@ if (
       }else{
             $file = "";
       }
+
+    
+      
+
+      // pervedimai
+      if (isset($_POST["trans"]) and count($_POST) == 4) {
+            $jsonData = file_get_contents("admin/db.json");
+            $clientsArray = json_decode($jsonData, true);
+            
+            $senderKey = intval($_POST["key"], 10); // konvertuojam  siuntėjo key'ju
+            $transferSum = 0.43+floatval($_POST["sum"]); // konvertuojam suma i skaicius ir pridedam mokescius
+      
+            foreach ($clientsArray as $key => $value) {
+                  //tikrinam ar yra gavėjas ir užsižymim jo key'jų
+                  if ($value["iban"] == $_POST["reciever"]) {
+                        $recieverKey = $key;
+                        break;
+                  }
+            }
+            if (isset($recieverKey)) { 
+                  //jeigu gavėjas gautas tada tikriname ar pakankamai turima pinigų pavedimui
+                  if ($transferSum <= $clientsArray[$senderKey]["balance"]) {
+                        echo "pries mokejima - ".$clientsArray[$senderKey]["balance"]."<br/>";
+                        $clientsArray[$senderKey]["balance"] -=  $transferSum;
+                        $clientsArray[$senderKey]["balance"];
+                        
+                        echo "yra tiek pinigu";
+                  } else {
+                        echo "nepakanka pinigu";
+                        exit;
+                  }
+                  
+            }
+      }
+
 
       switch ($file) {
             case "card":
