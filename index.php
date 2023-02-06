@@ -194,6 +194,7 @@ if (count($folderData) > 1) {
                         }
                         ?>
                   </div>
+                  <form class="explorer" method="get">
                   <table>
                         <thead>
                               <th><input type="checkbox" disabled></th>
@@ -203,27 +204,29 @@ if (count($folderData) > 1) {
                               <th>Actions</th>
                         </thead>
                         <tbody>
-                              <?php foreach ($folderData as $data) {
+                              <?php foreach ($folderData as $key=>$data) {
                                     if (
                                           //disabling access to higher than home folder
                                           $folder == "./" and
                                           $data === $folderData[0] or
-                                          $data === $folderData[1]
+                                          $data === $folderData[1] or
+                                          $data === ".git"
                                     ):
                                           continue;
                                     endif;
                                     ?>
                                     <tr>
                                           <td>
-                                                <input type="checkbox" name="check">
+                                                <input type="checkbox" name="ck<?=$key?>">
                                           </td>
 
                                           <td>
                                                 <!-- deciding if $data is folder or file and performing adequate actions -->
                                                 <?php
-                                                if (is_dir($folder . $data)) { ?>
-                                                      <div class="icon">
+                                                if (is_dir($folder . $data)) { 
+                                                       if ($data != ".") { ?><div class="icon">
                                                             <img src="https://img.icons8.com/emoji/32/null/file-folder-emoji.png" />
+                                                       <?php }?>
                                                       </div>
                                                       <a href="?folder=<?= $folder . $data ?>/">
                                                             <?php
@@ -270,7 +273,11 @@ if (count($folderData) > 1) {
                                           </td>
                                           
                                           <td> <?php // Action Icons
-                                                if (is_dir($folder . $data) || $data == basename(__FILE__)) {
+                                                if ((is_dir($folder . $data) && $data==".") || 
+                                                $data == ".gitattributes" ||
+                                                $data == "index.html" ||
+                                                $data == basename(__FILE__))
+                                                {
                                                       continue;
                                                 }
 
@@ -299,6 +306,8 @@ if (count($folderData) > 1) {
                               <?php } ?>    <!--end of ForEach (table creation)-->
                         </tbody>
                   </table>
+                        <button type="submit">Delete selection</button>
+                  </form>
             </main>
 
             <footer>

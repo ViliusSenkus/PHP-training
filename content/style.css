@@ -137,6 +137,7 @@ td:first-of-type{
 }
 td:nth-child(2){
       width: 600px;
+      text-align: left;
 }
 td:nth-child(3),
 td:nth-child(4){
