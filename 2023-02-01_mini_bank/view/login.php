@@ -13,7 +13,9 @@ if (isset($_SESSION["clientID"]) && $_SESSION["clientID"]===$data["id"]){
             $Client["iban"] = $data["iban"];
             $Client["balance"] = $data["balance"];
             $Client["key"] = $key;
-            $Client["transfers"]=$data["tranfers"];
+            if (isset($data["tranfers"])) {
+                  $Client["transfers"] = $data["tranfers"];
+            }
 }
 }
 
