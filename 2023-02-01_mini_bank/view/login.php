@@ -13,6 +13,7 @@ if (isset($_SESSION["clientID"]) && $_SESSION["clientID"]===$data["id"]){
             $Client["iban"] = $data["iban"];
             $Client["balance"] = $data["balance"];
             $Client["key"] = $key;
+            $Client["transfers"]=$data["tranfers"];
 }
 }
 
@@ -37,7 +38,7 @@ if (isset($_SESSION["clientID"]) && $_SESSION["clientID"]===$data["id"]){
             echo $Client['name'] . " " . $Client['surname'] ?>
       </h3>
       <div class="text-center">
-            <table class="table w-50 text-center table-bordered border-success mx-auto my-4">
+            <table class="table w-50 text-center table-bordered border-primary mx-auto my-4">
                   <thead>
                         <tr>
                               <th class="w-75">Sąskaitos numeris</th>
@@ -45,7 +46,7 @@ if (isset($_SESSION["clientID"]) && $_SESSION["clientID"]===$data["id"]){
                         </tr>
                   </thead>
                   <tbody>
-                        <tr class="table-success">
+                        <tr class="table-primary">
                               <td class="text-start">
                                     <?= $Client["iban"] ?>
                               </td>
@@ -104,4 +105,75 @@ if (isset($_SESSION["clientID"]) && $_SESSION["clientID"]===$data["id"]){
 
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
       </form>
+</div>
+
+<div class="container account
+      <?php
+      if (isset($_SESSION["connected"]) && $_SESSION["connected"] === true) {
+            echo "d-block";
+      } else {
+            echo "d-none";
+      }
+      ?>
+">
+
+      <h3 class="mt-3">Pavedimų istorija</h3>
+      <table class="table w-50 text-center table-bordered border-success mx-auto my-4">
+            <thead>
+                  <tr>
+                        <th>Eil. Nr.</th>
+                        <th>Data</th>
+                        <th>Gavėjas/Siuntėjas</th>
+                        <th>Suma</th>
+                        <th>Adm.mokestis</th>
+                        <th>Balansas</th>
+                  </tr>
+            <thead>
+            <tbody>
+                  <?php
+                  if (!empty($Client["transfers"])){
+                        foreach($Client["transfers"] as $key => $value){
+                  ?>
+                  <tr class="<?php
+                        if ($value[0]["sender"]==$Client["name"]){
+                              echo "table-danger";
+                        }else{
+                              echo "table-success";
+                        }
+                        ?>
+                  ">
+                        <td>
+                              <?=$key+1?>
+                        </td>
+                        <td>
+                              <?=$value[0]["date"]?>
+                        </td>
+                        <td>
+                              <?php 
+                              if ($value[0]["sender"]==$Client["name"]){
+                                    echo $value[0]["reciever"];
+                              }else{
+                                    echo $value[0]["sender"];
+                              }?>
+                        </td>
+                        <td>
+                              <?=$value[0]["sum"]?>
+                        </td>
+                        <td>
+                              <?php 
+                               if ($value[0]["sender"]==$Client["name"]){
+                                    echo 0.43;
+                                    } ?>
+                        </td>
+                        <td>
+                              <?php
+                              if ($value[0]["sender"]==$Client["name"]){
+                                    echo $value[0]["senBal"];
+                              }else{
+                                    echo $value[0]["recBal"];
+                              }
+                                    }}?>
+                        </td>
+                  </tr>
+            </tbody>
 </div>

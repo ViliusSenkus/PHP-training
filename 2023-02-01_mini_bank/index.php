@@ -92,6 +92,19 @@ if (
                   if ($transferSum <= $clientsArray[$senderKey]["balance"]) {
                         $clientsArray[$senderKey]["balance"] -=  $transferSum; // isskaiciuojam
                         $clientsArray[$recieverKey]["balance"] +=  ($transferSum-0.43); // priskaiciuojam
+                        //fiksuojam mokėjimą į istoriją
+                        $date = date("Y-m-d H:i:s");
+                        $newTransferData[]=array ("date"=>$date,
+                                                  "sum"=>($transferSum-0.43),
+                                                  "reciever"=>$clientsArray[$recieverKey]["name"],
+                                                  "sender"=>$clientsArray[$senderKey]["name"],
+                                                  "recBal"=>$clientsArray[$recieverKey]["balance"],
+                                                  "senBal"=>$clientsArray[$senderKey]["balance"]
+                                                 );
+                        $clientsArray[$senderKey]["tranfers"][]= $newTransferData;
+                        $clientsArray[$recieverKey]["tranfers"][]= $newTransferData;
+                        //fiksuojam gavimą į istoriją
+
                         $jsonArray = json_encode($clientsArray);
                         file_put_contents("admin/db.json", $jsonArray);
                         header('Location: ./');
