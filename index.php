@@ -313,6 +313,13 @@ if (count($folderData) > 1) {
                               <li>PHP</li>
                               <li>JavaScript</li>
                         </ul>
+                        <ul>Pages to view:
+                              <li><a href="https://reactjs.org/docs/hello-world.html">React-1</a></li>
+                              <li><a href="https://reactjs.org/tutorial/tutorial.html">React-2</a></li>
+                              <li><a href="https://www.simplilearn.com/tutorials/reactjs-tutorial/reactjs-components">More React</a></li>
+                              <li><a href="https://www.youtube.com/watch?v=O9tLaztCiQg&list=PLM7wFzahDYnHVWnTz-OMi0pXSLdAlAHte&index=17">React Playlist</a></li>
+                              <li><a href="https://www.freecodecamp.org/learn/front-end-development-libraries/">FreeCodeCamp</a></li>
+                             <li><a href="https://js.itgid.info/#buy-course">JavaScript</a></li>
                   </div>
             </footer>
 
