@@ -1,9 +1,9 @@
 <?php
 
 $json = file_get_contents($JSONmessages);
-$messages = json_decode($json);
+$messages = json_decode($json, true);
 $json = file_get_contents($JSONusers);
-$users = json_decode($json);
+$users = json_decode($json, true);
 
 foreach($messages as $key=>$value){
 ?>
@@ -12,9 +12,9 @@ foreach($messages as $key=>$value){
             <div class="article_name">
                   <div class="avatar">
                         <?php 
-                        foreach ($users as $users){
-                              if ($users['user']===$value['user']){
-                                    $avatar = $users['logo'];
+                        foreach ($users as $usr){
+                              if ($usr['user']===$value['user']){
+                                    $avatar = $usr['logo'];
                                     break;
                               }
                         }
@@ -29,16 +29,18 @@ foreach($messages as $key=>$value){
                               <?=$value['title']?>
                         </h3>
                         <div>
-                              <?=$value['topic']?>
-                        </div>
-                        <div>
-                              <?=$value['date']?>
+                              <div>
+                                    <?=$value['topic']?>
+                              </div>
+                              <div>
+                                    <?=$value['date']?>
+                              </div>
                         </div>
                   </div>
             </div>
             <div class="article_content">
                   <div class="article_photo">
-                        <img src="<?=$value['photo']?>" alt="" />
+                        <img src='<?=$value['photo']?>' alt="nuotrauka" />
                   </div>
                   <div>
                         <?=$value['text']?>
@@ -49,9 +51,9 @@ foreach($messages as $key=>$value){
                         <img src="like.png" alt="likes">
                         <?=$value['likes']?>
                   </a>
-</a>
             </div>
       </div>
+</article>
 
       <?php if($key >= 10){
             break;

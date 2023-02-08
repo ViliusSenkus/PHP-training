@@ -11,18 +11,20 @@ foreach($messages as $key=>$value){
                   <div class="avatar">
                         <img src="./content/logo.png" alt="unknown" />
                         <h4>
-                              <?=$value['user']?>
+                              <?=$value ->user?>
                         </h4>
                   </div>
                   <div class="main_info">
                         <h3>
-                              <?=$value['title']?>
+                              <?=$value ->title?>
                         </h3>
                         <div>
-                              <?=$value['topic']?>
-                        </div>
-                        <div>
-                              <?=$value['date']?>
+                              <div>
+                                    <?=$value->topic?>
+                              </div>
+                              <div>
+                                    <?=$value->date?>
+                              </div>
                         </div>
                   </div>
             </div>

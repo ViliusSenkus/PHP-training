@@ -71,15 +71,17 @@
                         case 'txt': //form for new post
                         ?>
                               <label>Headline</label>
-                              <input type="text" name="title" />
+                              <input type="text" name="title" required/>
                               <label>Subject of the entry</label>
                               <input type="text" name="topic" />
                               <label>Picture</label>
                               <input type="file" name="photo" />
                               <label>Post text here</label>
-                              <textarea type="text" name="text">Up to 144 characters of text goes here</textarea>
+                              <textarea type="text" name="text" required>
+                                    Up to 144 characters of text goes here
+                              </textarea>
                               <button type="submit">Announce to the world</button>
-                              <input type="hidden" value="user" />
+                              <input type="hidden" name="user" value="<?=$_SESSION['user']?>" />
                               <?php break;
                         default:
                               die();

@@ -1,5 +1,8 @@
 <?php
+session_start();
 
+$_SESSION['user']='';
+$_SESSION['log']=false;
       //Enabling data base
       // !!!!!!!!!!!!!!!!!!!!! Should  transform in to MySQL DB !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       $JSONmessages = 'data/messages.json';
@@ -42,7 +45,6 @@
                   psw,
                   logo,
             messages:
-                  id,
                   user,
                   date,
                   topic,
@@ -105,6 +107,24 @@
                   $_SESSION['log'] = false;
                   header('Location: ./');
             }
+
+            //New Post /////////////////////////////////////////////
+            if(isset($_POST["title"]) && $_POST['title'] != ""){
+                  $post = array(
+                        "user" => $_POST['user'],
+                        "date" => date("Y-m-d H:i:s"),
+                        "topic" => $_POST['topic'],
+                        "title" => $_POST['title'],
+                        "text" => $_POST['text'],
+                        "likes" => 0,
+                        "photo" => "data/photoLink.jpg"
+                        // photo adding to data folder and naming should be done.
+                  );
+                  $messages[]=$post;
+                  $json=json_encode($messages);
+                  file_put_contents($JSONmessages, $json);
+                  header('Location: ./');
+            }
             
 
 ?>
@@ -132,7 +152,7 @@
       <main>
             <?php
             //reikalingas patikrinimas ar yra nors vienas įrašas ir jeigu yra rodyti main.php, jeigu nėra pasisveikinimo puslapį.
-            if (isset($_SESSION) && $_SESSION['log']==='true'){
+            if (count($messages)>0){
                   include('content/main/main.php');
             }else{
                   echo "Hallo, be the first to post on this site. Just Log in or Sign up if you allready haven't done this";
@@ -147,14 +167,14 @@
       </footer>
 
       <?php echo "<pre>";
-      echo "getas : ";
-            print_r($_GET);
-      echo "<br />postas :";
-            print_r($_POST);
+      // echo "getas : ";
+      //       print_r($_GET);
+      // echo "<br />postas :";
+      //       print_r($_POST);
       echo "<br />sesija : ";
             print_r($_SESSION);
-      echo "<br /> json User : ";
-      print_r($users);
+      // echo "<br /> json articles : ";
+      // print_r($messages);
       ?>
 </body>
 </html>
