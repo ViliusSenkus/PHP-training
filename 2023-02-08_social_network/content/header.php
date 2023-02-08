@@ -3,70 +3,88 @@
             144net<br />
             <span>One for Four social network, alows messages up to 144characters</span> 
       </h1>
-
+      <ul>
 
 <?php
+// -----------------------------------Veiksmai kai vartotojas neprisijungęs------------------------
       if (empty($_SESSION['user']) || $_SESSION['log']===false) {
-            ?>
-            <form>
-                  <ul>
-                        <li>
-                              <a href="?log=new">
-                                    Sign In
-                              </a>
-                        </li>
-                        <li>
-                              <a href="?log=log">
-                                    Log In
-                              </a>
-                        </li>
-</div>                    
-
+?>
+            <li id="new">
+                  <a href="?log=new">
+                        Sign Up
+                  </a>
+            </li>
+            <li id="log">
+                  <a href="?log=log">
+                        Log In
+<?php
+// --------------------------------Veiksmai kai vartotojas prisijungęs------------------------------
+} else {?>
+            <li>
+                  <a href="?log=off">
+                        Log Off
+                  </a>
+            </li>
+            <li>
+                  <a href="?log=txt">
+                        New Post
+<?php } ?>
+                  </a>
+            </li>
+      </ul>
+</div>     
       
+      
+
+
+
+
+
+<div class="headform">
+      <form method="post">
             
 <?php     
-                  //---------------------------SING IN arba LOG IN forma------------------------
+                  //---------------------------SING IN and LOG IN forms------------------------
       if (isset($_GET['log']) && $_GET['log'] != ""){
             switch ($_GET['log']) {
-                        case 'new':
-                        ?>
-                        <div class="headform">
-                              <form method="post">
-                                    <label>User Name</label>
-                                    <input type="text" name="newName" required />
-                                    <label>Password</label>
-                                    <input type="text" name="newPassword" required />
-                                    <button type="submit">Create new user</button>
-                              </form>
-                        </div>       
+                        case 'new': //form for new user
+                        ?>      
+                              <label>User Name</label>
+                              <input type="text" name="newName" required />
+                              <label>Password</label>
+                              <input type="text" name="newPassword" required />
+                              <div>
+                                    Notice: avatar will be appointed to you automatically
+                              </div>
+                              <button type="submit">Create new user</button>
                         <?php
                               break;
-                        case 'log':
+                        case 'log': //form to log in
                               ?>
-                        <div class="headform">
-                              <form method="post">
-                                    <label>User Name</label>
-                                    <input type="text" name="logUser" required />
-                                    <label>Password</label>
-                                    <input type="text" name="logPsw" required />
-                                    <button type="submit">Log In</button>
-                              </form>
-                        </div>
+                              <label>User Name</label>
+                              <input type="text" name="logUser" required />
+                              <label>Password</label>
+                              <input type="text" name="logPsw" required />
+                              <button type="submit">Log In</button>
                         <?php
                               break;
+                        case 'txt': //form for new post
+                        ?>
+                              <label>Headline</label>
+                              <input type="text" name="title" />
+                              <label>Subject of the entry</label>
+                              <input type="text" name="topic" />
+                              <label>Picture</label>
+                              <input type="file" name="photo" />
+                              <label>Post text here</label>
+                              <textarea type="text" name="text">Up to 144 characters of text goes here</textarea>
+                              <button type="submit">Announce to the world</button>
+                              <input type="hidden" value="user" />
+                              <?php break;
                         default:
                               die();
             }
 
-      }
-} else {
-            ?>
-        
-<?php 
-      echo "prisijungęs";
-      //reikia atrinkinėti kas per useris.
-      } 
-
-
-      
-?>
+      }?>
+      </form>
+</div>
