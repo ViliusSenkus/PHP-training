@@ -32,7 +32,7 @@
       */
       
       //Log in check///////////////////////////////////////////////////
-echo $_POST['logUser'];
+
       if (isset(  $_POST['logUser']) &&
                   $_POST['logUser'] != "" &&
             isset($_POST['logPsw']) &&
@@ -80,7 +80,7 @@ echo $_POST['logUser'];
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;600;900&display=swap" rel="stylesheet" />
-      <link rel="icon" href="conten/logo.png" />
+      <link rel="icon" href="content/logo.png" />
       <link rel="stylesheet" href="content/style.css" />
       <title>OneForFourNet</title>
 </head>
@@ -91,6 +91,12 @@ echo $_POST['logUser'];
             ?>
       </header>
       <main>
+            <form method="post">
+                  <input type="number" name="sk" />
+                  <button type="submit">sub</button>
+            </form>
+            
+
             <?php
             //reikalingas patikrinimas ar yra nors vienas įrašas ir jeigu yra rodyti main.php, jeigu nėra pasisveikinimo puslapį.
            
@@ -111,5 +117,12 @@ echo $_POST['logUser'];
             include("content/footer.php");
             ?>
       </footer>
+
+      <?php echo "<pre>";
+      echo "getas :";
+            print_r($_GET);
+      echo "<br />postas :";
+            print_r($_POST);
+            print_r($_SESSION); ?>
 </body>
 </html>

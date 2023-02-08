@@ -21,40 +21,47 @@
                               </a>
                         </li>
 </div>                    
-<div class="headform">
+
+      
+            
 <?php     
                   //---------------------------SING IN arba LOG IN forma------------------------
       if (isset($_GET['log']) && $_GET['log'] != ""){
             switch ($_GET['log']) {
                         case 'new':
                         ?>
-                              <form method="POST">
+                        <div class="headform">
+                              <form method="post">
                                     <label>User Name</label>
                                     <input type="text" name="newName" required />
                                     <label>Password</label>
                                     <input type="text" name="newPassword" required />
                                     <button type="submit">Create new user</button>
                               </form>
+                        </div>       
                         <?php
                               break;
                         case 'log':
                               ?>
-                              <form method="POST">
+                        <div class="headform">
+                              <form method="post">
                                     <label>User Name</label>
                                     <input type="text" name="logUser" required />
                                     <label>Password</label>
                                     <input type="text" name="logPsw" required />
                                     <button type="submit">Log In</button>
                               </form>
+                        </div>
                         <?php
                               break;
+                        default:
+                              die();
             }
 
       }
-
 } else {
             ?>
-</div>    
+        
 <?php 
       echo "prisijungęs";
       //reikia atrinkinėti kas per useris.
