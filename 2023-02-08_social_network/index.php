@@ -108,6 +108,15 @@ session_start();
 
             //New Post /////////////////////////////////////////////
             if(isset($_POST["title"]) && $_POST['title'] != ""){
+
+                  if (isset($_FILES['photo']) && $_FILES["photo"]["tmp_name"] != "") {
+                        $newFileAddress="data/".$_FILES["photo"]["name"];
+                        move_uploaded_file($_FILES["photo"]["tmp_name"], $newFileAddress);
+                        header('Location: ./');
+                        $pic = $newFileAddress;
+                  }else{
+                        $pic = "data/photoLink.jpg";
+                  }
                   $post = array(
                         "user" => $_POST['user'],
                         "date" => date("Y-m-d H:i:s"),
@@ -115,7 +124,7 @@ session_start();
                         "title" => $_POST['title'],
                         "text" => $_POST['text'],
                         "likes" => 0,
-                        "photo" => "data/photoLink.jpg"
+                        "photo" => $pic,
                         // photo adding to data folder and naming should be done.
                   );
                   $messages[]=$post;

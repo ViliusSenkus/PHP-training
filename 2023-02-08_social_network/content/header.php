@@ -47,7 +47,7 @@
 
 
 <div class="headform">
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
             
 <?php     
                   //---------------------------SING IN and LOG IN forms------------------------
