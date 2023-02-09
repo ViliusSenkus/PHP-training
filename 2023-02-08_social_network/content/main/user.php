@@ -4,6 +4,7 @@ $json = file_get_contents($JSONmessages);
 $messages = json_decode($json, true);
 $json = file_get_contents($JSONusers);
 $users = json_decode($json, true);
+rsort($messages);
 
 foreach($messages as $key=>$value){
 ?>
@@ -48,8 +49,8 @@ foreach($messages as $key=>$value){
             </div>
             <div class="article_footer">
                   <a href="?like=true&post=<?=$key?>">
-                        <img src="like.png" alt="likes">
-                        <?=$value['likes']?>
+                        <img src="content/main/like128.png" alt="likes">
+                        <span><?=$value['likes']?><span>
                   </a>
             </div>
       </div>

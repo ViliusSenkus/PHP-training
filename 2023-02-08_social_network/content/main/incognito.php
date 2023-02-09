@@ -2,6 +2,7 @@
 
 $json = file_get_contents($JSONmessages);
 $messages = json_decode($json);
+rsort($messages);
 
 foreach($messages as $key=>$value){
 ?>
@@ -33,13 +34,19 @@ foreach($messages as $key=>$value){
                         <img src="<?=$value->photo?>" alt="" />
                   </div>
                   <div>
-                        <?=substr($value->text,15)?>...
+                        <?php
+                        $postText = $value->text;
+                        $temp=substr($postText, 0, 50);
+                              echo $temp;
+                              
+                              
+                        ?>...
                   </div>
             </div>
             <div class="article_footer">
                   <a href="?like=true&post=<?=$key?>">
-                        <img src="like.png" alt="likes">
-                        <?=$value->likes?>
+                        <img src="content/main/like128.png" alt="likes">
+                        <span><?=$value->likes?><span>
                   </a>
 </a>
             </div>
