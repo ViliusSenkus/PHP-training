@@ -33,7 +33,12 @@
             </li>
       </ul>
 </div>
-<div id="advert" style="letter-spacing: -1px;">A social network that allows you to post messages of up to 144 characters to the world.</div>
+<div id="advert" style="letter-spacing: -1px;">
+      <div class="decor"></div>
+      A social network that allows you post messages of up to 144 characters to the world.
+      <div class="decor"></div>
+</div>
+
       
       
 
@@ -81,31 +86,31 @@
                               <textarea id="text" name="text" required>
                                     Up to 144 characters of text goes here
                               </textarea>
+                              <div id="counter"></div>
                               <button type="submit">Announce to the world</button>
                               <input type="hidden" name="user" value="<?=$_SESSION['user']?>" />
                               <?php break;
                         default:
                               die();
             }
-
       }?>
       </form>
-      <textarea id='test' ></textarea>
+      
 </div>
 <script>
       document.querySelector('#text').addEventListener('input', (e)=>{
             let string=e.target.value;
             e.target.style.color="black";
             if(string.length > 144){
-                  string=string.slice(0,144);
                   e.target.style.color="red";
-            };
-            document.querySelector('#text').innerHTML=string;
-            console.log(string.length);
-            console.log(string);
-
+                  string=string.slice(0,144);
+            }
+            document.querySelector('#text').value=string;
+            document.querySelector('#counter').innerHTML=(144-string.length)+" symbols out of 144 left.";
+            document.querySelector('#counter').style.color="black";
+            if(144-string.length<10){
+                  document.querySelector('#counter').style.color="red";
+            }
       });
-      let test="acd"
-      document.querySelector('#test').innerHTML=test;
-
+      
 </script>
