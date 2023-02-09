@@ -30,22 +30,22 @@ foreach($messages as $key=>$value){
             </div>
             <div class="article_content">
                   <div class="article_photo">
-                        <img src="<?=$value['photo']?>" alt="" />
+                        <img src="<?=$value->photo?>" alt="" />
                   </div>
                   <div>
-                        <?=substr($value['text'],15)?>...
+                        <?=substr($value->text,15)?>...
                   </div>
             </div>
             <div class="article_footer">
                   <a href="?like=true&post=<?=$key?>">
                         <img src="like.png" alt="likes">
-                        <?=$value['likes']?>
+                        <?=$value->likes?>
                   </a>
 </a>
             </div>
       </div>
-
-      <?php if($key >= 10){
+</article>
+      <?php if($key >= 5){
             break;
       }
 }

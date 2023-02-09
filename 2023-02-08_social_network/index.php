@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-$_SESSION['user']='';
-$_SESSION['log']=false;
       //Enabling data base
       // !!!!!!!!!!!!!!!!!!!!! Should  transform in to MySQL DB !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       $JSONmessages = 'data/messages.json';
@@ -68,7 +66,7 @@ $_SESSION['log']=false;
                         if ($_POST['logUser']===$value['user'] && $_POST['logPsw']===$value['psw']){
                               $_SESSION['user']=$_POST['logUser'];
                               $_SESSION['log']=true;
-                        // header('Location: ./');
+                        header('Location: ./');
                         }
                   }            
       }

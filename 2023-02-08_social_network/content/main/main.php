@@ -1,6 +1,5 @@
 <?php 
-// tikrinti ar yra prisijungimas ir atvaiztuoti puslapį: incognito.php arba user.php 
-if($_SESSION['log']===true && $_SESSION['user'] !=''){
+if(isset($_SESSION['log']) && $_SESSION['log']===true && $_SESSION['user'] !=''){
      include("user.php");
 }else{
       include("incognito.php");

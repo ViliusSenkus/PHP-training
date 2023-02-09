@@ -1,13 +1,13 @@
 <div class="header">
       <h1>
             144net<br />
-            <span>One for Four social network, alows messages up to 144characters</span> 
+            <span><strong>One for Four </strong></span>
       </h1>
       <ul>
 
 <?php
 // -----------------------------------Veiksmai kai vartotojas neprisijungęs------------------------
-      if (empty($_SESSION['user']) || $_SESSION['log']===false) {
+      if (!isset($_SESSION) || empty($_SESSION['user']) || $_SESSION['log']===false) {
 ?>
             <li id="new">
                   <a href="?log=new">
@@ -32,7 +32,8 @@
                   </a>
             </li>
       </ul>
-</div>     
+</div>
+<div id="advert" style="letter-spacing: -1px;">A social network that allows you to post messages of up to 144 characters to the world.</div>
       
       
 
