@@ -78,7 +78,7 @@
                               <label>Picture</label>
                               <input type="file" name="photo" />
                               <label>Post text here</label>
-                              <textarea type="text" name="text" required>
+                              <textarea id="text" name="text" required>
                                     Up to 144 characters of text goes here
                               </textarea>
                               <button type="submit">Announce to the world</button>
@@ -90,4 +90,22 @@
 
       }?>
       </form>
+      <textarea id='test' ></textarea>
 </div>
+<script>
+      document.querySelector('#text').addEventListener('input', (e)=>{
+            let string=e.target.value;
+            e.target.style.color="black";
+            if(string.length > 144){
+                  string=string.slice(0,144);
+                  e.target.style.color="red";
+            };
+            document.querySelector('#text').innerHTML=string;
+            console.log(string.length);
+            console.log(string);
+
+      });
+      let test="acd"
+      document.querySelector('#test').innerHTML=test;
+
+</script>
