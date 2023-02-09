@@ -183,16 +183,5 @@ session_start();
             include("content/footer.php");
             ?>
       </footer>
-
-      <?php echo "<pre>";
-      // echo "getas : ";
-      //       print_r($_GET);
-      // echo "<br />postas :";
-      //       print_r($_POST);
-      echo "<br />sesija : ";
-            print_r($_SESSION);
-      // echo "<br /> json articles : ";
-      // print_r($messages);
-      ?>
 </body>
 </html>
