@@ -83,9 +83,7 @@
                               <label>Picture</label>
                               <input type="file" name="photo" />
                               <label>Post text here</label>
-                              <textarea id="text" name="text" required>
-                                    Up to 144 characters of text goes here
-                              </textarea>
+                              <textarea id="text" name="text" required></textarea>
                               <div id="counter"></div>
                               <button type="submit">Announce to the world</button>
                               <input type="hidden" name="user" value="<?=$_SESSION['user']?>" />

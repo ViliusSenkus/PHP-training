@@ -44,7 +44,7 @@ foreach($messages as $key=>$value){
                   </div>
             </div>
             <div class="article_footer">
-                  <a href="?like=true&post=<?=$key?>">
+                  <a href="?like=yes<?=$key?>">
                         <img src="content/main/like128.png" alt="likes">
                         <span><?=$value->likes?><span>
                   </a>

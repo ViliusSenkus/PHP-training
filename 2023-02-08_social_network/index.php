@@ -58,7 +58,8 @@ session_start();
             
       */
 
-      if (isset(  $_POST['logUser']) &&
+      if (!empty($users)&&
+            isset(  $_POST['logUser']) &&
                   $_POST['logUser'] != "" &&
             isset($_POST['logPsw']) &&
                   $_POST['logPsw'] != ""){
@@ -107,6 +108,7 @@ session_start();
             }
 
             //New Post /////////////////////////////////////////////
+            
             if(isset($_POST["title"]) && $_POST['title'] != ""){
 
                   if (isset($_FILES['photo']) && $_FILES["photo"]["tmp_name"] != "") {
@@ -118,8 +120,8 @@ session_start();
                         $pic = "data/photoLink.jpg";
                   }
                   $post = array(
-                        "user" => $_POST['user'],
                         "date" => date("Y-m-d H:i:s"),
+                        "user" => $_POST['user'],
                         "topic" => $_POST['topic'],
                         "title" => $_POST['title'],
                         "text" => $_POST['text'],
@@ -133,7 +135,14 @@ session_start();
                   header('Location: ./');
             }
             
-
+            //Adding likes/////////////////////////////////////////////
+            
+            if (isset($_GET['like']) && $_GET['like'] == "true"){
+            $messages[$_GET['post']]['likes']+=1;
+            $json = json_encode($messages);
+            file_put_contents($JSONmessages, $json);
+            header('Location: ./');
+            }
 ?>
 
 <!DOCTYPE html>
@@ -159,10 +168,12 @@ session_start();
       <main>
             <?php
             //reikalingas patikrinimas ar yra nors vienas įrašas ir jeigu yra rodyti main.php, jeigu nėra pasisveikinimo puslapį.
-            if (count($messages)>0){
+            if (isset($messages) && count($messages)>0){
                   include('content/main/main.php');
             }else{
-                  echo "Hallo, be the first to post on this site. Just Log in or Sign up if you allready haven't done this";
+                  echo "<h2>
+                   Hallo, be the first to post on this site. Just Log in or Sign up if you allready haven't done this
+                   </h2>";
             }
             
             ?>

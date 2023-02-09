@@ -24,7 +24,7 @@ footer{
       justify-content: space-between;
       padding:10px;
 }
-h1, strong{
+h1, strong, h2{
       color: white;
       text-shadow: 0 0 1px black, 0 0 15px rgb(5, 183, 183);
 }

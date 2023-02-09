@@ -5,6 +5,8 @@ $messages = json_decode($json, true);
 $json = file_get_contents($JSONusers);
 $users = json_decode($json, true);
 rsort($messages);
+$json = json_encode($messages);
+file_put_contents($JSONmessages, $json);
 
 foreach($messages as $key=>$value){
 ?>
