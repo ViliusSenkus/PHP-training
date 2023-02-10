@@ -46,7 +46,7 @@ foreach($messages as $key=>$value){
                         <img src='<?=$value['photo']?>' alt="nuotrauka" />
                   </div>
                   <div>
-                        <?=$value['text']?>
+                        <?=nl2br($value['text'])?>
                   </div>
             </div>
             <div class="article_footer">

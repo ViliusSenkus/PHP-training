@@ -33,18 +33,27 @@
             </li>
       </ul>
 </div>
-<div id="advert" style="letter-spacing: -1px;">
-      <div class="decor"></div>
-      A social network that allows you post messages of up to 144 characters to the world.
-      <div class="decor"></div>
-</div>
 
-      
-      
-
-
-
-
+<!-- Vartotojo arba reklamos rodymas -->
+<?php 
+      if(isset($_SESSION["user"]) && $_SESSION["user"] !="" && $_SESSION["log"]==true){
+          foreach($users as $value){
+                  if ($_SESSION['user']===$value['user']){;
+                  $pic=$value['logo'];
+                  $usr=$value['user'];
+            }}
+      ?>
+            <div class="user">
+                  <img src="<?=$pic?>" alt="avatar" />
+                  <div><?=$usr?></div>
+            </div>
+<?php }else{?>
+            <div id="advert" style="letter-spacing: -1px;">
+                  <div class="decor"></div>
+                  A social network that allows you post messages of up to 144 characters to the world.
+                  <div class="decor"></div>
+            </div>
+<?php } ?>
 
 <div class="headform">
       <form method="post" enctype="multipart/form-data">

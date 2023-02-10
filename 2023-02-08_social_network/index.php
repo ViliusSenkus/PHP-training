@@ -59,7 +59,7 @@ session_start();
       */
 
       if (!empty($users)&&
-            isset(  $_POST['logUser']) &&
+            isset($_POST['logUser']) &&
                   $_POST['logUser'] != "" &&
             isset($_POST['logPsw']) &&
                   $_POST['logPsw'] != ""){
