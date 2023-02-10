@@ -1,3 +1,4 @@
+<div id="bigPicture"></div>
 <?php
 
 $json = file_get_contents($JSONmessages);
@@ -10,6 +11,7 @@ file_put_contents($JSONmessages, $json);
 
 foreach($messages as $key=>$value){
 ?>
+
 <article>
       <div class="box">
             <div class="article_name">
@@ -43,7 +45,7 @@ foreach($messages as $key=>$value){
             </div>
             <div class="article_content">
                   <div class="article_photo">
-                        <img src='<?=$value['photo']?>' alt="nuotrauka" />
+                        <img class="resize" src='<?=$value['photo']?>' alt="nuotrauka" />
                   </div>
                   <div>
                         <?=nl2br($value['text'])?>
@@ -62,5 +64,4 @@ foreach($messages as $key=>$value){
             break;
       }
 }
-
 ?>

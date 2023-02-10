@@ -121,7 +121,7 @@ session_start();
                         && $_FILES["photo"]["tmp_name"] != ""
                         && in_array (mime_content_type($_FILES["photo"]["tmp_name"]), $mimeTypes)
                         ){
-                              $newFileAddress="data/".$_FILES["photo"]["name"];
+                              $newFileAddress="data/".$_SESSION['user'].date('YmdHis');
                               move_uploaded_file($_FILES["photo"]["tmp_name"], $newFileAddress);
                               header('Location: ./');
                               $pic = $newFileAddress;
@@ -190,5 +190,34 @@ session_start();
             include("content/footer.php");
             ?>
       </footer>
+
+      <script>
+
+      let img = document.querySelectorAll(".resize");
+      let bigPicture = document.querySelector("#bigPicture");
+      const nonImg= "http://localhost/My_Projects/2023-02-08_social_network/data/photoLink.jpg";
+      
+    
+
+      img.forEach(element => {
+            element.addEventListener("click", (e) => {
+                  if (e.target.src !== nonImg){
+                        bigPicture.style.display="flex";
+                        bigPicture.innerHTML =
+                        `<div>
+                              <img src=" ${e.target.src} " alt="big_picture"/>
+                              <div id="close"></div>
+                        </div>`;
+                   if(document.querySelector('#close')){
+                        document.querySelector('#close').addEventListener("click", (e) => {
+                        bigPicture.style.display="none";
+                              });
+                        }
+                  }
+            })
+      }); 
+      
+     
+      </script>
 </body>
 </html>
