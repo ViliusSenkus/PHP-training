@@ -90,7 +90,7 @@
                               <label>Subject of the entry</label>
                               <input type="text" name="topic" />
                               <label>Picture</label>
-                              <input type="file" name="photo" />
+                              <input type="file" name="photo" accept="image/*" />
                               <label>Post text here</label>
                               <textarea id="text" name="text" required></textarea>
                               <div id="counter"></div>

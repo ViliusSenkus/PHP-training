@@ -64,7 +64,7 @@ session_start();
             isset($_POST['logPsw']) &&
                   $_POST['logPsw'] != ""){
                   foreach ($users as $value){
-                        if ($_POST['logUser']===$value['user'] && $_POST['logPsw']===$value['psw']){
+                        if ($_POST['logUser']===$value['user'] && md5($_POST['logPsw'])===$value['psw']){
                               $_SESSION['user']=$_POST['logUser'];
                               $_SESSION['log']=true;
                         header('Location: ./');
@@ -79,7 +79,7 @@ session_start();
       isset($_POST['newPassword']) &&
             $_POST['newPassword'] != ""){
             
-            //reikia pridėti validaciją ir pasikartojimų negalėjimą.
+            //!!!!!!!!!!!!!!!!!!!!!!reikia pridėti validaciją ir pasikartojimų negalėjimą.
             
             //automatic avatar adding (70 avatars avialable at page ctreation moment, no limit added).
             if (empty($users)) {
@@ -88,7 +88,7 @@ session_start();
                   $x = count($users)+1;}
             $newUser = array(
                   'user' => $_POST['newName'],
-                  'psw' => $_POST['newPassword'],
+                  'psw' => md5($_POST['newPassword']),
                   'logo' => "https://i.pravatar.cc/400?img=$x"
             );
 
@@ -108,17 +108,24 @@ session_start();
             }
 
             //New Post /////////////////////////////////////////////
-            
-            if(isset($_POST["title"]) && $_POST['title'] != ""){
+            $mimeTypes=array(
+                  "image/jpeg",
+                  "image/gif",
+                  "image/png",
+                  "image/webp"
+            );
+            $pic = "data/photoLink.jpg";
 
-                  if (isset($_FILES['photo']) && $_FILES["photo"]["tmp_name"] != "") {
-                        $newFileAddress="data/".$_FILES["photo"]["name"];
-                        move_uploaded_file($_FILES["photo"]["tmp_name"], $newFileAddress);
-                        header('Location: ./');
-                        $pic = $newFileAddress;
-                  }else{
-                        $pic = "data/photoLink.jpg";
-                  }
+            if(isset($_POST["title"]) && $_POST['title'] != ""){
+                  if (  isset($_FILES['photo'])
+                        && $_FILES["photo"]["tmp_name"] != ""
+                        && in_array (mime_content_type($_FILES["photo"]["tmp_name"]), $mimeTypes)
+                        ){
+                              $newFileAddress="data/".$_FILES["photo"]["name"];
+                              move_uploaded_file($_FILES["photo"]["tmp_name"], $newFileAddress);
+                              header('Location: ./');
+                              $pic = $newFileAddress;
+                        }
                   $post = array(
                         "date" => date("Y-m-d H:i:s"),
                         "user" => $_POST['user'],
