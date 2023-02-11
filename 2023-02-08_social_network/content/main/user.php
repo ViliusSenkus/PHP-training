@@ -16,23 +16,26 @@ foreach($messages as $key=>$value){
       <div class="box">
             <div class="article_name">
                   <div class="avatar">
-                        <?php 
-                        foreach ($users as $usr){
-                              if ($usr['user']===$value['user']){
-                                    $avatar = $usr['logo'];
-                                    break;
+                        <div class="postUser">
+                              <?php 
+                              foreach ($users as $usr){
+                                    if ($usr['user']===$value['user']){
+                                          $avatar = $usr['logo'];
+                                          break;
+                                    }
                               }
-                        }
-                        ?>
-                        <img src="<?=$avatar?>" alt="unknown" />
+                              ?>
+                              <img src="<?=$avatar?>" alt="unknown" />
+                        </div>
                         <h4>
                               <?=$value['user']?>
                         </h4>
                   </div>
+                  <h3>
+                        <?=$value['title']?>
+                  </h3>
                   <div class="main_info">
-                        <h3>
-                              <?=$value['title']?>
-                        </h3>
+                     
                         <div>
                               <div>
                                     <?=$value['topic']?>
