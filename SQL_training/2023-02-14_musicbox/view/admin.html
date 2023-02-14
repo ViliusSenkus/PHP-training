@@ -1,0 +1,34 @@
+<h2>Jūs esate admino puslapyje</h2>;
+
+<div>Add song to DB</div>
+
+<form method="post">
+      <label>Performer</label>
+      <input type="text" name="performer" required />
+      <label>Song Name</label>
+      <input type="text" name="songname" required />
+      <label>Style</label>
+      <select name="musicstyle">
+            <option value="pop">POP</option>
+            <option value="rock">ROCK</option>
+            <option value="hiphop">HIP HOP</option>
+            <option value="rap">RAP</option>
+            <option value="jazz">JAZZ</option>
+      </select>
+      <label>Type</label>
+      <select name="songtype">
+            <!-- reiktu perdaryti i checkboxus -->
+            <option value="lyric">Lyric</option>
+            <option value="romantic">Romantic</option>
+            <option value="party">Party</option>
+            <option value="relax">Relax</option>
+      </select>
+      <label>Album</label>
+      <input type="text" name="album" />
+      <label>Year</label>
+      <input type="text" name="year" />
+      <label>Link</label>
+      <input type="url" name="youtube" />
+      <input type="hidden" name="song" value="new" />
+      <button type="submit">Submit</button>
+</form>

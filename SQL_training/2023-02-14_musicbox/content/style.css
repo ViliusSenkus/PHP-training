@@ -8,20 +8,74 @@
       scroll-behavior: smooth;   
       --white: #fafafa;
       --black: #101010;
-      --size: calc((100vh+100vw)/80);
+      --size1: calc((100vh+100vw)/100);
+      --size2: calc((100vh+100vw)/80);
+      --size3: calc((100vh+100vw)/60);
+      --size4: calc((100vh+100vw)/40);
       
 }
 
 body{
       background-color: var(--black);
       color: var(--white);
-      font-size: var(--size);
+      font-size: var(--size3);
       font-family:Arial, Helvetica, sans-serif;
+      text-align: center;
 }
+
+form{
+      display: flex;
+      flex-direction:column;
+      width: calc(var(--size4)*30);
+      margin: 10px auto;
+}
+label{
+      text-align: left;
+      padding:2px 0;
+}
+      /* Keitmui----------------------------------------- */
 a{
       color:var(--white);
 }
-input{
-      height: var(--size+10px);
-      font-size: var(--size+10px);
+input,
+select{
+      font-size: var(--size3);
+      padding: 2px;
+      margin-bottom: 5px
+}
+button{
+      font-size: var(--size3);
+      padding:2px;
+      margin-top:10px;
+      font-weight: 900;
+}
+
+.row{
+      display:flex;
+      flex-direction: row;
+      justify-content: center;
+}
+.album_box{
+      height: 150px;
+      width: 150px;
+      border: 2px solid  white;
+      margin: 10px;
+}
+
+
+/* Footer ---------------------------------------- */
+footer{
+ margin-top: 10px;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+}
+footer div{
+      font-size: var(--size2);
+      font-weight: 900;
+}
+footer ul{
+      font-weight: 100;
+      list-style-type: none;
+      text-align: left;
 }
