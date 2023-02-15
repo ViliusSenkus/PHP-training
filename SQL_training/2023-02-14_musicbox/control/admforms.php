@@ -25,7 +25,7 @@ if (isset ($_SESSION['user']) && $_SESSION['user']=="admin" && isset($_POST['alb
 
       
       $year=$_POST['year'];
-      $album=$_POST['album'];
+      $album=$_POST['albumname'];
       $performer=$_POST['performer'];
       $albumpic=$_POST['albpic'];
 

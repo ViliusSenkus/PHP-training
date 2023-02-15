@@ -98,6 +98,8 @@ h2{
       color:#f4e412;
       margin: calc(var(--size4)*2) auto var(--size2);
 }
+
+/* Admin part */
 main ul{
      justify-content: center;
 }
@@ -133,14 +135,25 @@ button{
       display:flex;
       flex-direction: row;
       justify-content: center;
+      margin: var(--size3) 0;
 }
 .album_box{
-      height: 150px;
-      width: 150px;
-      border: 2px solid  white;
+      width: calc(var(--size1)*20);
       margin: 10px;
 }
-
+/* not connected part */
+.albumcover {
+      width:100px;
+}
+.performer{
+      font-weight: 600;
+      padding:2px;
+}
+.song{
+      font-style: italic;
+      padding:2px;
+      margin:5px 0;
+}
 
 /* FOOTER ---------------------------------------- */
 footer{
