@@ -81,7 +81,7 @@ include('view/footer.html');
 
 //add song ///////////////////////////////////////////////////
 
-if (isset ($_SESSION['user']) && $_SESSION['user']=="admin" && $_POST['song']=="new"){
+if (isset ($_SESSION['user']) && $_SESSION['user']=="admin" && isset($_POST['song']) && $_POST['song']=="new"){
 
       $performer=$_POST['performer'];
       $songname=$_POST['songname'];
