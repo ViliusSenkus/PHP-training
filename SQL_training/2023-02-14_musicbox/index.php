@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 //connecting to dataBase
@@ -15,6 +14,18 @@ try{
 
 //Admin Forms processing file
 include "control/admforms.php";
+// include "control/usercontrol.php"; 
+
+if (isset ($_SESSION['user']) && $_SESSION['user']!="" && isset($GET['userdat']) && $GET['userdat'] != ""){
+      echo "add to playlist";
+      print_r($songdata);
+     }
+     
+     if (isset($GET['fav']) && $GET['fav'] != ""){
+           echo "add to favorites";
+           print_r($songdata);
+     }
+
 
 //sign up /////////////////////////////////////////////////
 
@@ -69,16 +80,16 @@ if (  isset($_GET['action'])&&
 
 //logoff ///////////////////////////////////////////
 
-if (  isset($_GET['action'])&&
-      $_GET['action'] == "logof") {
+if (  isset($_GET['action'])&& $_GET['action'] == "logof") {
             // $_SESSION['user']="";
             session_destroy();
             header('Location: ./');
       }
 
+      
+//page parts collection
 include('view/header.php');
-
-include('view/main.php');
 include('view/sidebar.html');
+include('view/main.php');
 include('view/footer.html');
 ?>

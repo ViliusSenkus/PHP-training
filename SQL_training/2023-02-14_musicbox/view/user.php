@@ -1,15 +1,24 @@
 <h2><?=$_SESSION['user']?></h2>
+
+<?php
+include "recent.php";  //list of recently added songs by admin
+
+?>
+
+
 <div>
       <ul>
-      <?=$_SESSION['user']?>' playlists
+      <h2> Your playlists </h2>
             <?php
             $user=$_SESSION['user'];
-            $playlist=$sql->query("SELECT playlists FROM users WHERE nickname='$user'");
-            if($playlist==null){
-                  echo "Create your playlist";
-            }else{
+            $sqlrequest=$sql->query("SELECT playlists FROM users WHERE nickname='$user'");
+            $playlist=$sqlrequest->fetch_all();
+
+            if(empty($playlist)){
                   $json=json_decode($playlist);
                   print_r($playlist);
+            }else{
+                  echo "You do not have any Playlists.<br /> Start to create one by pushing + sign next to the song you like.";
 
                   //cia reikia paliesti foreach'a kiekvienam playlistui patalpinti i <li>
             }

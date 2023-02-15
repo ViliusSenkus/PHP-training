@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta author="Vilius Senkus" />
 
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
       <link rel="stylesheet" href="content/style.css" />
       <linl rel="icon" href="content/img/logo-min.png" />
       <title>MusicBox</title>
