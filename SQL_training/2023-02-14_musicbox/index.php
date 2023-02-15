@@ -34,7 +34,7 @@ if (isset($_POST['user']) && isset($_POST['password']) && isset($_POST['mail']) 
       if ($newuser->num_rows > 0){
             echo "user name is taken by someone else";
       }else{
-            $newpsw=$_POST['password'];
+            $newpsw=md5($_POST['password']);
             $newmail=$_POST['mail'];
             if ($sql->query("INSERT INTO users (nickname, email, plan, password) VALUES ('$searchfor', '$newmail', 'basic', '$newpsw')")){
                   $_SESSION['user']= $_POST['user'];
@@ -54,7 +54,7 @@ if (  isset($_GET['action'])&&
       $_POST['user'] != "" &&
       $_POST['password'] != ""){
             $usr=$_POST['user'];
-            $psw=$_POST['password'];
+            $psw=md5($_POST['password']);
             $result=$sql->query("SELECT * FROM users WHERE nickname='$usr' and password='$psw'");
             $res=$result->fetch_assoc()['nickname'];
             if($res === $_POST['user'] ){
