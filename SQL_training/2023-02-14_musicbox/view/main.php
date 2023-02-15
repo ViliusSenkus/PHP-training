@@ -1,6 +1,7 @@
 <main>
 <?php 
 
+//Login Setup forms /////////////////////////////
 if (  isset($_GET['action']) &&
       $_GET['action'] !="" &&
       empty($_SESSION)){
@@ -19,14 +20,24 @@ if (  isset($_GET['action']) &&
       }
 }
 
+// Further body (allways visible. Diference depend on user log and plan status).
+      
+      //Admin///////////////
+
 if (!empty($_SESSION) && $_SESSION['user'] != ""){
-      echo "<div>Jūs prisijungėte sėkmingai</div>";
       if($_SESSION['user']=="admin"){
-            include "admin.html";
+            include "admin.php";
+
+       //Connected user////
+
       }else{
       include "user.php";
       }
+
+      //Not Connected
+      
 }else{
+      echo "<h2>Our music selection</h2>";
       for($i=1; $i<3; $i++){
             ?>
             <div class="row">

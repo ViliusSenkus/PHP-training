@@ -7,12 +7,17 @@
       <meta author="Vilius Senkus" />
 
       <link rel="stylesheet" href="content/style.css" />
-      <linl rel="icon" href="content/logo.png" />
+      <linl rel="icon" href="content/img/logo-min.png" />
       <title>MusicBox</title>
 </head>
 <body>
       <header>
-            <h1>Spotify type music playlists web page</h1>
+            <div class="logo">
+                  <img src="content/img/logo.png" alt="spotivil" />
+                  <h1>Spotify type web page<br />
+                        <span> for music playlists creation<span>
+                  </h1>
+            </div>
             <nav>
                   <ul>
                   <?php
@@ -24,6 +29,8 @@
                               </li>
                         </a>
                   <?php 
+                  }elseif(isset($_GET['action']) && $_GET['action']=='login'){
+                        
                   }else{
                   ?>
                         <a href="./?action=login" />
@@ -33,12 +40,18 @@
                         </a>
                   <?php
                   }
+                  if (isset($_GET['action']) && $_GET['action']=='sign'){
+                        
+                  }else{
                   ?>
                         <a href="./?action=sign" />
                               <li>
                                 Sign up    
                               </li>
                         </a>
+                  <?php
+                  }
+                  ?>
                         
                   </ul>
             </nav>

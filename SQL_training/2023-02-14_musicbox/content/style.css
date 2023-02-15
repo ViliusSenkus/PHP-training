@@ -7,7 +7,7 @@
 :root{
       scroll-behavior: smooth;   
       --white: #fafafa;
-      --black: #101010;
+      --black: #201f01;
       --size1: calc((100vh+100vw)/100);
       --size2: calc((100vh+100vw)/80);
       --size3: calc((100vh+100vw)/60);
@@ -23,6 +23,88 @@ body{
       text-align: center;
 }
 
+a{
+      text-decoration: none;
+      color: var(--white);
+}
+
+/* HEADER------------------------------------------------------------ */
+header{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: end;
+      margin: var(--size2) auto;
+      max-width: 1400px;
+}
+header .logo{
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+}
+.logo img{
+      width: calc(var(--size4)*2.4);
+      height:calc(var(--size4)*2.4);
+      margin: 0 10px
+}
+h1{
+      color:#00b700;
+      padding: calc(var(--size1)/2.5);
+      text-align: left;
+      margin-bottom: 0;
+      line-height: var(--size4);
+}
+h1 span{
+      font-size: calc(var(--size3)*1.5);
+      color: #f4e412;
+      font-weight: 200;
+      margin-top:0;
+      padding:var(--size1) 0;
+}
+
+nav ul{
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+      list-style-type: none;
+      margin: 10px
+}
+nav li,
+form button{
+      margin: 0 10px;
+      width: calc(var(--size4)*5);
+      padding: calc(var(--size1)/2);
+      color: white;
+      background-color: #00b700;      
+      border: 2px solid #f4e412;
+      font-weight: 600;
+}
+nav li:hover,
+form button:hover{
+      color:#f4e412;
+      background-color: #009500;
+}
+nav li:active,
+form button:active{
+      color:#009500;
+      background-color: #f4e412;
+      border: 2px solid #009500;
+}
+/* MAIN---------------------------------------------------- */
+main{
+      margin: 20px auto;
+}
+h2{
+      color:#f4e412;
+      margin: calc(var(--size4)*2) auto var(--size2);
+}
+main ul{
+     justify-content: center;
+}
+main li{
+      height: calc(var(--size4)*2);
+}
+
 form{
       display: flex;
       flex-direction:column;
@@ -33,21 +115,18 @@ label{
       text-align: left;
       padding:2px 0;
 }
-      /* Keitmui----------------------------------------- */
-a{
-      color:var(--white);
-}
 input,
 select{
       font-size: var(--size3);
       padding: 2px;
       margin-bottom: 5px
 }
+
 button{
       font-size: var(--size3);
-      padding:2px;
-      margin-top:10px;
-      font-weight: 900;
+      margin:20px 0 !important;
+      font-weight: 600;
+      align-self:flex-end;
 }
 
 .row{
@@ -63,9 +142,9 @@ button{
 }
 
 
-/* Footer ---------------------------------------- */
+/* FOOTER ---------------------------------------- */
 footer{
- margin-top: 10px;
+ margin-top: 30px;
  display: flex;
  flex-direction: row;
  justify-content: space-around;

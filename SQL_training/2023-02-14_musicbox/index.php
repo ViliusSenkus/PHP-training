@@ -7,10 +7,14 @@ session_start();
 try{
       $sql= new mysqli('localhost', 'root', '', 'musicbox');
 }catch(Exception $error){
+      include 'view/blank.html';
       echo "Service is not avialable at a moment <br />";
       echo $error;
       exit;
 }
+
+//Admin Forms processing file
+include "control/admforms.php";
 
 //sign up /////////////////////////////////////////////////
 
@@ -76,23 +80,5 @@ include('view/header.php');
 
 include('view/main.php');
 include('view/sidebar.html');
-echo "<hr />";
 include('view/footer.html');
-
-//add song ///////////////////////////////////////////////////
-
-if (isset ($_SESSION['user']) && $_SESSION['user']=="admin" && isset($_POST['song']) && $_POST['song']=="new"){
-
-      $performer=$_POST['performer'];
-      $songname=$_POST['songname'];
-      $musicstyle=$_POST['musicstyle'];
-      $album=$_POST['album'];
-      $year=$_POST['year'];
-      $youtube=$_POST['youtube'];
-      $songtype=$_POST['songtype'];
-
-      if($sql->query("INSERT INTO songs (performer, songname, musicstyle, album, year, youtube, songtype) VALUES ('$performer', '$songname', '$musicstyle', '$album', '$year', '$youtube', '$songtype')")){
-      echo "Song added successfully";
-      }
-};
 ?>
