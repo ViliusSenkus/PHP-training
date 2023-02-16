@@ -12,26 +12,20 @@ if (isset($_GET['fav']) && $_GET['fav'] != ""){
       $songid=$_GET['fav'];
       $nickname=$_SESSION['user'];
       $sqlrequest=(($sql->query("SELECT * FROM songs WHERE id='$songid'"))->fetch_all())[0];
+      $songinfo=array($sqlrequest[0],$sqlrequest[1],$sqlrequest[2]);
+      $sqlrequest=($sql->query("SELECT favorites FROM users WHERE nickname='$nickname'"));
+      $favorites=($sqlrequest->fetch_row())[0];
 
-      echo "<br />songid - ".$songid;
-      echo "<br />nikas - ".$nickname;
-
-      if($sqlrequest[8]){
-            $favList=json_decode($sqlrequest[8], true);
-            $favList[]=$songid;
+      if($favorites != null){
+            $favList=json_decode($favorites, true);
+            $favList[]=$songinfo;
       }else{
-            $favList=array($songid);      
+            $favList=array($songinfo);      
       }
-      echo "<br />po ifo <br />";
-      print_r($favList);
-            
-      echo "<br /> Favlistas po pridejimo";
-      print_r($favList);
       $json=json_encode($favList);
-      echo "<br />json - ".$json;
       $sqlrequest=$sql->query("UPDATE users SET favorites='$json' WHERE nickname='$nickname'");  
       
-      echo "added to favorites";
+      echo "<br />added to favorites";
 }
 
     
