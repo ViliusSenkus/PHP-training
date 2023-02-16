@@ -3,11 +3,34 @@
 // adding to playlist
 
 // !!!!!!!!!!!!!reikalinga padaryti forma pasirinkimui i koki playlista deti!!!!!!!!!!!!!!!!!
+
 if (isset($_GET['userad']) && $_GET['userad'] != ""){
+
       $songid=$_GET['userad'];
       $nickname=$_SESSION['user'];
       $sqlrequest=($sql->query("SELECT playlists FROM users WHERE nickname='$nickname'"));
       $playlist=($sqlrequest->fetch_row())[0];
+      ?>
+
+      <form method="POST">
+            <label>Song</label>
+            <input type=text disabled name="songtoupload" value="song">
+            <label>Select playlist to add to</label>
+            <select name="plst">
+                  <option value=favorites>Favorites</option>
+                  <option name="newpl" value="new">New Playlist</option>
+                  <option value=readSQL>readSQL</option>
+            </select>
+            <input type="hidden" name="song" />
+            <button type="submit">Add</button>
+      </form>
+      
+<?php
+}
+
+if (isset($_POST['songtoupload']) && $_POST['songtoupload'] == "song" ){
+      echo "Per forma pridedama daina";
+}
 
       if($playlist != null){
             $plList=json_decode($playlist, true);
@@ -18,7 +41,7 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
       $json=json_encode($plList);
       $sqlrequest=$sql->query("UPDATE users SET playlists='$json' WHERE nickname='$nickname'");  
       echo "<br />added to playlist";
-     }
+     
      
 
 

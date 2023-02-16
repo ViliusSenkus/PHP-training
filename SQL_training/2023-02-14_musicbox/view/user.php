@@ -12,13 +12,21 @@ include "recent.php";  //list of recently added songs by admin
             <?php
             $user=$_SESSION['user'];
             $sqlrequest=$sql->query("SELECT playlists FROM users WHERE nickname='$user'");
-            $playlist=$sqlrequest->fetch_all();
+            $json=$sqlrequest->fetch_all();
 
-            if(empty($playlist)){
-                  $json=json_decode($playlist);
-                  print_r($playlist);
+      //       $playlist=json_decode($json, true);
+      //  print_r($playlist);
+      //  echo gettype($playlist);
+            //pridėjus kelis playlistus pridedamas dar vienas [] nurodys į playlisto numerį sąraše.
+
+
+            if(empty($playlist[0])){
+                 echo "You do not have any Playlists.<br /> Start to create one by pushing + sign next to the song you like."; 
             }else{
-                  echo "You do not have any Playlists.<br /> Start to create one by pushing + sign next to the song you like.";
+                  
+                  foreach ($playlist[0] as $song){
+                        echo "<br />".$song;
+                  }
 
                   //cia reikia paliesti foreach'a kiekvienam playlistui patalpinti i <li>
             }
