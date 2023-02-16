@@ -16,14 +16,15 @@ if (isset($_GET['fav']) && $_GET['fav'] != ""){
       echo "<br />songid - ".$songid;
       echo "<br />nikas - ".$nickname;
 
-      if($sqlrequest[8] != null){
+      if($sqlrequest[8]){
             $favList=json_decode($sqlrequest[8], true);
-            echo "mes cia <br />";
-            print_r($favList);
+            $favList[]=$songid;
       }else{
             $favList=array($songid);      
       }
-            $favList[]=$songid;
+      echo "<br />po ifo <br />";
+      print_r($favList);
+            
       echo "<br /> Favlistas po pridejimo";
       print_r($favList);
       $json=json_encode($favList);
