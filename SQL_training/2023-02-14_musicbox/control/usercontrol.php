@@ -16,21 +16,45 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
             <label>Song</label>
             <input type=text disabled name="songtoupload" value="song">
             <label>Select playlist to add to</label>
-            <select name="plst">
+            <select name="plst" id="pllist">
                   <option value=favorites>Favorites</option>
-                  <option name="newpl" value="new">New Playlist</option>
+                  <option name="newpl" value="new"  >New Playlist</option>
                   <option value=readSQL>readSQL</option>
             </select>
             <input type="hidden" name="song" />
+            <div id="newplname" style="display:none">
+                  <label>Give name to new playlist</label>
+                  <input type="text" name="userplalist" />
+            </div>                  
             <button type="submit">Add</button>
       </form>
+      <script>
+            let selection = document.querySelector('#pllist');
+            selection.onchange = function(){
+                  let option = selection.children[selection.selectedIndex].value;
+                  if (option=="new"){
+                        document.querySelector('#newplname').style.display="flex";
+                  }else{
+                        document.querySelector('#newplname').style.display="none";
+                  }
+
+            }
+            
+            // function pagavimas(){
+            //       console.log('pasikeite');
+            // }
+
+            // document.querySelector('#pllist').addEventListener('change', pagavimas() );
+      </script>
+
       
 <?php
 }
 
+
 if (isset($_POST['songtoupload']) && $_POST['songtoupload'] == "song" ){
       echo "Per forma pridedama daina";
-}
+
 
       if($playlist != null){
             $plList=json_decode($playlist, true);
@@ -41,7 +65,7 @@ if (isset($_POST['songtoupload']) && $_POST['songtoupload'] == "song" ){
       $json=json_encode($plList);
       $sqlrequest=$sql->query("UPDATE users SET playlists='$json' WHERE nickname='$nickname'");  
       echo "<br />added to playlist";
-     
+}
      
 
 

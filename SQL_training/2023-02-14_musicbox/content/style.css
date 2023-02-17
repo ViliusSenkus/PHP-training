@@ -107,7 +107,8 @@ main li{
       height: calc(var(--size4)*2);
 }
 
-form{
+form,
+#newplname{
       display: flex;
       flex-direction:column;
       width: calc(var(--size4)*30);
