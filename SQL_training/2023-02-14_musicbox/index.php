@@ -84,14 +84,7 @@ if (isset($_POST['plst']) && $_POST['plst'] != "" ){
       $playlist=$_POST['plst'];      
       $newplaylist=$_POST['userplalist'];
 
-
-
-      if($json){
-            $plList=$json;
-      }else{
-            $plList=array("favorites"=>[]);
-      }
-      
+      $plList=$json;
       if ($playlist=="new"){
             $plList[$newplaylist][]=$songid;      
       }else{

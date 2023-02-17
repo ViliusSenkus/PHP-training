@@ -11,6 +11,9 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
       $sqlrequest=($sql->query("SELECT * FROM songs WHERE id='$songid'"));
       $songdata=$sqlrequest->fetch_all()[0];
       $songname=$songdata[1]." - ".$songdata[2];
+      //getting list of user playlists:
+      $sqlrequest=($sql->query("SELECT playlists FROM users WHERE nickname='$nickname'"));
+      $json=json_decode(($sqlrequest->fetch_assoc())['playlists'], true);
       ?>
 
       <!-- FORM to add song to Playlist -->
@@ -18,12 +21,19 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
             <input type=text value="<?=$songname?>" id="songinputname" disabled >
             <label>Select playlist to add to</label>
             <select name="plst" id="pllist">
-                  <option value=favorites>Favorites</option>
                   <option name="newpl" value="new"  >New Playlist</option>
-                  <option value=readSQL>readSQL</option>
+                  <?php 
+                  //list of user playlists in the "add to playlist" drop down menu
+                     foreach ($json as $key=>$value){
+                  ?>
+                         <option value="<?=$key?>"><?=$key?></option>
+                  <?php
+                        }
+                  ?>
+                 
             </select>
             <input type="hidden" name="songid" value='<?=$songid?>'"/>
-            <div id="newplname" style="display:none">
+            <div id="newplname">
                   <label>Give name to new playlist</label>
                   <input type="text" name="userplalist" />
             </div>                  
