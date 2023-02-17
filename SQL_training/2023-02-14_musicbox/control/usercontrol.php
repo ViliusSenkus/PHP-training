@@ -11,21 +11,17 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
       $sqlrequest=($sql->query("SELECT * FROM songs WHERE id='$songid'"));
       $songdata=$sqlrequest->fetch_all()[0];
       $songname=$songdata[1]." - ".$songdata[2];
-
-      $sqlrequest=($sql->query("SELECT playlists FROM users WHERE nickname='$nickname'"));
-      $playlist=($sqlrequest->fetch_row())[0];
       ?>
 
       <!-- FORM to add song to Playlist -->
       <form method="POST">
-            <input type=text disabled name="songtoupload" value="<?=$songname?>" id="songinputname">
+            <input type=text value="<?=$songname?>" id="songinputname" disabled >
             <label>Select playlist to add to</label>
             <select name="plst" id="pllist">
                   <option value=favorites>Favorites</option>
                   <option name="newpl" value="new"  >New Playlist</option>
                   <option value=readSQL>readSQL</option>
             </select>
-            <input type="hidden" name="song" />
             <input type="hidden" name="songid" value='<?=$songid?>'"/>
             <div id="newplname" style="display:none">
                   <label>Give name to new playlist</label>
@@ -51,21 +47,7 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
 }
 
 
-if (isset($_POST['songtoupload']) && $_POST['songtoupload'] != "" ){
-      echo "Per forma pridedama daina";
 
-
-      if($playlist != null){
-            $plList=json_decode($playlist, true);
-            $plList[]=$songid;
-      }else{
-            $plList=array($songid);      
-      }
-      $json=json_encode($plList);
-      $sqlrequest=$sql->query("UPDATE users SET playlists='$json' WHERE nickname='$nickname'");  
-      echo "<br />added to playlist";
-}
-     
 
 
 //adding song to favorites

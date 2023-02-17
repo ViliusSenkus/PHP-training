@@ -75,8 +75,32 @@ if (  isset($_GET['action'])&& $_GET['action'] == "logof") {
             header('Location: ./');
       }
 
+//adding to playlist
+if (isset($_POST['plst']) && $_POST['plst'] != "" ){
+      $nickname=$_SESSION['user'];
+      $sqlrequest=($sql->query("SELECT playlists FROM users WHERE nickname='$nickname'"));
+      $json=json_decode(($sqlrequest->fetch_assoc())['playlists'], true);
+      $songid=$_POST['songid'];
+      $playlist=$_POST['plst'];      
+      $newplaylist=$_POST['userplalist'];
 
 
+
+      if($json){
+            $plList=$json;
+      }else{
+            $plList=array("favorites"=>[]);
+      }
+      
+      if ($playlist=="new"){
+            $plList[$newplaylist][]=$songid;      
+      }else{
+            $plList[$playlist][]=$songid;
+      }
+      $json=json_encode($plList);
+      $sqlrequest=$sql->query("UPDATE users SET playlists='$json' WHERE nickname='$nickname'");  
+      header('Location:./');
+}
 
 //page parts collection
 include('view/header.php');
