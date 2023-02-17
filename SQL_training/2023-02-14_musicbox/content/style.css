@@ -124,6 +124,13 @@ select{
       padding: 2px;
       margin-bottom: 5px
 }
+#songinputname{ 
+/*input field in the add to playlist form. styled to have name without inbox field borders visible */
+      color: #f4e412;
+      font-weight: 600;
+      background-color: var(--black);
+      border: none;
+}
 
 button{
       font-size: var(--size3);

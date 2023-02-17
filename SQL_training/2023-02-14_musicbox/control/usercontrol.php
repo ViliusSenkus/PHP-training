@@ -8,13 +8,17 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
 
       $songid=$_GET['userad'];
       $nickname=$_SESSION['user'];
+      $sqlrequest=($sql->query("SELECT * FROM songs WHERE id='$songid'"));
+      $songdata=$sqlrequest->fetch_all()[0];
+      $songname=$songdata[1]." - ".$songdata[2];
+
       $sqlrequest=($sql->query("SELECT playlists FROM users WHERE nickname='$nickname'"));
       $playlist=($sqlrequest->fetch_row())[0];
       ?>
 
+      <!-- FORM to add song to Playlist -->
       <form method="POST">
-            <label>Song</label>
-            <input type=text disabled name="songtoupload" value="song">
+            <input type=text disabled name="songtoupload" value="<?=$songname?>" id="songinputname">
             <label>Select playlist to add to</label>
             <select name="plst" id="pllist">
                   <option value=favorites>Favorites</option>
@@ -22,6 +26,7 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
                   <option value=readSQL>readSQL</option>
             </select>
             <input type="hidden" name="song" />
+            <input type="hidden" name="songid" value='<?=$songid?>'"/>
             <div id="newplname" style="display:none">
                   <label>Give name to new playlist</label>
                   <input type="text" name="userplalist" />
@@ -39,12 +44,6 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
                   }
 
             }
-            
-            // function pagavimas(){
-            //       console.log('pasikeite');
-            // }
-
-            // document.querySelector('#pllist').addEventListener('change', pagavimas() );
       </script>
 
       
@@ -52,7 +51,7 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
 }
 
 
-if (isset($_POST['songtoupload']) && $_POST['songtoupload'] == "song" ){
+if (isset($_POST['songtoupload']) && $_POST['songtoupload'] != "" ){
       echo "Per forma pridedama daina";
 
 
