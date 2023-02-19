@@ -8,7 +8,6 @@ include "recent.php";  //list of recently added songs by admin
 
 <div>
       <ul>
-      <h2> Your playlists </h2>
             <?php
             $user=$_SESSION['user'];
             $sqlrequest=$sql->query("SELECT playlists FROM users WHERE nickname='$user'");
@@ -19,7 +18,10 @@ include "recent.php";  //list of recently added songs by admin
             if(empty($playlist)){
                  echo "You do not have any Playlists.<br /> Start to create one by pushing + sign next to the song you like."; 
             }else{
+                  echo "<h2> Your playlists </h2>";
                   include "view/usersview/myplaylists.php";
+                  echo "<h2> Your favorites</h2>";
+                  include "view/usersview/myfavorites.php";
 
 // čia reikia keisti kodą ir dėti include userviews/userplaylists.html fialą!!!!!!!!!!!!!!!!!!!!!
                   }

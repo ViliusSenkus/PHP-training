@@ -1,4 +1,4 @@
-<div class="my-playlists">
+<div class="myPlaylists">
 Your playlists:
 <?php 
 // paimam pirmą dainą iš keikvieno playlisto
@@ -20,11 +20,11 @@ Your playlists:
             $albumpicture=$sqlrequest->fetch_assoc()['cover'];
             
 ?>
-      <div class="playlist-box">
-            <div class="playlist-logo">
-                  <img  src=<?=$albumpicture?> alt="album cover" />
+      <div class="playlistBox">
+            <div class="playlistLogo">
+                  <img  src=<?=$albumpicture?> alt="album cover" style="width:70px;" />
             </div>
-            <div class="playlist-name">
+            <div class="playlistName">
                   <?=$key?>
             </div>
             <div class="playlist-play">

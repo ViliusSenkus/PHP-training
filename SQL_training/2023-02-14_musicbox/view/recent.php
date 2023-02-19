@@ -2,7 +2,7 @@
             <div class="row">
 <?php
       $counter=0;
-      for($i=1; $i<4; $i++){
+      for($i=1; $i<5; $i++){
             $sqlrequest = $sql->query("SELECT MAX(id)-$counter FROM `songs`");
             $maxid=$sqlrequest->fetch_row()[0];
             $sqlrequest = $sql->query("SELECT MIN(id) FROM `songs`");

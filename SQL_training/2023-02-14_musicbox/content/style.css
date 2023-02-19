@@ -28,6 +28,7 @@ a{
       color: var(--white);
 }
 
+
 /* HEADER------------------------------------------------------------ */
 header{
       display: flex;
@@ -192,20 +193,21 @@ button{
   'opsz' 48
 }
 
+
 /* PLAYLISTS -------------*/
-my-playlists{
+myPlaylists{
       display:flex;
       flex-direction: column;
 }
-playlist-box{
+playlistBox{
       display:flex;
       flex-direction: row;
 }
-playlist-logo img{
+playlistLogo img{
       width:50px;
       height:50px;
 }
-playlist-name{
+playlistName{
       text-decoration: underline;
 }
 
