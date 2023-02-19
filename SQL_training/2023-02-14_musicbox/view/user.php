@@ -19,13 +19,11 @@ include "recent.php";  //list of recently added songs by admin
             if(empty($playlist)){
                  echo "You do not have any Playlists.<br /> Start to create one by pushing + sign next to the song you like."; 
             }else{
-                  
-                  foreach ($playlist as $key=>$value){
-                        echo "<br />".$key." - ".count($value)." song(s)" ;
-                  }
+                  include "view/usersview/myplaylists.php";
 
-                  //cia reikia paliesti foreach'a kiekvienam playlistui patalpinti i <li>
-            }
+// čia reikia keisti kodą ir dėti include userviews/userplaylists.html fialą!!!!!!!!!!!!!!!!!!!!!
+                  }
+            
             ?>
       </ul>
 </div>
