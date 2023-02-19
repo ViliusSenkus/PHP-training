@@ -195,23 +195,28 @@ button{
 
 
 /* PLAYLISTS -------------*/
-myPlaylists{
-      display:flex;
-      flex-direction: column;
-}
-playlistBox{
+
+.playlistBox{
       display:flex;
       flex-direction: row;
+      margin: 5px;
 }
-playlistLogo img{
-      width:50px;
-      height:50px;
+.playlistLogo img{
+      width:calc(var(--size4)*2);
 }
-playlistName{
-      text-decoration: underline;
+.playlistName{
+      width: calc(var(--size4)*10);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: calc(var(--size3)*1.3);
+      padding: var(--size1);
+      text-align: left;
 }
 
-
+.playlistBox .play_button{
+     self: end;
+}
 
 
 /* FOOTER ---------------------------------------- */

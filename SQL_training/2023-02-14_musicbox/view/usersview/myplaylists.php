@@ -1,10 +1,12 @@
-<div class="myPlaylists">
-Your playlists:
 <?php 
-// paimam pirmą dainą iš keikvieno playlisto
-// surandame ją dainų sąraše,
-// nuskaitom atlikėją ir albumą,
-// surandam albumo viršelį albumų sąraše,
+// this file contains process to display connected user playlists, order of playlists displayd according it's storage in database file.
+
+//logicall flow of code below:
+// - requesting and filtering the first song id from each user playlist (at users DB file);
+// - finding song according id in songs DB file;
+// - requesting of performer and album in songs DB file;
+// - requesting an album cover in albums DB file.
+// - pricessing front end output
 
       $sqlrequest=$sql->query("SELECT * FROM songs");
       $json=$sqlrequest->fetch_all();
@@ -22,20 +24,21 @@ Your playlists:
 ?>
       <div class="playlistBox">
             <div class="playlistLogo">
-                  <img  src=<?=$albumpicture?> alt="album cover" style="width:70px;" />
+                  <img  src=<?=$albumpicture?> alt="album cover" />
             </div>
             <div class="playlistName">
-                  <?=$key?>
-            </div>
-            <div class="playlist-play">
-                  <a href="./?usrplsts=<?=$key?>"> <!--nukreipimui į playlisto puslapį -->
-                        <span class="material-symbols-outlined">
-                              play_circle
-                        </span>
-                  </a>
+                  <div>
+                        <?=$key?>
+                  </div>
+                  <div class="play_button">
+                        <a href="./?usrplsts=<?=$key?>"> <!--nukreipimui į playlisto puslapį -->
+                              <span class="material-symbols-outlined">
+                                    play_circle
+                              </span>
+                        </a>
+                  </div>
             </div>
       </div>
-</div>
 
 <?php
       }
