@@ -1,3 +1,5 @@
+
+
 <?php
 
 $sqlrequest=$sql->query("SELECT playlists FROM users WHERE nickname='{$_GET['plusr']}'");
@@ -32,11 +34,11 @@ foreach ($list as $key=>$value){
                               Playlist created by <?=$_GET['plusr']?>
                         </div>
                   </div>
-                  <ul>
-                  <?php
-                        
-                  ?>
-                  </ul>
+                  <div>
+                        <form>
+                              <button type="submit">Return</button>
+                        </form>
+                  </div>
             </div>
 
 <?php
@@ -46,7 +48,7 @@ foreach ($list as $key=>$value){
                               continue;
                         }
 ?>
-                              <div class="album_Box" style="justify-content:start;">
+                              <div class="albumBox" style="justify-content:start;">
                                           <div class="album_logo">
                                                 <img  src="<?=$data[5]?>" alt="song album" />
                                           </div>

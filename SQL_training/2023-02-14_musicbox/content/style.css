@@ -146,13 +146,18 @@ button{
       flex-wrap: wrap;
       justify-content: space-around;
       margin: var(--size3) 0;
-      max-width:1400px;
+      max-width:1200px;
       margin:0 auto;
+}
+
+.row div{
+      max-width:380px;
 }
 .album_box{
       width: calc(var(--size1)*20);
       margin: 10px;
 }
+
 /* not connected part */
 .albumcover {
       width:200px;
@@ -221,7 +226,23 @@ button{
 }
 
 /* separate playlist to play:*/
-.album_Box{
+.playview{
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+      max-width: 1200px;
+      margin: var(--size4) auto 0;
+}
+.playview form{
+      all:unset
+}
+.playview h2{
+      margin:0;
+}
+
+
+.albumBox{
       display:flex;
       flex-direction: row;
       margin: 5px;

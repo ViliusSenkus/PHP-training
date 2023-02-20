@@ -3,7 +3,7 @@
 <?php
 include "recent.php";  //list of recently added songs by admin
 
-if ($_GET['playview']=="playview"){
+if (isset($_GET['playview']) && $_GET['playview']=="playview"){
       include "view/usersview/playview.php";
 }else{
       //everything below
