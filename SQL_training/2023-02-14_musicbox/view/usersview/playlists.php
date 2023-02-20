@@ -44,7 +44,7 @@
                               <?=$key?>
                         </div>
                         <div class="play_button">
-                              <a href="./?usrplsts=<?=$key?>"> <!--nukreipimui į playlisto puslapį -->
+                              <a href="./?usrplsts=<?=$key?>&plusr=<?=$value[1]?>&playview=playview"> <!--nukreipimui į playlisto puslapį -->
                                     <span class="material-symbols-outlined">
                                           play_circle
                                     </span>

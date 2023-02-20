@@ -3,6 +3,10 @@
 <?php
 include "recent.php";  //list of recently added songs by admin
 
+if ($_GET['playview']=="playview"){
+      include "view/usersview/playview.php";
+}else{
+      //everything below
 ?>
 
 
@@ -61,6 +65,7 @@ include "recent.php";  //list of recently added songs by admin
             include "view/usersview/playlists.php";
             echo "</div>";
             
-      
+
+}
 ?>
 </div>
