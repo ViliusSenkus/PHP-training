@@ -144,8 +144,10 @@ button{
       display:flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-around;
       margin: var(--size3) 0;
+      max-width:1400px;
+      margin:0 auto;
 }
 .album_box{
       width: calc(var(--size1)*20);

@@ -97,12 +97,15 @@ if (isset($_POST['plst']) && $_POST['plst'] != "" ){
 
 //page parts collection
 include('view/header.php');
+
+// including user actions - to show notification when some icon is clicked.
+// notification appears after header (change position if noptification needed in other place); 
+include "control/usercontrol.php";
+
 include('view/sidebar.html');
 include('view/main.php');
 
-// including user actions - to show notification when some icon is clicked.
-// notification appears before footer (change position if noptification needed in other place); 
-include "control/usercontrol.php";
+
 
 include('view/footer.html');
 

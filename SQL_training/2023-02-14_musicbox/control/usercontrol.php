@@ -48,7 +48,6 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
                   }else{
                         document.querySelector('#newplname').style.display="none";
                   }
-
             }
       </script>
 
@@ -80,7 +79,4 @@ if (isset($_GET['fav']) && $_GET['fav'] != ""){
       $sqlrequest=$sql->query("UPDATE users SET favorites='$json' WHERE nickname='$nickname'");  
       echo "<br />added to favorites";
 }
-
-    
-
 ?>

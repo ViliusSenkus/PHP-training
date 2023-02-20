@@ -15,40 +15,52 @@ include "recent.php";  //list of recently added songs by admin
 
 
       if(empty($playlist)){
-            echo "You do not have any Playlists.<br /> Start to create one by pushing + sign next to the song you like."; 
+?>
+            <div>
+                  <h2>No Playlists created</h2>
+                  <div>
+                        Create one by pushing <br />
+                        <span class="material-symbols-outlined">
+                              add_circle
+                        </span> <br />
+                        next to the song you like.
+                  </div>
+            </div>
+<?php 
       }else{
             echo "<div><h2> Your playlists </h2>";
             include "view/usersview/myplaylists.php";
+            echo "</div>";
       }
 
       $sqlrequest=$sql->query("SELECT favorites FROM users WHERE nickname='$user'");
       $favorites=$sqlrequest->fetch_assoc()['favorites'];
 
       if(!$favorites){
-                  echo "You do not have any Favorite song.<br /> Add one by pushing + sign next to the song you like."; 
-            }else{
-            echo "</div><div><h2> Your favorites</h2>";
+?>
+            <div>
+                  <h2>No Favorites added</h2>
+                  <div>
+                        Add one by pushing <br />
+                        <span class="material-symbols-outlined">
+                              stars
+                        </span><br />
+                        next to the song you like. 
+                  </div>
+            </div>
+                  
+
+<?php      
+      }else{
+            echo "<div><h2> Your favorites</h2>";
             include "view/usersview/myfavorites.php";
-            }
+            echo "</div>";
+      }
             
-            echo "</div><div><h2> Other users playlists</h2>";
+            echo "<div><h2> Other users playlists</h2>";
             include "view/usersview/playlists.php";
             echo "</div>";
+            
       
 ?>
 </div>
-
-<?php 
-for($i=1; $i<3; $i++){
-      ?>
-      <div class="row">
-      <?php
-      for($z=1; $z<5; $z++){
-      ?>
-           <div class="album_box">
-           </div>
-      <?php
-      }
-}
-      ?>
-      </div>

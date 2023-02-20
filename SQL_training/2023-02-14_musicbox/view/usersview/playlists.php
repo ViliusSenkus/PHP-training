@@ -17,7 +17,7 @@
       
       $sqlrequest=$sql->query("SELECT * FROM songs");
       $json=$sqlrequest->fetch_all();
-      $lenght=count($json);
+
 
       foreach($allplaylists as $value){
             if ($value[1] == $_SESSION['user']){
