@@ -17,7 +17,7 @@ foreach ($list as $key=>$value){
             }
             $left=strlen($songs_ids)-9;
             $songs=substr($songs_ids, 0, $left) ;
-            $sqlrequest=$sql->query("SELECT s.id, s.performer, s.songname, s.year, s.album, a.cover FROM songs AS s JOIN albums AS a ON a.albumname=s.album AND a.performer=s.performer WHERE {$songs}");
+            $sqlrequest=$sql->query("SELECT s.id, s.performer, s.songname, s.year, s.album, a.cover, s.youtube FROM songs AS s JOIN albums AS a ON a.albumname=s.album AND a.performer=s.performer WHERE {$songs}");
             $songs=$sqlrequest->fetch_all();
 
             
@@ -46,24 +46,28 @@ foreach ($list as $key=>$value){
                               continue;
                         }
 ?>
-                              <div class="row">
-                                    <div class="playlistBox">
-                                          <div class="playlistLogo">
+                              <div class="album_Box" style="justify-content:start;">
+                                          <div class="album_logo">
                                                 <img  src="<?=$data[5]?>" alt="song album" />
-                                                <?=$data[4]?>
-                                                <?=$data[3]?>
+                                          </div>
+                                          <div class="song_Name">
+                                                <span><?=$data[1]?></span>
+                                                <span><?=$data[2]?></span>
+                                          </div>
+                                          <div class="album_Name">
+                                                <span><?=$data[4]?></span>
+                                                <span><?=$data[3]?></span>
                                           </div>
                                           <div class="play_button">
-                                                <span class="material-symbols-outlined">
-                                                      stars
-                                                </span>
-                                                <span class="material-symbols-outlined">
-                                                      play_circle
-                                                </span>
+                                                      <span class="material-symbols-outlined">
+                                                                  stars
+                                                      </span>
+                                                      <span class="material-symbols-outlined">
+                                                            <a href="<?=$data[6]?>" target="video">
+                                                                  play_circle
+                                                            </a>
+                                                      </span>
                                           </div>
-                                    </div>
-                                    <div class="playlistName">
-                                          <?=$data[1]?> - <?=$data[2]?>
                                     </div>
                               </div>
 <?php
@@ -72,11 +76,12 @@ foreach ($list as $key=>$value){
             }
 
       }
-
-
-      
-      // else{
-      //       echo "Sorry, can't find such playlist.";
-      // }
+}
+if (isset($_GET['vsrc']) && $_GET['vsrc'] !=""){
+      $link=$_GET['vsrc'];
 }
 ?>
+
+
+<iframe name="video"";
+</iframe>

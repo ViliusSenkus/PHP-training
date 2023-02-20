@@ -105,8 +105,6 @@ include "control/usercontrol.php";
 include('view/sidebar.html');
 include('view/main.php');
 
-
-
 include('view/footer.html');
 
 
