@@ -97,7 +97,7 @@ main{
 }
 h2{
       color:#f4e412;
-      margin: calc(var(--size4)*2) auto var(--size2);
+      /* margin: calc(var(--size4)*2) auto var(--size2); */
 }
 
 /* Admin part */
@@ -221,10 +221,6 @@ button{
       text-align: left;
 }
 
-.playlistBox .play_button{
-     self: end;
-}
-
 /* separate playlist to play:*/
 .playview{
       display:flex;
@@ -283,8 +279,9 @@ button{
       font-size: calc(var(--size2)*1.2);
 }
 iframe{
-      width:calc(var(--size4)*18);
-      height:calc(var(--size4)*12);
+      width:calc(var(--size4)*9);
+      height:calc(var(--size4)*6);
+      border:none
 }
 /* FOOTER ---------------------------------------- */
 footer{

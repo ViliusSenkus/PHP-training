@@ -31,7 +31,7 @@
                         <?=$key?>
                   </div>
                   <div class="play_button">
-                        <a href="./?usrplsts=<?=$key?>"> <!--nukreipimui į playlisto puslapį -->
+                        <a href="./?usrplsts=<?=$key?>&plusr=<?=$_SESSION['user']?>&playview=playview"">                        
                               <span class="material-symbols-outlined">
                                     play_circle
                               </span>

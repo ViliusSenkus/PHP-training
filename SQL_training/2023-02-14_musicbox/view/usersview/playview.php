@@ -85,5 +85,5 @@ if (isset($_GET['vsrc']) && $_GET['vsrc'] !=""){
 ?>
 
 
-<iframe name="video"";
+<iframe name="video">
 </iframe>

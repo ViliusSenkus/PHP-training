@@ -2,8 +2,6 @@
 
 // adding to playlist
 
-// !!!!!!!!!!!!!reikalinga padaryti forma pasirinkimui i koki playlista deti!!!!!!!!!!!!!!!!!
-
 if (isset($_GET['userad']) && $_GET['userad'] != ""){
 
       $songid=$_GET['userad'];

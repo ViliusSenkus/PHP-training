@@ -1,3 +1,6 @@
+
+<iframe name="video"></iframe>
+
 <h2>Our most recently added music tracks</h2>
             <div class="row">
 <?php
@@ -41,7 +44,7 @@
                               if(!empty($_SESSION) && $_SESSION['user'] != ""){
                         ?>
                         <div class="play_button">
-                              <a href="<?=$songdata[6]?>" target="blank">
+                              <a href="<?=$songdata[6]?>" target="video">
                                     <span class="material-symbols-outlined">
                                           play_circle
                                     </span>
@@ -69,3 +72,10 @@
       }
       ?>
        </div>
+
+
+    
+
+
+
+       
