@@ -1,4 +1,3 @@
-
 <?php
 
 try{
@@ -11,11 +10,27 @@ try{
 }
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta author="Vilius Senkus" />
+
+      <link rel="stylesheet" href="style.css" />
+      <title>MySQL training</title>
+</head>
+<body>
+      <h2>Can't connect to server</h2>
+</body>
+</html>
 
 <h1>SQL DB "world" filtering</h1>
 
 <div>
-      <ul>Lentelėje "city" filtruojami:
+      <ul>
+            <span>Lentelėje "city" filtruojami:</span>
             <li>
                   <a href="./?v=1">
                         Miestai, kurių pavadinime nėra "H" raidės
@@ -41,9 +56,7 @@ try{
                         Miestai, kurių id yra mažesnis 300 ir populiacija didesnė nei 200000
                   </a>
             </li>
-      </ul>
-
-      <ul>Lentelėje "country" filtruojama:
+            <span>Lentelėje "country" filtruojama:</span>
             <li>
                   <a href="./?v=6">
                         Šalių Valdymo formą, kurių gyvenimo trukmė yra didesnė nei 72 metai, plotas maženis arba lygus 30000 kvadratinių kilometrų bei populacijos dydis didesnis nei 5000000 gyventojų.
@@ -59,9 +72,7 @@ try{
                         Šalių tarptautinį pavadinimą, vietinį pavadinimą, Prezidentą (Monarchą) ir populiaciją, kurios paskelbė nepriklausomybę 1991-aisiais
                   </a>
             </li>
-      </ul>
-
-      <ul>Bonus
+            <span>Bonus</span>
             <li>
                   <a href="./?v=9">
                         Iš lentelės "country" filtruojami šalių pavadinimai ir kalbos pavadinimai, kurių populacijos dydis yra didesnis arba lygus 10000000.
