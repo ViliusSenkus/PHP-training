@@ -38,5 +38,54 @@
                         die();
             }
       }
-
 ?>
+<h2> List of songs </h2>
+<table>
+      <thead>
+            <th>#</th>
+            <th>Song name</th>
+            <th>Performer</th>
+            <th>Performer picture</th>
+            <th>Album name</th>
+            <th>Album picture</th>
+            <th>Year</th>
+      </thead>
+      <tbody>
+            <tr>
+                  <td></td>
+            </tr>
+      </tbody>
+</table>
+
+<h2> List of users </h2>
+<table>
+      <thead>
+            <th>#</th>
+            <th>User name</th>
+            <th>eMail</th>
+            <th>Sign date</th>
+            <th>Plan</th>
+            <th>Expire</th>
+            <th>Favorites</th>
+      </thead>
+      <tbody>
+            <tr>
+                  <td></td>
+            </tr>
+      </tbody>
+</table>
+
+<h2> List of Playlists <h2>
+<table>
+      <thead>
+            <th>#</th>
+            <th>Name</th>
+            <th>Number of songs</th>
+            <th>User</th>
+      </thead>
+      <tbody>
+            <tr>
+                  <td></td>
+            </tr>
+      </tbody>
+</table>
