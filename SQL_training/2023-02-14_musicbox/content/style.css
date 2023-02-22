@@ -101,6 +101,22 @@ h2{
 }
 
 /* Admin part */
+
+            /* Tables */
+.admin_table{
+      margin:0 auto;
+      border-collapse: collapse;
+}
+.admin_table img{
+      width:calc(var(--size4)*2);
+}
+.admin_table td,
+.admin_table th{
+      border:1px solid white;
+}
+
+
+
 main ul{
      justify-content: center;
 }
@@ -199,7 +215,6 @@ button{
   'GRAD' 0,
   'opsz' 48
 }
-
 
 /* PLAYLISTS -------------*/
 

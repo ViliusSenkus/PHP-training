@@ -2,7 +2,6 @@
 session_start();
 
 //connecting to dataBase
-
 try{
       $sql= new mysqli('localhost', 'root', '', 'musicbox');
 }catch(Exception $error){
