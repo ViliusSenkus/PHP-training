@@ -66,15 +66,7 @@
             $result=array($performer, $coverpic);
             return $result;
       }
-      // function albumPic($albumName){
-      //       global $sql;
-      //       $sqlrequest=$sql->query("SELECT cover  FROM performer WHERE performername = '$performerName'");
-      //       $performer=$sqlrequest->fetch_all();
-      //       if (!$performer){
-      //             return "./content/img/logo.png";
-      //       }
-      //       return $performer[0][0];
-      // }
+
 ?>
 <h2> List of songs </h2>
 <table class="admin_table">
@@ -86,6 +78,7 @@
             <th>Album </th>
             <th>Album picture</th>
             <th>Year</th>
+            <th>Action</th>
       </thead>
       <tbody>
             
@@ -106,6 +99,9 @@
                         <img src="<?=$cover?>" alt="<?=$v['album']?>" />      
                   </td>
                   <td><?= $v['year'] ?></td>
+                  <td>
+                        <a href="./?del=song&id=<?=$k?>">Delete</a>
+                  </td>
             </tr>
 
             <?php
@@ -131,6 +127,7 @@
             <th>Sign date</th>
             <th>Plan</th>
             <th>Expire</th>
+            <th>Action</th>
       </thead>
       <tbody>
       <?php
@@ -143,6 +140,9 @@
                   <td><?=$v['signdate']?></td>
                   <td><?=$v['plan']?></td>
                   <td><?=$v['expires']?></td>
+                  <td>
+                        <a href="./?del=user&id=<?=$k?>">Delete</a>
+                  </td>
             </tr>
       <?php
       }
@@ -156,9 +156,6 @@
 $sqlrequest=$sql->query("SELECT playlists, nickname FROM users WHERE playlists != ''");
 $allplaylists=$sqlrequest->fetch_all();
 
-$sqlrequest=$sql->query("SELECT * FROM songs");
-$json=$sqlrequest->fetch_all();
-
 ?>
 
       <h2> All Playlists </h2>
@@ -171,31 +168,20 @@ $json=$sqlrequest->fetch_all();
             </thead>
             <tbody>
 <?php
-
-foreach($allplaylists as $value){
-      
-     $plists=json_decode($value[0], true);
-    
-      foreach ($plists as $k=>$v){
-            $sqlrequest=$sql->query("SELECT * FROM songs WHERE id=$v[0]");
-            $songinfo=$sqlrequest->fetch_row();
-            $lookforperformer=$songinfo[1];
-            $lookforsong=$songinfo[2];
-            $lookforalbum=$songinfo[4];
-            $sqlrequest=$sql->query("SELECT cover FROM albums WHERE performer='$lookforperformer'     AND albumname='$lookforalbum'");
-            $albumpicture=$sqlrequest->fetch_assoc()['cover'];
-  
+            $counter=1;  
+      foreach($allplaylists as $value){            
+            $plists=json_decode($value[0], true);
+            foreach ($plists as $k=>$v){
 ?>
-
-
             <tr>
+                  <td><?=$counter?></td>
                   <td><?=$k?></td>
-                  <td><?=$v[0]?></td>
-                  <td><?=count($v[0])?></td>
-                  <td><?=$v[1]?></td>
+                  <td><?=count($v)?></td>
+                  <td><?=$value[1]?></td>
             </tr>
 
 <?php
+           $counter++;
             }
       }
 ?>
