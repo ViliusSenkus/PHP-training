@@ -4,7 +4,8 @@ Created for learning purposes.
 Not finished yet.
 
 ### Improvement possibilities:
-- Add delete button to users playlists and songs in playlists as well favorites
+- Add delete button to delete users playlists;
+- add UNfavorites
 - Highlight selected favorites
 - Forbid adding of the same song to one playlist or creating playlist with the same name
 - Put limit on possible favorites, playlists and songs in playlists number

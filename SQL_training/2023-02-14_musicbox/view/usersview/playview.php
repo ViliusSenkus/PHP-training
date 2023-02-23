@@ -1,6 +1,12 @@
 
 
 <?php
+if(isset($_GET['plusr']) && $_GET['plusr']==$_SESSION['user']){
+      $selfdel=true;
+}else{
+      $selfdel=false;
+}
+
 
 $sqlrequest=$sql->query("SELECT playlists FROM users WHERE nickname='{$_GET['plusr']}'");
 $list=($sqlrequest->fetch_assoc())['playlists'];
@@ -22,9 +28,9 @@ foreach ($list as $key=>$value){
             $sqlrequest=$sql->query("SELECT s.id, s.performer, s.songname, s.year, s.album, a.cover, s.youtube FROM songs AS s JOIN albums AS a ON a.albumname=s.album AND a.performer=s.performer WHERE {$songs}");
             $songs=$sqlrequest->fetch_all();
 
-            
-
-            
+            // echo "<pre>";
+            // print_r($songs);
+            // die();
 ?>
   
             <div class="playview">
@@ -61,6 +67,15 @@ foreach ($list as $key=>$value){
                                                 <span><?=$data[3]?></span>
                                           </div>
                                           <div class="play_button">
+<?php
+                                          if ($selfdel==true){
+?>
+                                                      <span class="material-symbols-outlined">
+                                                            <a href="./?usract=del&playlist=<?=$_GET['usrplsts']?>&song=<?=$data[0]?>">
+                                                                  delete
+                                                            </a>
+                                                      </span>
+<?php } ?>                                                      
                                                       <span class="material-symbols-outlined">
                                                                   stars
                                                       </span>

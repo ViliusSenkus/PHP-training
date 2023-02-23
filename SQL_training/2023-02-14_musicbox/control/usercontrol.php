@@ -77,4 +77,34 @@ if (isset($_GET['fav']) && $_GET['fav'] != ""){
       $sqlrequest=$sql->query("UPDATE users SET favorites='$json' WHERE nickname='$nickname'");  
       echo "<br />added to favorites";
 }
+
+//deleting from playlists:
+if (isset($_GET['usract']) and $_GET['usract']=="del"){
+      $playlist=$_GET['playlist'];
+      $songid=$_GET['song'];
+      $user=$_SESSION['user'];
+
+      $sqlrequest=$sql->query("SELECT playlists FROM users WHERE nickname='$user'");
+      $list=json_decode($sqlrequest->fetch_assoc()['playlists'], true);
+
+      foreach($list[$playlist] as $key=>$value){
+            if ($value==$songid){
+                  $delid=$key;
+                  break;
+            }
+      }
+      \array_splice($list[$playlist],$delid,1);
+      if (count($list[$playlist])==0){
+            unset($list[$playlist]);
+      }
+
+      $json=json_encode($list);
+
+
+      $sql->query("UPDATE users SET playlists='$json' WHERE nickname='$user'");
+
+      header("Location:./?usrplsts='$playlist'");
+}
+
 ?>
+
