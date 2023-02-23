@@ -59,7 +59,7 @@ if (isset($_GET['userad']) && $_GET['userad'] != ""){
 
 // Adding/Removing Favorites
 
-if (isset($_GET['fav']) && $_GET['act'] != "add" || ){
+if (isset($_GET['fav']) && $_GET['fav'] != ""){
       
       $songid=$_GET['fav'];
       $nickname=$_SESSION['user'];
