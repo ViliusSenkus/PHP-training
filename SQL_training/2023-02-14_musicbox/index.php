@@ -12,8 +12,8 @@ try{
 }
 
 //Admin Forms processing file
+include "control/admcontrol.php";
 include "control/admforms.php";
-
 
 //sign up /////////////////////////////////////////////////
 

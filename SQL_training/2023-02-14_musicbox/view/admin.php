@@ -100,7 +100,7 @@
                   </td>
                   <td><?= $v['year'] ?></td>
                   <td>
-                        <a href="./?del=song&id=<?=$k?>">Delete</a>
+                        <a href="./?del=song&id=<?=$v['id']?>">Delete</a>
                   </td>
             </tr>
 
