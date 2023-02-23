@@ -42,11 +42,17 @@
                         <span style="font-style:italic; font-size:var(--size3);"><?=$value[2]?></span>
                   </div>
                   <div class="play_button">
-                        <a href="./?usrplsts=<?=$key?>"> <!--nukreipimui į playlisto puslapį -->
                               <span class="material-symbols-outlined">
-                                    play_circle
+                                    <a href="./?fav=<?=$key?>&act=remove" style="color:#f4e412;">
+                                          stars
+                                    </a>
                               </span>
-                        </a>
+                        <span class="material-symbols-outlined">
+                              <a href="./?usrplsts=<?=$key?>">
+                                    play_circle
+                              </a>
+                        </span>
+                        
                   </div>
             </div>
       </div>

@@ -38,27 +38,46 @@
                               <?=$songdata[2]?>
                         </div>
 
-      <!-- Nuo čia tik prisijungusiems vartotojams -->
+      <!-- Loged in users part below -->
 
                         <?php
                               if(!empty($_SESSION) && $_SESSION['user'] != ""){
+                                    
+                                    // check if favorite is added and assigning variable
+                                    $usr=$_SESSION['user'];
+                                    $sqlrequest=$sql->query("SELECT favorites FROM users WHERE nickname='$usr'");
+                                    $favorites=($sqlrequest->fetch_row())[0];
+                                    if ($favorites != null){
+                                    $favList=json_decode($favorites, true);
+                                          $style="";
+                                          foreach($favList as $k=>$v){
+                                                if ($v[0]==$songdata[0]){
+                                                      $style="style='color:#f4e412'";
+                                                      break;
+                                                }
+                                          }
+                                    }
+
+
+                              
                         ?>
                         <div class="play_button">
-                              <a href="<?=$songdata[6]?>" target="video">
-                                    <span class="material-symbols-outlined">
+                              
+                              <span class="material-symbols-outlined">
+                                    <a href="<?=$songdata[6]?>" target="video">
                                           play_circle
-                                    </span>
-                              </a>
-                              <a href="./?userad=<?=$songdata[0]?>">
-                                    <span class="material-symbols-outlined">
+                                    </a>
+                              </span>
+                              <span class="material-symbols-outlined">
+                                    <a href="./?userad=<?=$songdata[0]?>">
                                           add_circle
-                                    </span>
-                              </a>
-                              <a href="./?fav=<?=$songdata[0]?>">
-                                    <span class="material-symbols-outlined">
+                                    </a>
+                              </span>
+                              <span class="material-symbols-outlined">
+                                    <a href="./?fav=<?=$songdata[0]?>" <?=$style?>>
                                           stars
-                                    </span>
-                              </a>
+                                    </a>
+                              </span>
                         </div>
                   <?php
                                     } $counter++;

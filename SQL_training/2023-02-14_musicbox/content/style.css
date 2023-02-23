@@ -68,7 +68,7 @@ nav ul{
       flex-direction: row;
       justify-content: end;
       list-style-type: none;
-      margin: 10px
+      margin: 10px;
 }
 nav li,
 form button{
@@ -210,12 +210,11 @@ button{
 }
 .material-symbols-outlined {
   font-variation-settings:
-  'FILL' 0,
+  'FILL' 1,
   'wght' 400,
-  'GRAD' 0,
+  'GRAD' 1,
   'opsz' 48
 }
-
 /* PLAYLISTS -------------*/
 
 .playlistBox{
