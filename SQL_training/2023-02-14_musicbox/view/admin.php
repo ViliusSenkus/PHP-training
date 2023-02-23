@@ -100,7 +100,11 @@
                   </td>
                   <td><?= $v['year'] ?></td>
                   <td>
-                        <a href="./?del=song&id=<?=$v['id']?>">Delete</a>
+                        <a href="./?del=song&id=<?=$v['id']?>">
+                              <span class="material-symbols-outlined">
+                                    delete
+                              </span>
+                        </a>
                   </td>
             </tr>
 
@@ -141,7 +145,11 @@
                   <td><?=$v['plan']?></td>
                   <td><?=$v['expires']?></td>
                   <td>
-                        <a href="./?del=user&id=<?=$k?>">Delete</a>
+                        <a href="./?del=user&id=<?=$v['id']?>">
+                              <span class="material-symbols-outlined">
+                                    delete
+                              </span>
+                        </a>
                   </td>
             </tr>
       <?php
