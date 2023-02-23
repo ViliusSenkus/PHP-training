@@ -106,5 +106,18 @@ if (isset($_GET['usract']) and $_GET['usract']=="del"){
       header("Location:./?usrplsts='$playlist'");
 }
 
+//deleting playlists:
+if (isset($_GET['usract']) and $_GET['usract']=="delpl"){
+      $playlist=$_GET['playlist'];
+
+      $user=$_SESSION['user'];
+
+      $sqlrequest=$sql->query("SELECT playlists FROM users WHERE nickname='$user'");
+      $list=json_decode($sqlrequest->fetch_assoc()['playlists'], true);
+      unset($list[$playlist]);
+      $json=json_encode($list);
+      $sql->query("UPDATE users SET playlists='$json' WHERE nickname='$user'");
+      header("Location:./");
+}
 ?>
 

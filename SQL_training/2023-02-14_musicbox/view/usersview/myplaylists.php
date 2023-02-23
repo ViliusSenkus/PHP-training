@@ -31,11 +31,17 @@
                         <?=$key?>
                   </div>
                   <div class="play_button">
-                        <a href="./?usrplsts=<?=$key?>&plusr=<?=$_SESSION['user']?>&playview=playview"">                        
-                              <span class="material-symbols-outlined">
+                        <span class="material-symbols-outlined">
+                              <a href="./?usract=delpl&playlist=<?=$key?>">
+                                    delete
+                              </a>
+                        </span>                     
+                        <span class="material-symbols-outlined">
+                              <a href="./?usrplsts=<?=$key?>&plusr=<?=$_SESSION['user']?>&playview=playview"">  
                                     play_circle
-                              </span>
-                        </a>
+                              </a>
+                        </span>
+                       
                   </div>
             </div>
       </div>
