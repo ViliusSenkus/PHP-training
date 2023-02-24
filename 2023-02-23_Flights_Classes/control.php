@@ -1,21 +1,26 @@
 <?php
 //catching action:
-$action="";
-if (isset($_POST['act']) && $_POST['act'] !=""){
-      $action=$_POST['act'];
-}
 
 //!!!!!!!!!!!!!!!!!!!!!Testuojant jeigu adreso laukelyje bus geto reikšmės, postas gali nerodyti ekrane.
-
+$action="";
 if (isset($_GET['act']) && $_GET['act'] !=""){
       $action=$_GET['act'];
+}
+if (isset($_POST['act']) && $_POST['act'] !=""){
+      $action=$_POST['act']; //for switch
+      $from=$_POST['from'];
+      $to=$_POST['to'];
+      $f_num=$_POST['f_num'];
+      $f_date=$_POST['f_date'];
 }
 
 $data=new Avia();
 
+
 switch($action){
       case "flt_add":
-            $data->addFlight($_POST['from'], $_POST['to'],$_POST['f_num'], $_POST['f_date']);
+            $data->addFlight($from, $to, $f_num, $f_date);
+            print_r($data);
             break;
       case "f_edit":
             break;

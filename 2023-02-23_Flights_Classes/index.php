@@ -1,6 +1,8 @@
 <?php
 include "classes.php";
 include "control.php";
+
+// print_r(new mysqli('localhost', 'root', '', 'avia'));
 ?>
 
 <!DOCTYPE html>
