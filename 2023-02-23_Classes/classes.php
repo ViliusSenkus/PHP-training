@@ -53,11 +53,3 @@ class Avia {
 
 }
 ?>
-
-
-
-Filtracijas atlikinėkite pasinaudodami PHP, o ne SQL funkcionalumu.
-
-
-
-Aprašykite klasę atsakingą už šių duomenų tvarkymą ir rezultatų grąžinimą.
