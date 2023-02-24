@@ -1,0 +1,62 @@
+*{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+}
+
+:root{
+      scroll-behavior: smooth;
+}
+.material-icons-outlined{
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 28px;
+}
+main{
+      width:1000px;
+      margin: 10px auto;
+}
+h1{
+      margin: 15px 0;
+}
+h2{
+      margin: 10px 0 0;
+}
+table{
+      width:100%;
+      border-collapse: collapse;
+}
+
+th,
+td{
+      border: 1px solid black;
+      font-size: 20px;
+}
+
+table input{
+      font-size: 20px; 
+      border: none;
+}
+
+a{
+      text-decoration: none;
+}
+
+button{
+      border:none;
+      padding: 0;
+}
+
+#psg,
+#flt{
+      display: inline-block;
+      background-color: azure;
+      padding: 5px;
+      margin-right: 10px;
+      border: 1px solid black;
+}
+#psg_form,
+#flt_form{
+      display:none;
+}
