@@ -18,8 +18,9 @@ class Avia {
                   echo $error;
                   exit;
             }
+            $this->getFlights();
       }
-      public function addFlight($from, $to, $fl_num, $fl_date ){
+      public function setFlight($from, $to, $fl_num, $fl_date ){
             $this->flights=self::$db->query("INSERT INTO flights (f_from, f_to, flight_number, flight_date) VALUES ('$from', '$to', '$fl_num', '$fl_date')");
             return $this;
       }
@@ -27,11 +28,11 @@ class Avia {
             $this->flights=self::$db->query("SELECT * FROM flights")->fetch_all(MYSQLI_ASSOC);
             return $this;
       }
-      function sortFligthsFrom($sorttype="ASC"){
+      function sortFligthsFrom($sorttype='ASC'){
             $this->flights=self::$db->query("SELECT * FROM flights ORDER BY f_from $sorttype");
             return $this;
       }
-      function sortFligthsTo($sorttype="ASC"){
+      function sortFligthsTo($sorttype='ASC'){
             $this->flights=self::$db->query("SELECT * FROM flights ORDER BY f_to $sorttype");
             return $this;
       }
@@ -61,8 +62,4 @@ class Avia {
       }
 }
 
-// $object=new Avia();
-// print_r($object->getFlights());
-// print_r($object->flights);
-// exit();
 ?>

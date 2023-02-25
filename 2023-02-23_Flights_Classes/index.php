@@ -19,21 +19,40 @@ include "control.php";
             <h1>Flight data base demo page</h1>
 
             <h2>Flights information</h2>
+
+            <div>
+                  <?php
+                        // $flights=$data->sortFligthsFrom('desc')->flights->fetch_all(MYSQLI_ASSOC);
+                        // echo "<br/>";
+                        // $data->sortFligthsFrom('desc')->flights;
+                        // print_r($data->flights->fetch_all(MYSQLI_ASSOC));
+                  ?>
+            </div>
             <table>
                   
                   <thead>
                         <tr>
                               <th>#</th>
-                              <th>
-                                    From
+                              <th class="sort">
+                                    <span>From<span>
                                     <span class="material-icons-outlined">
+                                          <a href="./?act=f_from_sort_up">
                                           north
+                                          </a>
+                                          <a href="./?act=f_from_sort_down">
+                                          south
+                                          </a>
                                     </span>
                               </th>
                               <th>
                                     To
                                     <span class="material-icons-outlined">
+                                          <a href="./?act=f_to_sort_up">
+                                          north
+                                          </a>
+                                          <a href="./?act=f_to_sort_down">
                                           south
+                                          </a>
                                     </span>
                               </th>
                               <th>Number</th>
@@ -43,7 +62,7 @@ include "control.php";
                   </thead>
                   <tbody>
                         <?php
-                        foreach($flights as $key=>$value){
+                        foreach($data->flights as $key=>$value){
                         ?>
                         
                         <tr>

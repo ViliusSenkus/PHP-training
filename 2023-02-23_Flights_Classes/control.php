@@ -12,12 +12,12 @@ if (isset($_POST['act']) && $_POST['act'] !=""){
 }
 
 $data=new Avia();
-$flights=($data->getFlights()->flights);
-$passengers=($data->getPassenger()->passengers);
+$data->flights;
+// $passengers=$data->getPassenger()->passengers;
 
 switch($action){
       case "flt_add":
-            $data->addFlight($_POST['from'], $_POST['to'], $_POST['f_num'], $_POST['f_date']);
+            $data->setFlight($_POST['from'], $_POST['to'], $_POST['f_num'], $_POST['f_date']);
             header('Location: ./');
             break;
       case "f_edit":
@@ -34,6 +34,26 @@ switch($action){
             break;
       case "p_del":
             $data->delPassenger($_GET['id']);
+            header('Location: ./');
+            break;
+      case "p_sort_up":
+            break;
+      case "p_sort_down":
+            break;
+      case "f_from_sort_up":
+            $data->sortFligthsFrom();
+            header('Location: ./');
+            break;
+      case "f_from_sort_down":
+            $data->sortFligthsFrom('DESC');
+            header('Location: ./');
+            break;
+      case "f_to_sort_up":
+            $data->sortFligthsTo();
+            header('Location: ./');
+            break;
+      case "f_to_sort_down":
+            $data->sortFligthsTo('DESC');
             header('Location: ./');
             break;
       default:
