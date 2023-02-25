@@ -12,8 +12,6 @@ if (isset($_POST['act']) && $_POST['act'] !=""){
 }
 
 $data=new Avia();
-$data->flights;
-$data->passengers;
 
 switch($action){
       case "flt_add":
@@ -35,10 +33,6 @@ switch($action){
       case "p_del":
             $data->delPassenger($_GET['id']);
             header('Location: ./');
-            break;
-      case "p_sort_up":
-            break;
-      case "p_sort_down":
             break;
       case "f_from_sort_up":
             $flights=usort($data->flights, fn ($a, $b) => $a['f_from']<=>$b['f_from']);
@@ -83,5 +77,4 @@ switch($action){
       default:
             break;
 }     
-
 ?>
