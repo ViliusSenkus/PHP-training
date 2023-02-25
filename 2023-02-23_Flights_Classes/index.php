@@ -33,27 +33,33 @@ include "control.php";
                   <thead>
                         <tr>
                               <th>#</th>
-                              <th class="sort">
-                                    <span>From<span>
-                                    <span class="material-icons-outlined">
-                                          <a href="./?act=f_from_sort_up">
-                                          north
-                                          </a>
-                                          <a href="./?act=f_from_sort_down">
-                                          south
-                                          </a>
-                                    </span>
+                              <th>
+                                    <div class="sort">
+                                          <div></div>
+                                          <div class="th-name">From</div>
+                                          <div class="material-icons-outlined">
+                                                <a href="./?act=f_from_sort_up">
+                                                north
+                                                </a>
+                                                <a href="./?act=f_from_sort_down">
+                                                south
+                                                </a>
+                                          </div>
+                                    </div>
                               </th>
                               <th>
-                                    To
-                                    <span class="material-icons-outlined">
-                                          <a href="./?act=f_to_sort_up">
-                                          north
-                                          </a>
-                                          <a href="./?act=f_to_sort_down">
-                                          south
-                                          </a>
-                                    </span>
+                                    <div class="sort">
+                                          <div></div>
+                                          <div class="th-name">To</div>
+                                          <div class="material-icons-outlined">
+                                                <a href="./?act=f_to_sort_up">
+                                                north
+                                                </a>
+                                                <a href="./?act=f_to_sort_down">
+                                                south
+                                                </a>
+                                          </div>
+                                    </div>
                               </th>
                               <th>Number</th>
                               <th>Date</th>
@@ -120,27 +126,33 @@ include "control.php";
                   <thead>
                         <tr>
                               <th>#</th>
-                              <th class="sort">
-                                    <span> Name </span>
-                                    <span class="material-icons-outlined">
-                                          <a href="./?act=p_name_sort_up">
-                                          north
-                                          </a>
-                                          <a href="./?act=p_name_sort_down">
-                                          south
-                                          </a>
-                                    </span>
+                              <th>
+                                    <div class="sort">
+                                          <div></div>
+                                          <div class="th-name"> Name </div>
+                                          <div class="material-icons-outlined">
+                                                <a href="./?act=p_name_sort_up">
+                                                north
+                                                </a>
+                                                <a href="./?act=p_name_sort_down">
+                                                south
+                                                </a>
+                                          </div>
+                                    </div>
                               </th>
-                              <th class="sort">
-                                    <span> Last Name </span>
-                                    <span class="material-icons-outlined">
-                                          <a href="./?act=p_last_sort_up">
-                                          north
-                                          </a>
-                                          <a href="./?act=p_last_sort_down">
-                                          south
-                                          </a>
-                                    </span>
+                              <th>
+                                    <div class="sort">
+                                          <div></div>
+                                          <div class="th-name"> Last Name </div>
+                                          <div class="material-icons-outlined">
+                                                <a href="./?act=p_last_sort_up">
+                                                north
+                                                </a>
+                                                <a href="./?act=p_last_sort_down">
+                                                south
+                                                </a>
+                                          </div>
+                                    </div>
                               </th>
                               <th>Flight number</th>
                               <th>Action</th>
