@@ -1,8 +1,6 @@
 <?php
 include "classes.php";
 include "control.php";
-
-// print_r(new mysqli('localhost', 'root', '', 'avia'));
 ?>
 
 <!DOCTYPE html>
@@ -44,25 +42,32 @@ include "control.php";
                         </tr>
                   </thead>
                   <tbody>
+                        <?php
+                        foreach($flights as $key=>$value){
+                        ?>
+                        
                         <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td><?= ++$key ?></td>
+                              <td><?= $value['f_from'] ?></td>
+                              <td><?= $value['f_to'] ?></td>
+                              <td><?= $value['flight_number'] ?></td>
+                              <td><?= $value['flight_date'] ?></td>
                               <td>
                                     <span class="material-icons-outlined edit">
-                                          <a href="./?act=f_edit" style="color:rgb(0, 183, 255)">
+                                          <a href="./?act=f_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
                                                 drive_file_rename_outline
                                           </a>
                                     </span>
                                     <span class="material-icons-outlined del">
-                                          <a href="./?act=f_del" style="color:rgb(255, 56, 56)">
+                                          <a href="./?act=f_del&id=<?= $value['id'] ?>" style="color:rgb(255, 56, 56)">
                                                 delete_forever
                                           </a>
                                     </span>
                               </td>
                         </tr>
+                        <?php
+                        }
+                        ?>
                         <tr>
                               <form method="POST">
                                     <td>+</td>
@@ -103,24 +108,30 @@ include "control.php";
                         </tr>
                   </thead>
                   <tbody>
+                        <?php
+                        foreach($passengers as $key=>$value){
+                        ?>
                         <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td><?= ++$key ?></td>
+                              <td><?= $value['first_name'] ?></td>
+                              <td><?= $value['last_name'] ?></td>
+                              <td><?= $value['flight_id'] ?></td>
                               <td>
                                     <span class="material-icons-outlined edit">
-                                          <a href="./?act=p_edit" style="color:rgb(0, 183, 255)">
+                                          <a href="./?act=p_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
                                                 drive_file_rename_outline
                                           </a>
                                     </span>
                                     <span class="material-icons-outlined del">
-                                          <a href="./?act=p_del" style="color:rgb(255, 56, 56)">
+                                          <a href="./?act=p_del&id=<?= $value['id'] ?>" style="color:rgb(255, 56, 56)">
                                                 delete_forever
                                           </a>
                                     </span>
                               </td>
                         </tr>
+                        <?php
+                        }
+                        ?>
                         <form method="POST">
                               <td>+</td>
                               <td>

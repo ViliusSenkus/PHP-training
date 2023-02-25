@@ -20,7 +20,7 @@ class Avia {
             }
       }
       public function addFlight($from, $to, $fl_num, $fl_date ){
-            $this->flights=self::$db->query("INSERT INTO flights(f_from, f_to, flight_number, flight_date) VALUES ($from, $to, $fl_num, $fl_date)");
+            $this->flights=self::$db->query("INSERT INTO flights (f_from, f_to, flight_number, flight_date) VALUES ('$from', '$to', '$fl_num', '$fl_date')");
             return $this;
       }
       public function getFlights(){
@@ -43,11 +43,26 @@ class Avia {
             $this->flightdata=self::$db->query("SELECT f.*, p.* FROM flights AS f JOIN passengers AS p ON p.flight_id = f.flight_number WHERE p.first_name='$name' AND p.last_name='$surname'");
             return $this;
       }
-
+      function setPassenger($name, $surname, $f_id){
+            $this->passengers=self::$db->query("INSERT INTO passengers (first_name,	last_name,	flight_id) VALUES ('$name', '$surname', '$f_id')");
+            return $this;
+      }
+      function getPassenger(){
+            $this->passengers=self::$db->query("SELECT * FROM passengers")->fetch_all(MYSQLI_ASSOC);
+            return $this;
+      }
+      function delPassenger($id){
+            $this->passengers=self::$db->query("DELETE FROM passengers WHERE id='$id'");
+            return $this;
+      }
+      function delFlight($id){
+            $this->flights=self::$db->query("DELETE FROM flights WHERE id='$id'");
+            return $this;
+      }
 }
 
-$object=new Avia();
-print_r($object->getFlights());
-print_r($object->flights);
-exit();
+// $object=new Avia();
+// print_r($object->getFlights());
+// print_r($object->flights);
+// exit();
 ?>
