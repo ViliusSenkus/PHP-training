@@ -19,6 +19,7 @@ class Avia {
                   exit;
             }
             $this->getFlights();
+            $this->getPassenger();
       }
       public function setFlight($from, $to, $fl_num, $fl_date ){
             $this->flights=self::$db->query("INSERT INTO flights (f_from, f_to, flight_number, flight_date) VALUES ('$from', '$to', '$fl_num', '$fl_date')");

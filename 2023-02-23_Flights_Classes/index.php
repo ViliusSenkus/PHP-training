@@ -120,15 +120,35 @@ include "control.php";
                   <thead>
                         <tr>
                               <th>#</th>
-                              <th>Name</th>
-                              <th>Last Name</th>
+                              <th class="sort">
+                                    <span> Name </span>
+                                    <span class="material-icons-outlined">
+                                          <a href="./?act=p_name_sort_up">
+                                          north
+                                          </a>
+                                          <a href="./?act=p_name_sort_down">
+                                          south
+                                          </a>
+                                    </span>
+                              </th>
+                              <th class="sort">
+                                    <span> Last Name </span>
+                                    <span class="material-icons-outlined">
+                                          <a href="./?act=p_last_sort_up">
+                                          north
+                                          </a>
+                                          <a href="./?act=p_last_sort_down">
+                                          south
+                                          </a>
+                                    </span>
+                              </th>
                               <th>Flight number</th>
                               <th>Action</th>
                         </tr>
                   </thead>
                   <tbody>
                         <?php
-                        foreach($passengers as $key=>$value){
+                        foreach($data->passengers as $key=>$value){
                         ?>
                         <tr>
                               <td><?= ++$key ?></td>

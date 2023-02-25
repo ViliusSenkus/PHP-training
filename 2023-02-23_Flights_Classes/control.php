@@ -13,7 +13,7 @@ if (isset($_POST['act']) && $_POST['act'] !=""){
 
 $data=new Avia();
 $data->flights;
-// $passengers=$data->getPassenger()->passengers;
+$data->passengers;
 
 switch($action){
       case "flt_add":
@@ -41,20 +41,44 @@ switch($action){
       case "p_sort_down":
             break;
       case "f_from_sort_up":
-            $data->sortFligthsFrom();
-            header('Location: ./');
+            $flights=usort($data->flights, fn ($a, $b) => $a['f_from']<=>$b['f_from']);
+            // $data->sortFligthsFrom();
+            // header('Location: ./');
             break;
       case "f_from_sort_down":
-            $data->sortFligthsFrom('DESC');
-            header('Location: ./');
+            $flights=usort($data->flights, fn ($a, $b) => $b['f_from']<=>$a['f_from']);
+            // $data->sortFligthsFrom('DESC');
+            // header('Location: ./');
             break;
       case "f_to_sort_up":
-            $data->sortFligthsTo();
-            header('Location: ./');
+            $flights=usort($data->flights, fn ($a, $b) => $a['f_to']<=>$b['f_to']);
+            // $data->sortFligthsTo();
+            // header('Location: ./');
             break;
       case "f_to_sort_down":
-            $data->sortFligthsTo('DESC');
-            header('Location: ./');
+            $flights=usort($data->flights, fn ($a, $b) => $b['f_to']<=>$a['f_to']);
+            // $data->sortFligthsTo('DESC');
+            // header('Location: ./');
+            break;
+      case "p_name_sort_up":
+            $passengers=usort($data->passengers, fn ($a, $b) => $a['first_name']<=>$b['first_name']);
+            // $data->sortFligthsFrom();
+            // header('Location: ./');
+            break;
+      case "p_name_sort_down":
+            $passengers=usort($data->passengers, fn ($a, $b) => $b['first_name']<=>$a['first_name']);
+            // $data->sortFligthsFrom('DESC');
+            // header('Location: ./');
+            break;
+      case "p_last_sort_up":
+            $passengers=usort($data->passengers, fn ($a, $b) => $a['last_name']<=>$b['last_name']);
+            // $data->sortFligthsTo();
+            // header('Location: ./');
+            break;
+      case "p_last_sort_down":
+            $passengers=usort($data->passengers, fn ($a, $b) => $b['last_name']<=>$a['last_name']);
+            // $data->sortFligthsTo('DESC');
+            // header('Location: ./');
             break;
       default:
             break;
