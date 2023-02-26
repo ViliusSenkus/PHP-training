@@ -90,7 +90,8 @@ if (isset($_GET['fav']) && $_GET['fav'] != ""){
 
    
       $json=json_encode($favList);
-      $sqlrequest=$sql->query("UPDATE users SET favorites='$json' WHERE nickname='$nickname'");  
+      echo $json;
+      $sqlrequest=$sql->query("UPDATE users SET favorites='$json' WHERE nickname='$nickname'");
 }
 
 

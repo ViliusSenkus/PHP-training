@@ -26,11 +26,7 @@ foreach ($list as $key=>$value){
             $left=strlen($songs_ids)-9;
             $songs=substr($songs_ids, 0, $left) ;
             $sqlrequest=$sql->query("SELECT s.id, s.performer, s.songname, s.year, s.album, a.cover, s.youtube FROM songs AS s JOIN albums AS a ON a.albumname=s.album AND a.performer=s.performer WHERE {$songs}");
-            $songs=$sqlrequest->fetch_all();
-
-            // echo "<pre>";
-            // print_r($songs);
-            // die();
+            $songs=$sqlrequest->fetch_all(); //array of playlist songs with all possible info
 ?>
   
             <div class="playview">
@@ -48,8 +44,8 @@ foreach ($list as $key=>$value){
             </div>
 
 <?php
-            foreach($value as $s){ //numeris
-                  foreach($songs as $data){ //pilna ingo
+            foreach($value as $s){ //cycling through songs in playlist
+                  foreach($songs as $data){ //cycling throug all songs in playlist
                         if($s != $data[0]){
                               continue;
                         }
@@ -75,9 +71,27 @@ foreach ($list as $key=>$value){
                                                                   delete
                                                             </a>
                                                       </span>
-<?php } ?>                                                      
+<?php                                     } 
+                                          $usr=$_SESSION['user'];
+                                          $sqlrequest=$sql->query("SELECT favorites FROM users WHERE nickname='$usr'");
+                                          $favorites=($sqlrequest->fetch_row())[0];
+                                          if ($favorites != null){
+                                          $favList=json_decode($favorites, true);
+                                                $style="";
+                                                foreach($favList as $k=>$v){ //cycling through favorites
+                                                      if ($v[0]==$data[0]){
+                                                            $style="style='color:#f4e412'";
+                                                            break;
+                                                      }else{
+                                                      $style="style='color:white'";
+                                                      }
+                                                }
+ }
+?>                                                      
                                                       <span class="material-symbols-outlined">
+                                                            <a href="./?fav=<?=$data[0]?>" <?=$style?>>
                                                                   stars
+                                                            </a>
                                                       </span>
                                                       <span class="material-symbols-outlined">
                                                             <a href="<?=$data[6]?>" target="video">

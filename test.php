@@ -27,4 +27,30 @@ print_r($object::$s);
 // echo "</pre>";
 
 // echo $_SERVER['PHP_SELF'];
+
+class Naujas{
+      public static $spalva = "red";
+      public $dydis="S";
+      function rodyk(){
+            echo "<br />".self::$spalva." ".$this->dydis;
+      }
+}
+echo "<br /> Klasių atvaizdavimas <br/>";
+$megztinis=new Naujas;
+$marskiniai=new Naujas;
+
+
+echo "<pre>";
+print_r($megztinis);
+echo "<br />";
+print_r($marskiniai);
+$marskiniai->dydis="M";
+$marskiniai->rodyk();
+
+$marskiniai::$spalva="zalia";
+$marskiniai->rodyk();
+$megztinis->rodyk();
+
+
+
 ?>
