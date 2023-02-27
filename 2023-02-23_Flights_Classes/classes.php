@@ -57,6 +57,10 @@ class Avia {
             $this->passengers=self::$db->query("SELECT * FROM passengers")->fetch_all(MYSQLI_ASSOC);
             return $this;
       }
+      public function editPassenger($name, $surname, $f_id, $id){
+            $this->passengers=self::$db->query("UPDATE passengers SET first_name='$name', last_name='$surname', flight_id='$f_id' WHERE id='$id'");
+            return $this;
+      }
       function delPassenger($id){
             $this->passengers=self::$db->query("DELETE FROM passengers WHERE id='$id'");
             return $this;

@@ -220,7 +220,8 @@ include "control.php";
                                           <input type="text" name="f_id" value=<?= $value['flight_id'] ?> />
                                     </td>
                                     <td>
-                                          <input name="key" value=<?= $key ?> hidden />
+                                          <input name="key" value=<?= $value['id'] ?> hidden />
+                                          <input type="text" name="act" value="p_edit" hidden />
                                           <button type="submit" style="color:#13a107; border-radius:50%">
                                                 <span class="material-icons-outlined add" ">
                                                       check_circle

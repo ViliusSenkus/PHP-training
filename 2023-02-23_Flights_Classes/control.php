@@ -31,6 +31,8 @@ switch($action){
             header('Location: ./');
             break;
       case "p_edit":
+            $data->editPassenger($_POST['name'], $_POST['surname'],$_POST['f_id'], $_POST['key']);
+            header('Location: ./');
             break;
       case "p_del":
             $data->delPassenger($_GET['id']);
