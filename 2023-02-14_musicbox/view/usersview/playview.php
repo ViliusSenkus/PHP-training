@@ -78,18 +78,21 @@ foreach ($list as $key=>$value){
                                           if ($favorites != null){
                                           $favList=json_decode($favorites, true);
                                                 $style="";
+                                                $action="";
                                                 foreach($favList as $k=>$v){ //cycling through favorites
                                                       if ($v[0]==$data[0]){
                                                             $style="style='color:#f4e412'";
+                                                            $action="&act=remove";
                                                             break;
                                                       }else{
                                                       $style="style='color:white'";
+                                                      $action="";
                                                       }
                                                 }
  }
 ?>                                                      
                                                       <span class="material-symbols-outlined">
-                                                            <a href="./?fav=<?=$data[0]?>" <?=$style?>>
+                                                            <a href="./?fav=<?=$data[0].$action?>" <?=$style?>>
                                                                   stars
                                                             </a>
                                                       </span>

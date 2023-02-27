@@ -33,6 +33,7 @@
                   $lookforalbum=$songinfo[4];
                   $sqlrequest=$sql->query("SELECT cover FROM albums WHERE performer='$lookforperformer'     AND albumname='$lookforalbum'");
                   $albumpicture=$sqlrequest->fetch_assoc()['cover'];
+
                   
       ?>
             <div class="playlistBox">

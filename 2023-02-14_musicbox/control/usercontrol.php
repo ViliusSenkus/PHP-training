@@ -63,12 +63,12 @@ if (isset($_GET['fav']) && $_GET['fav'] != ""){
       
       $songid=$_GET['fav'];
       $nickname=$_SESSION['user'];
-      if (!isset($_GET['act'])){
+      if (!isset($_GET['act'])){ //checking if removing action is set.
       $sqlrequest=(($sql->query("SELECT * FROM songs WHERE id='$songid'"))->fetch_all())[0];
-      $songinfo=array($sqlrequest[0],$sqlrequest[1],$sqlrequest[2]);
+      $songinfo=array($sqlrequest[0],$sqlrequest[1],$sqlrequest[2]); //gather all songs id's performer and name to one array of arrays.
       }
       $sqlrequest=($sql->query("SELECT favorites FROM users WHERE nickname='$nickname'"));
-      $favorites=($sqlrequest->fetch_row())[0];
+      $favorites=($sqlrequest->fetch_row())[0]; //extracting user favorites from DB.
       
       // Add to favorites
       if($favorites != null && !isset($_GET['act'])){ //check if favorites allready added
@@ -79,18 +79,16 @@ if (isset($_GET['fav']) && $_GET['fav'] != ""){
             $favList=array($songinfo);      
       }
 
+      //favlist[] array of favorites songs.
+
       if (isset($_GET['act']) && $_GET['act'] !=""){ //remove if condition true
             $favList=json_decode($favorites, true);
-            // echo "<pre>";
-            // print_r($favList);
-            // die();
 
-            \array_splice($favList,$songid,1);
+            \array_splice($favList,$songid,1); //removing one song id from favorites list.
       }
 
-   
-      $json=json_encode($favList);
-      echo $json;
+      $json=$sql->real_escape_string(json_encode($favList));
+      
       $sqlrequest=$sql->query("UPDATE users SET favorites='$json' WHERE nickname='$nickname'");
 }
 
