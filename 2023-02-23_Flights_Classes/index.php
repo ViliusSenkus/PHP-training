@@ -285,8 +285,8 @@ include "control.php";
 
             <h2>Information search</h2>
             
-            <span id="psg">Passenger information</span>
-            <span id="flt">Flight information</span>
+            <span class="span_btn" id="psg">Passenger information</span>
+            <span class="span_btn" id="flt">Flight information</span>
 
             <form id="psg_form" method="POST">
                   <label>Name</label>
@@ -313,6 +313,10 @@ include "control.php";
             </form>
 
             <!-- Table to show selected passeneger information -->
+
+      <?php
+            if (isset($flightdata) AND $_POST['info']=="psg"){
+      ?>
             <table> 
                   <thead>
                         <tr>
@@ -343,10 +347,20 @@ include "control.php";
                         }
             ?>
                   </tbody>
-
             </table>
+            <span class="span_btn">
+                  <a href="./">Close</a>
+            </span>
+      <?php
+            }
+      ?>
             
             <!-- Table to show selected flight information -->
+
+            <?php
+                  if (isset($flightdata) AND count($flightdata) > 0 AND $_POST['info']=="flt"){
+            ?>
+
             <div>
                   <h2>Passengers list on flights <?= $flightdata[0]['flight_id'] ?></h2>
             </div>
@@ -375,6 +389,12 @@ include "control.php";
                   </tbody>
 
             </table>
+            <span class="span_btn">
+                  <a href="./">Close</a>
+            </span>
+      <?php
+            }
+      ?>
       </main>
       <script>
             document.querySelector("#psg").addEventListener("click", ()=>{

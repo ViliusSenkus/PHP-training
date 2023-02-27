@@ -41,6 +41,7 @@ table input{
 
 a{
       text-decoration: none;
+      color: white;
 }
 
 button{
@@ -48,13 +49,15 @@ button{
       padding: 0;
 }
 
-#psg,
-#flt{
+.span_btn{
       display: inline-block;
       background-color: azure;
       padding: 5px;
-      margin-right: 10px;
-      border: 1px solid black;
+      margin: 10px 10px 10px 0;
+      background-color: rgb(0, 183, 255);
+      color: white;
+      font-weight: 900;
+      cursor:pointer;
 }
 #psg_form,
 #flt_form{
