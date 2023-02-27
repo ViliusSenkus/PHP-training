@@ -73,22 +73,32 @@ include "control.php";
                         
                         <tr>
                               <td><?= ++$key ?></td>
-                              <td><?= $value['f_from'] ?></td>
-                              <td><?= $value['f_to'] ?></td>
-                              <td><?= $value['flight_number'] ?></td>
-                              <td><?= $value['flight_date'] ?></td>
-                              <td>
-                                    <span class="material-icons-outlined edit">
-                                          <a href="./?act=f_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
-                                                drive_file_rename_outline
-                                          </a>
-                                    </span>
-                                    <span class="material-icons-outlined del">
-                                          <a href="./?act=f_del&id=<?= $value['id'] ?>" style="color:rgb(255, 56, 56)">
-                                                delete_forever
-                                          </a>
-                                    </span>
-                              </td>
+                              <form class="table_form" method="POST">
+                                    <td>
+                                          <input type="text" name="from" value=<?= $value['f_from'] ?> disabled />
+                                    </td>
+                                    <td>
+                                          <input type="text" name="to" value=<?= $value['f_to'] ?> disabled />
+                                    </td>
+                                    <td>
+                                          <input type="text" name="f_num" value=<?= $value['flight_number'] ?> disabled />
+                                    </td>
+                                    <td>
+                                          <input type="date" name="f_date" value=<?= $value['flight_date'] ?> disabled />
+                                    </td>
+                                    <td>
+                                          <span class="material-icons-outlined edit">
+                                                <a href="./?act=f_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
+                                                      drive_file_rename_outline
+                                                </a>
+                                          </span>
+                                          <span class="material-icons-outlined del">
+                                                <a href="./?act=f_del&id=<?= $value['id'] ?>" style="color:rgb(255, 56, 56)">
+                                                      delete_forever
+                                                </a>
+                                          </span>
+                                    </td>
+                              </form>
                         </tr>
                         <?php
                         }
@@ -110,9 +120,9 @@ include "control.php";
                                     </td>
                                     <td>
                                           <input type="text" name="act" value="flt_add" hidden />
-                                          <button type="submit" style="background-color: rgb(133, 251, 74)">
+                                          <button type="submit" style="color:#13a107; border-radius:50%">
                                                 <span class="material-icons-outlined add" ">
-                                                      add
+                                                      add_circle
                                                 </span>
                                           </button>
                                     </td>
@@ -163,22 +173,30 @@ include "control.php";
                         foreach($data->passengers as $key=>$value){
                         ?>
                         <tr>
-                              <td><?= ++$key ?></td>
-                              <td><?= $value['first_name'] ?></td>
-                              <td><?= $value['last_name'] ?></td>
-                              <td><?= $value['flight_id'] ?></td>
-                              <td>
-                                    <span class="material-icons-outlined edit">
-                                          <a href="./?act=p_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
-                                                drive_file_rename_outline
-                                          </a>
-                                    </span>
-                                    <span class="material-icons-outlined del">
-                                          <a href="./?act=p_del&id=<?= $value['id'] ?>" style="color:rgb(255, 56, 56)">
-                                                delete_forever
-                                          </a>
-                                    </span>
-                              </td>
+                              <form method="POST">
+                                    <td><?= ++$key ?></td>
+                                    <td>
+                                          <input type="text" name="name" vallue=<?= $value['first_name'] ?> disabled />
+                                    </td>
+                                    <td>
+                                          <input type="text" name="name" value=<?= $value['last_name'] ?> disabled />
+                                    </td>
+                                    <td>
+                                          <input type="text" name="name" value=<?= $value['flight_id'] ?> disabled />
+                                    </td>
+                                    <td>
+                                          <span class="material-icons-outlined edit">
+                                                <a href="./?act=p_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
+                                                      drive_file_rename_outline
+                                                </a>
+                                          </span>
+                                          <span class="material-icons-outlined del">
+                                                <a href="./?act=p_del&id=<?= $value['id'] ?>" style="color:rgb(255, 56, 56)">
+                                                      delete_forever
+                                                </a>
+                                          </span>
+                                    </td>
+                              </form>
                         </tr>
                         <?php
                         }
@@ -196,9 +214,9 @@ include "control.php";
                               </td>
                               <td>
                                     <input type="text" name="act" value="psg_add" hidden />
-                                    <button type="submit" style="background-color: rgb(133, 251, 74)">
+                                    <button type="submit" style="color:#13a107; border-radius:50%">
                                           <span class="material-icons-outlined add" ">
-                                                add
+                                                add_circle
                                           </span>
                                     </button>
                               </td>
