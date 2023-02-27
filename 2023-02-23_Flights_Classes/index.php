@@ -73,7 +73,7 @@ include "control.php";
                         
                         <tr>
                               <td><?= ++$key ?></td>
-                              <form class="table_form" method="POST">
+                              <form id="table_form flights" method="POST">
                                     <td>
                                           <input type="text" name="from" value=<?= $value['f_from'] ?> disabled />
                                     </td>
@@ -171,34 +171,60 @@ include "control.php";
                   <tbody>
                         <?php
                         foreach($data->passengers as $key=>$value){
+                              
+                              if (isset($_GET['act']) AND $_GET['act']=="p_edit" AND $_GET['id']==$value['id']){
+                                    //if edit button pushed execute this code:
                         ?>
                         <tr>
                               <form method="POST">
                                     <td><?= ++$key ?></td>
                                     <td>
-                                          <input type="text" name="name" vallue=<?= $value['first_name'] ?> disabled />
+                                          <input type="text" name="name" value=<?= $value['first_name'] ?> />
                                     </td>
                                     <td>
-                                          <input type="text" name="name" value=<?= $value['last_name'] ?> disabled />
+                                          <input type="text" name="surname" value=<?= $value['last_name'] ?> />
                                     </td>
                                     <td>
-                                          <input type="text" name="name" value=<?= $value['flight_id'] ?> disabled />
+                                          <input type="text" name="f_id" value=<?= $value['flight_id'] ?> />
                                     </td>
                                     <td>
-                                          <span class="material-icons-outlined edit">
-                                                <a href="./?act=p_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
-                                                      drive_file_rename_outline
-                                                </a>
-                                          </span>
+                                          <input name="key" value=<?= $key ?> hidden />
+                                          <button type="submit" style="color:#13a107; border-radius:50%">
+                                                <span class="material-icons-outlined add" ">
+                                                      check_circle
+                                                </span>
+                                          </button>
                                           <span class="material-icons-outlined del">
                                                 <a href="./?act=p_del&id=<?= $value['id'] ?>" style="color:rgb(255, 56, 56)">
                                                       delete_forever
                                                 </a>
-                                          </span>
+                                    </span>
                                     </td>
                               </form>
                         </tr>
                         <?php
+                              }else{
+                        ?>
+                        <tr>
+                              <td><?= ++$key ?></td>
+                              <td><?= $value['first_name'] ?></td>
+                              <td><?= $value['last_name'] ?></td>
+                              <td><?= $value['flight_id'] ?></td>
+                              <td>
+                                    <span class="material-icons-outlined edit">
+                                          <a href="./?act=p_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
+                                                drive_file_rename_outline
+                                          </a>
+                                    </span>
+                                    <span class="material-icons-outlined del">
+                                          <a href="./?act=p_del&id=<?= $value['id'] ?>" style="color:rgb(255, 56, 56)">
+                                                delete_forever
+                                          </a>
+                                    </span>
+                              </td>
+                        </tr> 
+                        <?php
+                              }
                         }
                         ?>
                         <form method="POST">
