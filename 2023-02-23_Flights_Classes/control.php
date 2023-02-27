@@ -7,8 +7,7 @@ if (isset($_GET['act']) && $_GET['act'] !=""){
       $action=$_GET['act'];
 }
 if (isset($_POST['act']) && $_POST['act'] !=""){
-      $action=$_POST['act']; //for switch
-      
+      $action=$_POST['act']; //for switch    
 }
 
 $data=new Avia();
@@ -81,4 +80,14 @@ switch($action){
       default:
             break;
 }     
+
+if (isset($_POST['info']) && $_POST['info'] =="psg"){
+      $flightdata=$data->passengerFlightData($_POST['name'], $_POST['surname']);
+}
+
+
+if (isset($_POST['info']) && $_POST['info'] =="flt"){
+      $flightdata=$data->passangersInFlight($_POST['f_num']);
+}
+
 ?>

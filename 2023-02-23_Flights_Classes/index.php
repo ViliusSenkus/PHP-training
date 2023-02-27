@@ -304,6 +304,7 @@ include "control.php";
             <form id="flt_form" method="POST">
                   <label>Flight number</label>
                   <input type="text" name="f_num" />
+                  <input type=text" name="info" value="flt" hidden />
                   <button type="submit">
                         <span class="material-icons-outlined">
                               search
@@ -347,11 +348,7 @@ include "control.php";
             
             <!-- Table to show selected flight information -->
             <div>
-                  <h2>  Passengers list on flights <?= $v['flight_number'] ?>
-                        going from <?= $v['f_from'] ?>
-                        to <?= $v['f_to'] ?>
-                        on <?= $v['flight_date'] ?>
-                  </h2>
+                  <h2>Passengers list on flights <?= $flightdata[0]['flight_id'] ?></h2>
             </div>
             <table>
                   <thead>

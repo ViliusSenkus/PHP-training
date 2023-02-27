@@ -42,12 +42,12 @@ class Avia {
             return $this;
       }
       function passangersInFlight($fl_num){
-            $this->passengers=self::$db->query("SELECT * FROM passengers WHERE flight_id='$fl_num'");
-            return $this;
+            $this->flightdata=self::$db->query("SELECT * FROM passengers WHERE flight_id='$fl_num'")->fetch_all(MYSQLI_ASSOC);
+            return $this->flightdata;
       }
       function passengerFlightData($name, $surname){
-            $this->flightdata=self::$db->query("SELECT f.*, p.* FROM flights AS f JOIN passengers AS p ON p.flight_id = f.flight_number WHERE p.first_name='$name' AND p.last_name='$surname'");
-            return $this;
+            $this->flightdata=self::$db->query("SELECT f.*, p.* FROM flights AS f JOIN passengers AS p ON p.flight_id = f.flight_number WHERE p.first_name='$name' AND p.last_name='$surname'")->fetch_all(MYSQLI_ASSOC);
+            return $this->flightdata;
       }
       function setPassenger($name, $surname, $f_id){
             $this->passengers=self::$db->query("INSERT INTO passengers (first_name,	last_name,	flight_id) VALUES ('$name', '$surname', '$f_id')");
