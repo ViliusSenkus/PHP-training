@@ -292,7 +292,8 @@ include "control.php";
                   <label>Name</label>
                   <input type="text" name="name" />
                   <label>Last-name</label>
-                  <input type="text" name="name" />
+                  <input type="text" name="surname" />
+                  <input type=text" name="info" value="psg" hidden />
                   <button type="submit">
                         <span class="material-icons-outlined">
                               search
@@ -309,6 +310,74 @@ include "control.php";
                         </span>
                   </button>
             </form>
+
+            <!-- Table to show selected passeneger information -->
+            <table> 
+                  <thead>
+                        <tr>
+                              <th>#</th>
+                              <th>Name</th>
+                              <th>Surname</th>
+                              <th>From</th>
+                              <th>To</th>
+                              <th>Flight Number</th>
+                              <th>Date</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+            <?php
+                        foreach ($flightdata as $k=>$v){
+            ?>
+                        <tr>
+                              <td><?= ++$k ?></td>
+                              <td><?= $v['first_name'] ?></td>
+                              <td><?= $v['last_name'] ?></td>
+                              <td><?= $v['f_from'] ?></td>
+                              <td><?= $v['f_to'] ?></td>
+                              <td><?= $v['flight_number'] ?></td>
+                              <td><?= $v['flight_date'] ?></td>
+
+                        </tr>
+            <?php
+                        }
+            ?>
+                  </tbody>
+
+            </table>
+            
+            <!-- Table to show selected flight information -->
+            <div>
+                  <h2>  Passengers list on flights <?= $v['flight_number'] ?>
+                        going from <?= $v['f_from'] ?>
+                        to <?= $v['f_to'] ?>
+                        on <?= $v['flight_date'] ?>
+                  </h2>
+            </div>
+            <table>
+                  <thead>
+                        <tr>
+                              <th>#</th>
+                              <th>Name</th>
+                              <th>Surname</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+            <?php
+                        foreach ($flightdata as $k=>$v){
+            ?>
+                        <tr>
+                              <td><?= ++$k ?></td>
+                              <td><?= $v['first_name'] ?></td>
+                              <td><?= $v['last_name'] ?></td>
+                             
+
+                        </tr>
+            <?php
+                        }
+            ?>
+                  </tbody>
+
+            </table>
       </main>
       <script>
             document.querySelector("#psg").addEventListener("click", ()=>{
