@@ -19,6 +19,8 @@ switch($action){
             header('Location: ./');
             break;
       case "f_edit":
+            $data->editFlight($_POST['from'], $_POST['to'],$_POST['f_num'], $_POST['f_date'],$_POST['key']);
+            header('Location: ./');
             break;
       case "f_del":
             $data->delFlight($_GET['id']);

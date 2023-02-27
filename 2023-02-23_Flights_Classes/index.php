@@ -70,7 +70,7 @@ include "control.php";
                         <?php
                         foreach($data->flights as $key=>$value){
 
-                              if (isset($_GET['act']) AND $_GET['act']=="f_edit" AND $_GET['id']==$value['id']){
+                              if (isset($_GET['act']) AND $_GET['act']=="flt_edit" AND $_GET['id']==$value['id']){
                                     //if edit button pushed execute this code:
                         ?>
                         ?>
@@ -79,20 +79,22 @@ include "control.php";
                                <form method="POST">
                                     <td><?= ++$key ?></td>
                                     <td>
-                                          <input type="text" name="from" value=<?= $value['f_from'] ?> disabled />
+                                          <input type="text" name="from" value=<?= $value['f_from'] ?> />
                                     </td>
                                     <td>
-                                          <input type="text" name="to" value=<?= $value['f_to'] ?> disabled />
+                                          <input type="text" name="to" value=<?= $value['f_to'] ?> />
                                     </td>
                                     <td>
-                                          <input type="text" name="f_num" value=<?= $value['flight_number'] ?> disabled />
+                                          <input type="text" name="f_num" value=<?= $value['flight_number'] ?> />
                                     </td>
                                     <td>
-                                          <input type="date" name="f_date" value=<?= $value['flight_date'] ?> disabled />
+                                          <input type="date" name="f_date" value=<?= $value['flight_date'] ?> />
                                     </td>
                                     <td>
-                                          <input name="key" value=<?= $key ?> hidden />
-                                                <button type="submit" style="color:#13a107; border-radius:50%">
+                                          <input name="key" value=<?= $value['id'] ?> hidden />
+                                          <input type="text" name="act" value="f_edit" hidden />
+                                                <button type="submit"
+                                                      style="color:#13a107; border-radius:50%">
                                                       <span class="material-icons-outlined add" ">
                                                             check_circle
                                                       </span>
@@ -117,7 +119,7 @@ include "control.php";
                                          <td>
                                                <input name="key" value=<?= $key ?> hidden />
                                                <span class="material-icons-outlined edit">
-                                                      <a href="./?act=f_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
+                                                      <a href="./?act=flt_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
                                                             drive_file_rename_outline
                                                       </a>
                                                 </span>
@@ -202,7 +204,7 @@ include "control.php";
                         <?php
                         foreach($data->passengers as $key=>$value){
                               
-                              if (isset($_GET['act']) AND $_GET['act']=="p_edit" AND $_GET['id']==$value['id']){
+                              if (isset($_GET['act']) AND $_GET['act']=="psg_edit" AND $_GET['id']==$value['id']){
                                     //if edit button pushed execute this code:
                         ?>
                         <tr>
@@ -242,7 +244,7 @@ include "control.php";
                               <td><?= $value['flight_id'] ?></td>
                               <td>
                                     <span class="material-icons-outlined edit">
-                                          <a href="./?act=p_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
+                                          <a href="./?act=psg_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
                                                 drive_file_rename_outline
                                           </a>
                                     </span>

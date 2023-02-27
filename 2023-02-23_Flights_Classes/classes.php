@@ -29,6 +29,10 @@ class Avia {
             $this->flights=self::$db->query("SELECT * FROM flights")->fetch_all(MYSQLI_ASSOC);
             return $this;
       }
+      public function editFlight($from, $to, $fl_num, $fl_date, $id){
+            $this->flights=self::$db->query("UPDATE flights SET f_from='$from', f_to='$to', flight_number='$fl_num', flight_date='$fl_date' WHERE id='$id'");
+            return $this;
+      }
       function sortFligthsFrom($sorttype='ASC'){
             $this->flights=self::$db->query("SELECT * FROM flights ORDER BY f_from $sorttype");
             return $this;
