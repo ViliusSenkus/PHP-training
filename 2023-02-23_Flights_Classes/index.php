@@ -69,11 +69,15 @@ include "control.php";
                   <tbody>
                         <?php
                         foreach($data->flights as $key=>$value){
+
+                              if (isset($_GET['act']) AND $_GET['act']=="f_edit" AND $_GET['id']==$value['id']){
+                                    //if edit button pushed execute this code:
+                        ?>
                         ?>
                         
                         <tr>
-                              <td><?= ++$key ?></td>
-                              <form id="table_form flights" method="POST">
+                               <form method="POST">
+                                    <td><?= ++$key ?></td>
                                     <td>
                                           <input type="text" name="from" value=<?= $value['f_from'] ?> disabled />
                                     </td>
@@ -87,11 +91,12 @@ include "control.php";
                                           <input type="date" name="f_date" value=<?= $value['flight_date'] ?> disabled />
                                     </td>
                                     <td>
-                                          <span class="material-icons-outlined edit">
-                                                <a href="./?act=f_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
-                                                      drive_file_rename_outline
-                                                </a>
-                                          </span>
+                                          <input name="key" value=<?= $key ?> hidden />
+                                                <button type="submit" style="color:#13a107; border-radius:50%">
+                                                      <span class="material-icons-outlined add" ">
+                                                            check_circle
+                                                      </span>
+                                                </button>
                                           <span class="material-icons-outlined del">
                                                 <a href="./?act=f_del&id=<?= $value['id'] ?>" style="color:rgb(255, 56, 56)">
                                                       delete_forever
@@ -101,6 +106,31 @@ include "control.php";
                               </form>
                         </tr>
                         <?php
+                              }else{
+                        ?>
+                                    <tr>
+                                         <td><?= ++$key ?></td>
+                                         <td><?= $value['f_from'] ?></td>
+                                         <td><?= $value['f_to'] ?></td>
+                                         <td><?= $value['flight_number'] ?></td>
+                                         <td><?= $value['flight_date'] ?></td>
+                                         <td>
+                                               <input name="key" value=<?= $key ?> hidden />
+                                               <span class="material-icons-outlined edit">
+                                                      <a href="./?act=f_edit&id=<?= $value['id'] ?>" style="color:rgb(0, 183, 255)">
+                                                            drive_file_rename_outline
+                                                      </a>
+                                                </span>
+                                               <span class="material-icons-outlined del">
+                                                     <a href="./?act=f_del&id=<?= $value['id'] ?>" style="color:rgb(255, 56, 56)">
+                                                           delete_forever
+                                                     </a>
+                                               </span>
+                                         </td>
+                                   </form>
+                             </tr>
+                        <?php
+                              }
                         }
                         ?>
                         <tr>
