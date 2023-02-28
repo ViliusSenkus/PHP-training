@@ -35,6 +35,11 @@ class Video extends Database{
             self::$db->query("UPDATE $this->table SET $newSqlFieldsValues WHERE id='$id'");
             return $this;
       }
+
+      public function delete($id){
+            self::$db->query("DELETE FROM $this->table WHERE id='$id'");
+            return $this;
+      }
       
 }
 
