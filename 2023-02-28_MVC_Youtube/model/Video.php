@@ -24,9 +24,18 @@ class Video extends Database{
            return self::$db->query("SELECT * FROM $this->table")->fetch_all(MYSQLI_ASSOC);
       }
 
-      public function update(){
+      public function update($id, $data){
+           $newData=[];
+            foreach($data as $k=>$v){
+                  $v=self::$db->real_escape_string($v);
+                  $newData[] = $k."='$v'";
+            }
+            $newSqlFieldsValues=implode(', ', $newData);
             
+            self::$db->query("UPDATE $this->table SET $newSqlFieldsValues WHERE id='$id'");
+            return $this;
       }
+      
 }
 
 ?>
