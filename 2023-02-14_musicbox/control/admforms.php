@@ -1,9 +1,6 @@
 <?php
 //data recieved from admin forms is processed here
 
-//  !!!!!!!!!!!!!!!!!dar trūksta playlistų (viešų) pridėjimo !!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
 // SONG----------------------------------
 if (isset ($_SESSION['user']) && $_SESSION['user']=="admin" && isset($_POST['song']) && $_POST['song']=="new"){
 

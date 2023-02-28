@@ -1,7 +1,5 @@
 <?php
 //catching action:
-
-//!!!!!!!!!!!!!!!!!!!!!Testuojant jeigu adreso laukelyje bus geto reikšmės, postas gali nerodyti ekrane.
 $action="";
 if (isset($_GET['act']) && $_GET['act'] !=""){
       $action=$_GET['act'];
