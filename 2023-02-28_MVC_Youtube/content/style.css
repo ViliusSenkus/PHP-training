@@ -1,0 +1,23 @@
+*{
+      box-sizing: border-box;
+      margin:0;
+      padding:0;
+      scroll-behavior: smooth;
+}
+body{
+      font-family: 'Roboto', sans-serif;
+      margin: 2vw;
+}
+.row{
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width:100%;
+}
+.block{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+}
