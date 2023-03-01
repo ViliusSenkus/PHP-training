@@ -26,5 +26,20 @@ $page=isset($_GET['page']) ? $_GET['page'] : "";
 
 ?>
 
+<script>
+      document.querySelector("sidebar").addEventListener("click", ()=>{
+            document.querySelector("sidebar").style.transform="translate(-250px, 0)";
+            document.querySelector(".cover").style.display="none";
+      });
+      document.querySelector(".cover").addEventListener("click", ()=>{
+            document.querySelector("sidebar").style.transform="translate(-250px, 0)";
+            document.querySelector(".cover").style.display="none";
+      });
+      document.querySelector("#spread_menu").addEventListener("click", ()=>{
+            document.querySelector("sidebar").style.transform="translate(250px, 0)";
+            document.querySelector(".cover").style.display="block";
+      });
+</script>
+
       </body>
 </html>
