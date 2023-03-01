@@ -7,7 +7,10 @@
 body{
       font-family: 'Roboto', sans-serif;
       margin: 2vw;
+      width:100vw;
 }
+
+
 .row{
       display:flex;
       flex-direction: row;
@@ -20,4 +23,54 @@ body{
       flex-direction: row;
       justify-content: center;
       align-items: center;
+}
+sidebar{
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      position: fixed;
+      top:0;
+      left:-250px;
+      flex-direction: row;
+      justify-content: start;
+      align-items: start;
+      visibility: visible;
+      transition: all 0.5s ease-in-out;
+}
+
+sidebar nav{
+      width: 250px;
+      height: 100vh;
+      background-color: white;
+}
+.cover{
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(128, 128, 128, 0.5);
+      position: fixed;
+      top:0;
+      left:0;
+}
+
+ul{
+      list-style-type: none;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      margin-inline-start: 0;
+      margin-inline-end: 0;
+      padding-inline-start: 0;
+}
+sidebar li{
+      margin: 15px 0;
+      font-size: 14px;
+      color: rgb(32, 32, 32);
+      padding: 5px;
+      margin-right: 10px;
+      border: 1px solid black;
+      border-radius: 8px;
+}
+sidebar hr{
+      width: 80%;
+      margin: 10px;
 }

@@ -1,0 +1,83 @@
+<div class="cover"></div>
+<sidebar>
+      <nav>
+            <div class="block">
+                  <div>spread sidebar</div>
+                  <div>LinkTubeLogo</div>
+            </div>
+            <ul>
+                  <li>
+                        <span>
+                              <!-- pakeisti ikonėle į savo -->
+                              <svg width="24px" height="24px"><path d="M12,4.33l7,6.12V20H15V14H9v6H5V10.45l7-6.12M12,3,4,10V21h6V15h4v6h6V10L12,3Z"></path></g></svg>
+                        </span>
+                        
+                        <a class="sidebar_button" href="./">Main</a>
+                  </li>
+                  <li>
+                        <span>icon</span>
+                        <a class="sidebar_button" href="?page=shorts">Shorts</a>
+                  </li>
+            </ul>
+            <hr>
+            <ul>
+                  <li>
+                        <span>icon</span>
+                        <a class="sidebar_button" href="?page=library">Video library</a>
+                  </li>
+                  <li>
+                        <span>icon</span>
+                        <a class="sidebar_button" href="?page=liked">Liked</a>
+                  </li>
+                  <li>
+                        <span>icon</span>
+                        <a class="sidebar_button" href="?page=later">Watch later</a>
+                  </li>
+                  <li>
+                        <span>icon</span>
+                        <a class="sidebar_button" href="?page=playlists">Playlists</a>
+                  </li>
+                  <li>
+                        <span>icon</span>
+                        <a class="sidebar_button" href="?page=history">History</a>
+                  </li>
+            </ul>
+            <hr>
+            <ul>Subscriptions
+                  <!-- Čia reikalingas foreach iš userio subscriptions -->
+                  <li>
+                        <span>icon</span>
+                        <a class="sidebar_button" href="?page=subscription&channel_id=$id">Channel 1</a>
+                  </li>
+                  <li>kanalas 2</li>
+                  <li>kanalas ....</li>
+            </ul>
+            <hr>
+            <ul>Feeds
+                  <li>
+                        <span>icon</span>
+                        <a class="sidebar_button" href="?page=popular">Popular</a>
+                  </li>
+                  <li>
+                        <span>icon</span>
+                        <a class="sidebar_button" href="?page=music">Music</a>
+                  </li>
+                  <li>
+                        <span>icon</span>
+                        <a class="sidebar_button" href="?page=movies">Movies</a>
+                  </li>
+                  <li>
+                        <span>icon</span>
+                        <a class="sidebar_button" href="?page=programming">Programming</a>
+                  </li>
+            </ul>
+      </nav>      
+</sidebar>
+
+<script>
+      document.querySelector("sidebar").addEventListener("click", ()=>{
+            document.querySelector("sidebar").style.transform="translate(-250px, 0)";
+            document.querySelector(".cover").style.display="none";
+
+      })
+</script>
