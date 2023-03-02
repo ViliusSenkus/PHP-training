@@ -2,20 +2,13 @@
 
 use Controller\PageStructure;
 
-
-
-
-// include "controller/PageStructure.php";
-
 spl_autoload_register(function($class){
-      echo $class."<br />";
       if(is_file($class.'.php'))
             include $class.'.php';
 });
+include "view/header.html";
 
 PageStructure::getSidebarMenu();
-include "view/header.html";
-// include "view/sidebar.php";
 $page=isset($_GET['page']) ? $_GET['page'] : "";
 
       switch ("$page") {
