@@ -150,3 +150,26 @@ sidebar a{
 .side-menu{
       margin-left: 10px;
 }
+
+/* --------------------Central space-------------------- */
+
+/* ---------------Main--------------- */
+/* Categories */
+.actual-cat nav{
+      margin: 10px 10px 20px 10px;
+}
+.actual-cat ul{
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      margin:0;
+}
+.actual-cat li{
+      background-color: lightgrey;
+      border-radius: 10px;
+      padding:5px 10px;
+}
+.actual-cat a{
+      text-decoration: none;
+      color: black;
+}

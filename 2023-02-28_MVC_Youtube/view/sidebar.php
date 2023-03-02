@@ -37,9 +37,7 @@ namespace View;
                               </div>
                         </li>
                   </a>
-            
-            
-          
+     
 <?php
             endforeach;
 ?>
