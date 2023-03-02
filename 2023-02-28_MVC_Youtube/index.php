@@ -1,28 +1,31 @@
 <?php
-//rooteriukas isskirtso uzklausas
+
+use Controller\PageStructure;
 
 
-include "model/Database.php";
-include "model/Video.php";
-include "model/Categories.php";
 
+
+// include "controller/PageStructure.php";
+
+spl_autoload_register(function($class){
+      echo $class."<br />";
+      if(is_file($class.'.php'))
+            include $class.'.php';
+});
+
+PageStructure::getSidebarMenu();
 include "view/header.html";
-include "view/sidebar.html";
-
-include "controller/PageStructure.php";
-
-
+// include "view/sidebar.php";
 $page=isset($_GET['page']) ? $_GET['page'] : "";
 
       switch ("$page") {
             case "video":
-                  PageStructure::mainTag("video");
+                  PageStructure::mainSpace("video");
                   break;
             default:
-                  PageStructure::mainTag();
+                  PageStructure::mainSpace();
                   break;
       }
-
 
 ?>
 

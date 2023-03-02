@@ -1,5 +1,6 @@
 <?php
 
+namespace Model;
 class Video extends Database{
       
       // public function __construct(){

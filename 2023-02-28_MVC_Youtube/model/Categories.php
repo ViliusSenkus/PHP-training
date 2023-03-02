@@ -1,4 +1,7 @@
 <?php
+
+namespace Model;
+
 class Categories extends Database{
       
       // public function __construct(){

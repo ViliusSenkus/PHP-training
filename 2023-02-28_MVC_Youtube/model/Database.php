@@ -1,5 +1,6 @@
 <?php
 
+namespace Model;
 abstract class Database{
       //data for connection to MySQL DB
       //change when hosting
@@ -7,7 +8,7 @@ abstract class Database{
       const HOST="localhost";
       const USER="root";
       const PASSWORD="";
-      const DATABASE="linktube";
+      const DATABASE_NAME="linktube";
       public static $db=false;
       public $table = false;
 
@@ -16,8 +17,8 @@ abstract class Database{
                   return;
             }
             try{
-                  self::$db=new mysqli(self::HOST, self::USER, self::PASSWORD, self::DATABASE);
-            }catch(Exception $e){
+                  self::$db=new \mysqli(self::HOST, self::USER, self::PASSWORD, self::DATABASE_NAME);
+            }catch(\Exception $e){
                   echo "<h2>Database is not accessable</h2><br />";
                   echo $e;
                   exit;
