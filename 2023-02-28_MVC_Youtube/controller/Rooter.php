@@ -31,8 +31,16 @@ class Rooter{
             if (isset($_GET['login']) && $_GET['login']=='true'){
                   include "view\login.html";
             }
-            
+            if (isset($_GET['setup']) && $_GET['setup']=='new'){
+                  include "view\signup.html";
+            }
       }
+
+
+
+
+
+      // reikia daryti logino patikrinima ir naujo userio sukurima - cia arba kitur
 }
 
       
