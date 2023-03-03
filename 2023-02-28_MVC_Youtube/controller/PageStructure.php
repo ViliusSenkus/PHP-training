@@ -7,16 +7,19 @@ class PageStructure{
             $sidebar = $sidebar->get();
             include "view/sidebar.php";
       }        
+            public static function getHeader(){
+            include "view/header.php";
+      }        
       public static function mainSpace($part="main"){
+            $actualbar = self::getActualBar();
             include "view/".$part.".php";
-            self::getActualBar();
+            
       }
-
-    
-
+  
       public static function getActualBar(){
             $actualbar = new \Model\Categories();
             $actualbar = $actualbar->get();
+            return $actualbar;
       }
 }
                   

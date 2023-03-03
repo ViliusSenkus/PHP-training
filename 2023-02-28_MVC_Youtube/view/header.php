@@ -1,3 +1,9 @@
+<?php
+
+namespace View;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +39,16 @@
                   </form>
             </div>
             <div class="block">
-                  <div>
-                        <span class="material-symbols-outlined">
-                              notifications_active
-                        </span>
-                  </div>
-                  <div><img src="#" alt="logo"/></div>
+                  <!-- Štas blokas turi rodyti reikšmes atsižvelgiant į prisijungimą:
+                        user=0 - neprisijungta
+                        user=1 - useris
+                        user=2 - adminas
+                  -->
+<?php
+
+      \Controller\Rooter::getUserHeader();
+
+?>
                   <!-- Nepridetas funkcionalumas: paspaudus ant user logo turi atsirasti userio meniu -->
             </div>
       </div>

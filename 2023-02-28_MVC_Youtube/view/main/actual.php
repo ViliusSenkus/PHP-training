@@ -11,7 +11,7 @@
 <?php
 
       foreach($actualbar as $a) :
-            if ($a['actual']===1) :
+            if ($a['actual']==1) :
 
 ?>
                   <li>
