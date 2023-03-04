@@ -2,17 +2,26 @@
 
 namespace Controller;
 class PageStructure{
-            public static function getSidebarMenu(){
+      public static function getHeader(){
+            include "view/header.php";
+      }     
+      
+      public static function getSidebarMenu(){
             $sidebar = new \Model\Elements\Sidebar();
             $sidebar = $sidebar->get();
             include "view/sidebar.php";
       }        
-            public static function getHeader(){
-            include "view/header.php";
-      }        
+          
       public static function mainSpace($part="main"){
+            
+            if(isset($_GET['adminview'])){
+                  $admin = new Admin();
+                  return $admin -> getTable($_GET['adminview']);
+            }
+            
             $actualbar = self::getActualBar();
             include "view/".$part.".php";
+            
             
       }
   

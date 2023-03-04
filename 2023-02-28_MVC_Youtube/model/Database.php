@@ -25,7 +25,7 @@ abstract class Database{
             }
       }
 
-      public function set($data){
+      public function set($data){ //reikalaujamas formatas [key=>value, key2=>value2]
             foreach($data as $k=>$v){
                   $v=self::$db->real_escape_string($v);
                   $data[$k] = $v;
@@ -56,6 +56,10 @@ abstract class Database{
       public function delete($id){
             self::$db->query("DELETE FROM $this->table WHERE id='$id'");
             return $this;
+      }
+
+      public function getTableHeaders(){
+            return self::$db->query("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'linktube' AND TABLE_NAME = '$this->table'")->fetch_all();
       }
 }
 ?>

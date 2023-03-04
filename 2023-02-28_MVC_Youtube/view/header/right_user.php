@@ -1,11 +1,23 @@
 <?php
 
 namespace View\Header;
+$avatar=$_SESSION['avatar'];
 
 ?>
 <div>
       <span class="material-symbols-outlined">
             notifications_active
       </span>
+    
 </div>
-<div><img src="#" alt="logo"/></div>
+<div class="avatar">
+      <img src="content/avatars/<?=$avatar?>" alt="logo"/>
+      <div><?=$_SESSION['user']?></div>
+</div>
+<div>
+      <a href="?log=off">
+            <span class="material-symbols-outlined">
+                  settings_power
+            </span>
+      </a>
+</div>

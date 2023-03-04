@@ -13,8 +13,14 @@ spl_autoload_register(function($class){
             include $class.'.php';
 });
 
+// tikrinamas log in ir sign up statusas, jeigu prisijungta praeinama toliau.
+Rooter::logoff();
+Rooter::signup();
+Rooter::login();
+
 //nustatome koks vartotojas prisijungęs. Atliekama prieš viso turinio užkrovimą, kad atvaizduotyi teisingą/reikiamą turinį.
 Rooter::getUser();
+
 
 //pridedamas headeris.
 PageStructure::getHeader();

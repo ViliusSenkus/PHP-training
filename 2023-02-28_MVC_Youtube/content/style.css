@@ -7,7 +7,7 @@
 body{
       font-family: 'Roboto', sans-serif;
       margin: 10px;
-      width:100vw;
+      width:95vw;
 }
 
 ul{
@@ -87,6 +87,27 @@ sidebar img{
       border: 1px solid lightgray;
       box-shadow: 0 0 2px lightgray, inset 0 0 2px lightgray;
 }
+.avatar{
+      text-align: center;
+}
+.avatar img{
+      width:40px;
+      height:40px;
+      margin: 15px 10px 0 10px;
+      border-radius: 50%;
+      background-color: lightgrey;
+      text-align: center;
+}
+.admin-top{
+      text-align: center;
+      padding: 0 10px;
+      border-right: 1px dotted grey;
+}
+header a{
+      text-decoration: none;
+      color: black
+}
+
 /* ---------------SIDEBAR--------------- */
 .cover{
       display: none;
@@ -165,9 +186,9 @@ sidebar a{
       width: 40vw;
       height: 40vh;
       max-width: 500px;
-      max-height: 500px;
+      max-height: 550px;
       min-width: 250px;
-      min-height: 400px;
+      min-height: 450px;
       background-color: white;
       display: flex;
       flex-direction: column;
@@ -194,6 +215,12 @@ sidebar a{
       margin-top: 10px;
       width: 230px;
 }
+
+.log-form a:last-of-type{
+      align-self:flex-end;
+      margin: 10px;
+}
+
 
 /* ---------------Main--------------- */
 main{

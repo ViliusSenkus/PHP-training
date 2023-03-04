@@ -46,7 +46,7 @@ namespace View;
                   -->
 <?php
 
-      \Controller\Rooter::getUserHeader();
+     \Controller\Rooter::getUserHeader();
 
 ?>
                   <!-- Nepridetas funkcionalumas: paspaudus ant user logo turi atsirasti userio meniu -->
