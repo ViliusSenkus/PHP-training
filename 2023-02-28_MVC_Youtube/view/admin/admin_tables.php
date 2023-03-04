@@ -1,12 +1,10 @@
 <div class="admin-table">
-      <h2>Users CRUD table</h2>
+      <h2>CRUD table</h2>
       <table>
             <thead>
                   <tr>
                         <th>#</th>
 <?php
-      echo"<pre>";
-      print_r($thead);
       foreach ($thead as $v) : 
 ?>
                         <th><?=$v[0]?></th>
