@@ -28,22 +28,24 @@
                         foreach ($thead as $key=>$value) :
                   ?>
                               <td>
-                                    <input type="text" name="<?=$thead[0]?>">
+                                    <input type="text" name="<?=$value[0]?>">
                               </td>
                   <?php
                         endforeach;
                   ?>
                               <td>
-                                    <a href="?adminview=<?= $selection ?>&adm_act=add">
+                                    <input type="text" name="table" value="<?=$selection?>" hidden>
+                                    <input type="text" name="adm_act" value="add" hidden>
+                                    <button type="submit" class="add">
                                           <span class="material-symbols-outlined">
                                                 person_add
                                           </span>
-                                    </a>
+                                    </buton>
                               </td>
             
                   
                         
-                        
+                        </form>
                   </tr>
 <?php
       foreach ($tbody as $key=>$value) :
@@ -64,18 +66,24 @@
             endforeach;
       ?>
                         <td class="adm_act">
+                              <input type="text" name="table" value="<?=$selection?>" hidden>
+                              <input type="text" name="id" value="<?=$value['id']?>" hidden>
+                              <input type="text" name="adm_act" value="del" hidden>
+                              <!-- aukštesnėje eilutėje reikia prideti ir edit reiksme -->
+                              <!-- žemiau reikia pakeisti į mygtuką arba palikti kaip yra -->
                               <a href="?adminview=<?=$selection?>&adm_act=edit&entry=<?=$key?>&id=<?=$value['id']?>">
                                     <span class="material-symbols-outlined">
                                           border_color
                                     </span>
                               </a>
-                              <a href="?adminview=<?=$selection?>&adm_act=del&id=<?=$value['id']?>">
+                              <button type="submit">
                                     <span class="material-symbols-outlined">
                                           delete_forever
                                     </span>
-                              </a>
+                              </button>
                         </td>
                   </tr>
+            </form>
 <?php
       endforeach;
 ?>

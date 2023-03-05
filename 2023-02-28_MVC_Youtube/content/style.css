@@ -270,11 +270,13 @@ sidebar a{
       padding:2px;
       margin: 0 5px;
 }
-.admin-table a:last-child{
+.admin-table button:last-child{
       color: red;
 }
-.admin-table tr:first-of-type a{
-      color: green;
+.add{
+     color: green;
+     background-color: whtie;
+     border: 1px solid green;
 }
 /* ---------------Main--------------- */
 main{

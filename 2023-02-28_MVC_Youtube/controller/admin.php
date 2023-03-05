@@ -7,7 +7,7 @@ class Admin {
       public $thead=false;
 
       public static function getTable($selection){
-
+            $admTable=$selection;
             $data=new \Model\Admin($selection);
             $thead=$data->getTableHeaders();
             $tbody=$data->get();
@@ -15,7 +15,24 @@ class Admin {
             }
             
 
-      // @ia pasigaunam adm_act eventa ir issisaukiam pridejimo f-ja is modelio.
-      // pati pradzia(iniciacija) turi buti index faile.
+      
+      public static function getAdminEvent(){
+            isset ($_POST['adm_act']) ? $action=$_POST['adm_act'] : $action=false;
+            
+            switch ($action){
+                  case 'add':
+                        Admin::set($data);
+                        break;
+                  case 'del':
+                        Admin::del($data);
+                        break;
+                  case 'edit':
+                        Admin::update($data);
+                        break;
+                  default:
+                        break;
+
+            }
+      }      
 }
 

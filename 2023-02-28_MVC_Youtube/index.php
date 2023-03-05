@@ -6,6 +6,7 @@ session_start();
 
 use Controller\PageStructure;
 use Controller\Rooter;
+use Controller\Admin;
 
 //funkcija automatiškai iš sirtingų failų užkrauna bet kurioje kodo vietoje iškviečiamą klasę
 spl_autoload_register(function($class){
@@ -27,6 +28,20 @@ PageStructure::getHeader();
 
 //pridedamas sidebaras.
 PageStructure::getSidebarMenu();
+
+
+                        echo "index.php faile (~33 eilute) pagautas veiksmas su tokiais kintamaisais: <br />";
+                        echo "<pre> session - ";
+                        print_r($_SESSION);
+                        echo "<br />GETas - ";
+                        print_r($_GET);
+                        echo "<br />POSTas - ";
+                        print_r($_POST);
+                        echo "</pre>";
+
+
+//ADMIN CRUD veiksmai:
+Admin::getAdminEvent();
 
 //nustatomas koks turinys bus pagrindiniame naršyklės plote.
 $page=isset($_GET['page']) ? $_GET['page'] : "";
