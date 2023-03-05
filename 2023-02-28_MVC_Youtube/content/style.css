@@ -221,6 +221,58 @@ sidebar a{
       margin: 10px;
 }
 
+/* Admin */
+
+.admin-table{
+      display:flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      margin-top: 20px;
+}
+.admin-table h2{
+      margin: 20px;
+      text-transform:uppercase;
+}
+.admin-table table{
+      border-collapse: collapse;
+      text-align: left;
+}
+.admin-table td{
+      border:1px solid black;
+      padding:0 5px;
+}
+.admin-table th{
+      border:1px solid white;
+      padding:0 5px;
+}
+.admin-table thead{
+      background-color: black;
+      color: white;
+      text-align: center;
+      border: 1px solid white;
+}
+.admin-table tr:nth-child(even){
+      background-color: #f2f2f2;
+}
+.admin-table td:nth-child(1),
+.admin-table td:nth-child(2){
+      text-align: right;
+}
+.admin-table adm-act{
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+}
+.admin-table a{
+      text-decoration: none;
+      color: black;
+      padding:2px;
+      margin: 0 5px;
+}
+.admin-table a:last-child{
+      color: red;
+}
 
 /* ---------------Main--------------- */
 main{
