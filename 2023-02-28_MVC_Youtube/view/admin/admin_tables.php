@@ -5,6 +5,7 @@
                   <tr>
                         <th>#</th>
 <?php
+      // Prie kiekvieno stulpelio reikia prideti sortinima Up/Down
       foreach ($thead as $v) : 
 ?>
                         <th><?=$v[0]?></th>
@@ -16,15 +17,16 @@
             </thead>
             <tbody>
                   <tr>
-                        <td></td>
-                        <!-- sitoje vietoje reikia prideti prasukima pagal lenteles stulpeliu skaiciu priklausomai nuo pasirinktos lenteles, kad sudeti tisinga skaiciu td->input arba add padaryti gale o input laukelius parodyti tik paspaudus add -->
                         <td>
-                              <a href="?adm_act=add&id=<?=$value['id']?>">
+                              <a href="?adminview=<?=$selection?>&adm_act=add&id=<?=$value['id']?>">
                                     <div class="adm_act">
                                           Add
                                     </div>
                               </a>
                         </td>
+                        <td></td>
+                        <!-- sitoje vietoje reikia prideti prasukima pagal lenteles stulpeliu skaiciu priklausomai nuo pasirinktos lenteles, kad sudeti tisinga skaiciu td->input arba add padaryti gale o input laukelius parodyti tik paspaudus add -->
+                        
                   </tr>
 <?php
       foreach ($tbody as $key=>$value) :
@@ -40,12 +42,12 @@
             endforeach;
       ?>
                         <td class="adm_act">
-                              <a href="?adm_act=edit&entry=<?=$key?>&id=<?=$value['id']?>">
+                              <a href="?adminview=<?=$selection?>&adm_act=edit&entry=<?=$key?>&id=<?=$value['id']?>">
                                     <span class="material-symbols-outlined">
                                           border_color
                                     </span>
                               </a>
-                              <a href="?adm_act=del&id=<?=$value['id']?>">
+                              <a href="?adminview=<?=$selection?>&adm_act=del&id=<?=$value['id']?>">
                                     <span class="material-symbols-outlined">
                                           delete_forever
                                     </span>
@@ -57,5 +59,5 @@
 ?>
             </tbody>
       </table>
-
+      <!-- cia galima prideti lenteles pildymo notes. Pvz.: useriui - koks skaiciukas kokia role ir pan.-->
 </div>
