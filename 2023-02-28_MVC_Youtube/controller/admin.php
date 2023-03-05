@@ -13,5 +13,9 @@ class Admin {
             $tbody=$data->get();
                         include "view/admin/admin_tables.php";
             }
-    
+            
+
+      // @ia pasigaunam adm_act eventa ir issisaukiam pridejimo f-ja is modelio.
+      // pati pradzia(iniciacija) turi buti index faile.
 }
+

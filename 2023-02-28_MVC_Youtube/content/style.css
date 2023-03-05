@@ -273,7 +273,9 @@ sidebar a{
 .admin-table a:last-child{
       color: red;
 }
-
+.admin-table tr:first-of-type a{
+      color: green;
+}
 /* ---------------Main--------------- */
 main{
       margin: 20px;
