@@ -1,7 +1,11 @@
 <?php
 
 namespace Controller;
+
 class PageStructure{
+
+      public $videoList = [];
+
       public static function getHeader(){
             include "view/header.php";
       }     
@@ -20,6 +24,8 @@ class PageStructure{
             }
             
             $actualbar = self::getActualBar();
+            $videoList = new \Model\Video();
+            $videoList = $videoList->get();
             include "view/".$part.".php";
             
             
