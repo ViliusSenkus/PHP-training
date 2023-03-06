@@ -18,17 +18,16 @@ class PageStructure{
           
       public static function mainSpace($part="main"){
             
+            // if'as skirtas administratoriaus langu keitimui
             if(isset($_GET['adminview'])){
                   $admin = new Admin();
                   return $admin -> getTable($_GET['adminview']);
             }
-            
+
             $actualbar = self::getActualBar();
             $videoList = new \Model\Video();
             $videoList = $videoList->get();
             include "view/".$part.".php";
-            
-            
       }
   
       public static function getActualBar(){
