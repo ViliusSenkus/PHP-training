@@ -21,13 +21,22 @@ class Admin {
             
             switch ($action){
                   case 'add':
-                        Admin::set($data);
+                        $data = $_POST;
+                        $postedData = new \Model\Admin($_POST['table']);
+                        unset($data['adm_act']);
+                        unset($data['table']);
+                        unset($data['id']);
+                        unset($data['date_added']);
+                        $postedData->set($data);
                         break;
                   case 'del':
-                        Admin::del($data);
+                        $data = $_POST;
+                        $postedData = new \Model\Admin($_POST['table']);
+                        // $actionData['date_added'] = getdate();
+                        $postedData->delete($data['id']);
                         break;
                   case 'edit':
-                        Admin::update($data);
+                        // Admin::update($data);
                         break;
                   default:
                         break;

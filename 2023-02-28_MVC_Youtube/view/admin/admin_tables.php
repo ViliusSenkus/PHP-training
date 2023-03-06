@@ -3,7 +3,6 @@
       <table>
             <thead>
                   <tr>
-                        <!-- sitoje vietoje reikia prideti prasukima pagal lenteles stulpeliu skaiciu priklausomai nuo pasirinktos lenteles, kad sudeti tisinga skaiciu td->input arba add padaryti gale o input laukelius parodyti tik paspaudus add -->
                         <th>#</th>
 <?php
       // Prie kiekvieno stulpelio reikia prideti sortinima Up/Down
@@ -18,19 +17,27 @@
             </thead>
             <tbody>
                   <tr>
+                        <!-- įrašo pridėjimo eilutės formavimas -->
                         <form method="POST">
-                              <td>
+                              <td colspan="2">
                                     <div class="adm_act">
-                                          New
+                                          New entry
                                     </div>
                               </td>
                   <?php
                         foreach ($thead as $key=>$value) :
+                              if ($value[0]=='id') {
+                                    continue;
+                              }elseif ($value[0]=='date_added'){
+                                    echo "<td></td>";
+                              }else{
                   ?>
+                              
                               <td>
                                     <input type="text" name="<?=$value[0]?>">
                               </td>
                   <?php
+                              }
                         endforeach;
                   ?>
                               <td>
@@ -48,6 +55,7 @@
                         </form>
                   </tr>
 <?php
+            // lentelės įrašų formavimas eilutė po eilutės;
       foreach ($tbody as $key=>$value) :
 ?>    
             <form method="POST">
@@ -56,12 +64,20 @@
 
       <?php
             $i=0;
-            foreach ($value as $v) : 
+            foreach ($value as $k=>$v) :
+                  if ($k=='id' || $k=='date_added') {
       ?>
+                        <td>
+                              <input type="text" value="<?=$v?>" name="<?=$thead[$i][0]?>" disabled>
+                        </td>
+      <?php
+                  }else{
+      ?>          
                         <td>
                               <input type="text" value="<?=$v?>" name="<?=$thead[$i][0]?>">
                         </td>
       <?php
+                  }
             $i++; //laukelių stulpeliuose pavadinimams.
             endforeach;
       ?>
