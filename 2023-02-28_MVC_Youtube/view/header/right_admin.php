@@ -22,6 +22,15 @@ namespace View\Header;
       </a>
 </div>
 <div class="admin-top">
+      <a href="./?adminview=categories">
+            <span class="material-symbols-outlined">
+                  category
+            </span>
+            <br />
+            <span>Categ</span>
+      </a>
+</div>
+<div class="admin-top">
       <div class="admin-img">
             <span class="material-symbols-outlined">
                   admin_panel_settings

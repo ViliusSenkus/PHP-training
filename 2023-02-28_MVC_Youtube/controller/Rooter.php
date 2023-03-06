@@ -58,7 +58,12 @@ class Rooter{
                         $_SESSION['avatar']=$v['avatar'];
                         break;   
                   }
-            header("Location: ./");
+                  if($_SESSION['role']==2){
+                        header("Location: ./?adminview=categories");
+                  }else{
+                        header("Location: ./");
+                  }
+
             } 
       }
 

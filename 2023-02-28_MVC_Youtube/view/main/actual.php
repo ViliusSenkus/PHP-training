@@ -24,10 +24,6 @@
             endforeach;
 
 ?>
-                  <li>
-                        <a href="?category=">Kategorija</a>
-                  </li>
-                  List of actual categories - set by admin;
             </ul>
       </nav>
 </div>

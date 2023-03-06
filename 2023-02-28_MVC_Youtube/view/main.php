@@ -11,6 +11,8 @@
       include "view/main/actual.php";
 
 ?>
+            
+      
       <h2>Das ist main page where all videos should appear </h2>
       <p><a href="?page=video"> To One video page </a></p>
       <p>One more page for login will be needed somewhere.</p>

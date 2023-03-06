@@ -30,6 +30,10 @@
                                     continue;
                               }elseif ($value[0]=='date_added'){
                                     echo "<td></td>";
+                              }elseif ($value[0]=='categories'){
+                                    echo "<td>";
+                                    include('view/admin/categories.php');
+                                    echo "</td>";
                               }else{
                   ?>
                               
@@ -82,16 +86,17 @@
             endforeach;
       ?>
                         <td class="adm_act">
+
                               <input type="text" name="table" value="<?=$selection?>" hidden>
                               <input type="text" name="id" value="<?=$value['id']?>" hidden>
                               <input type="text" name="adm_act" value="edit" hidden>
-                              <!-- aukštesnėje eilutėje reikia prideti ir edit reiksme -->
-                              <!-- žemiau reikia pakeisti į mygtuką arba palikti kaip yra -->
+
                               <button type="submit">
                                     <span class="material-symbols-outlined">
                                           border_color
                                     </span>
                               </button>
+                              
                               <a href="?adminview=<?=$selection?>&adm_act=del&id=<?=$value['id']?>">
                                     <span class="material-symbols-outlined">
                                           delete_forever

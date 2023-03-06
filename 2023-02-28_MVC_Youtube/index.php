@@ -30,14 +30,14 @@ PageStructure::getHeader();
 PageStructure::getSidebarMenu();
 
 
-                        echo "index.php faile (~33 eilute) pagautas veiksmas su tokiais kintamaisais: <br />";
-                        echo "<pre> session - ";
-                        print_r($_SESSION);
-                        echo "<br />GETas - ";
-                        print_r($_GET);
-                        echo "<br />POSTas - ";
-                        print_r($_POST);
-                        echo "</pre>";
+                        // echo "index.php faile (~33 eilute) pagautas veiksmas su tokiais kintamaisais: <br />";
+                        // echo "<pre> session - ";
+                        // print_r($_SESSION);
+                        // echo "<br />GETas - ";
+                        // print_r($_GET);
+                        // echo "<br />POSTas - ";
+                        // print_r($_POST);
+                        // echo "</pre>";
 
 
 //ADMIN CRUD veiksmai:

@@ -5,8 +5,15 @@ namespace Controller;
 class Admin {
       
       public $thead=false;
+      public $options=false;
 
       public static function getTable($selection){
+
+            //kodas kategorijų susigražinimui į $options masyvą
+            $options= new \Model\Categories();
+            $options=$options->get();
+
+            //Pagrindinis kodas
             $admTable=$selection;
             $data=new \Model\Admin($selection);
             $thead=$data->getTableHeaders();
@@ -19,8 +26,12 @@ class Admin {
       public static function getAdminEvent(){
             isset ($_POST['adm_act']) ? $action=$_POST['adm_act'] : $action=false;
             isset ($_GET['adm_act']) ? $action=$_GET['adm_act'] : $action;
-            $postedData = new \Model\Admin($_GET['adminview']);
-            $data = $_POST;
+
+            if($action){
+                  $postedData = new \Model\Admin($_GET['adminview']);
+                  $data = $_POST;
+            }
+            
             switch ($action){
                   case 'add':
                         unset($data['adm_act']);
