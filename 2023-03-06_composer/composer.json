@@ -1,0 +1,20 @@
+{
+    "name": "vil/app",
+    "description": "Mano mokomoji aplikacija",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Vil\\App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vilius Senkus",
+            "email": "vilius.s@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "league/climate": "dev-master"
+    }
+}
