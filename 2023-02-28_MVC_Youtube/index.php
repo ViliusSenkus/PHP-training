@@ -60,8 +60,9 @@ $page=isset($_GET['page']) ? $_GET['page'] : "";
 Rooter::isLoginNeeded();
 ?>
 
-<!-- skriptas šoninio meniu atsiradimui ir paslėpimui -->
+
 <script>
+      // skriptas šoninio meniu atsiradimui ir paslėpimui
       document.querySelector("sidebar").addEventListener("click", ()=>{
             document.querySelector("sidebar").style.transform="translate(-250px, 0)";
             document.querySelector(".cover").style.display="none";

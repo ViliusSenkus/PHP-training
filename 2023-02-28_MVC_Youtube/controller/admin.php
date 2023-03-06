@@ -18,11 +18,11 @@ class Admin {
       
       public static function getAdminEvent(){
             isset ($_POST['adm_act']) ? $action=$_POST['adm_act'] : $action=false;
-            
+            isset ($_GET['adm_act']) ? $action=$_GET['adm_act'] : $action;
+            $postedData = new \Model\Admin($_GET['adminview']);
+            $data = $_POST;
             switch ($action){
                   case 'add':
-                        $data = $_POST;
-                        $postedData = new \Model\Admin($_POST['table']);
                         unset($data['adm_act']);
                         unset($data['table']);
                         unset($data['id']);
@@ -30,13 +30,16 @@ class Admin {
                         $postedData->set($data);
                         break;
                   case 'del':
-                        $data = $_POST;
-                        $postedData = new \Model\Admin($_POST['table']);
-                        // $actionData['date_added'] = getdate();
-                        $postedData->delete($data['id']);
+                        $id = $_GET['id'];
+                        $postedData->delete($id);
                         break;
                   case 'edit':
-                        // Admin::update($data);
+                        $id=$data['id'];
+                        unset($data['adm_act']);
+                        unset($data['table']);
+                        unset($data['id']);
+                        unset($data['date_added']);
+                        $postedData->update($id, $data);
                         break;
                   default:
                         break;

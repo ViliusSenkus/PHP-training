@@ -84,19 +84,20 @@
                         <td class="adm_act">
                               <input type="text" name="table" value="<?=$selection?>" hidden>
                               <input type="text" name="id" value="<?=$value['id']?>" hidden>
-                              <input type="text" name="adm_act" value="del" hidden>
+                              <input type="text" name="adm_act" value="edit" hidden>
                               <!-- aukštesnėje eilutėje reikia prideti ir edit reiksme -->
                               <!-- žemiau reikia pakeisti į mygtuką arba palikti kaip yra -->
-                              <a href="?adminview=<?=$selection?>&adm_act=edit&entry=<?=$key?>&id=<?=$value['id']?>">
+                              <button type="submit">
                                     <span class="material-symbols-outlined">
                                           border_color
                                     </span>
-                              </a>
-                              <button type="submit">
+                              </button>
+                              <a href="?adminview=<?=$selection?>&adm_act=del&id=<?=$value['id']?>">
                                     <span class="material-symbols-outlined">
                                           delete_forever
                                     </span>
-                              </button>
+                              </a>
+                              
                         </td>
                   </tr>
             </form>

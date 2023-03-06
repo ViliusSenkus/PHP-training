@@ -41,7 +41,7 @@ abstract class Database{
            return self::$db->query("SELECT * FROM $this->table")->fetch_all(MYSQLI_ASSOC);
       }
 
-      public function update($id, $data){
+      public function update($id, $data){  //id- įrašo id, data - masyvas, key=>value principu.
            $newData=[];
             foreach($data as $k=>$v){
                   $v=self::$db->real_escape_string($v);
