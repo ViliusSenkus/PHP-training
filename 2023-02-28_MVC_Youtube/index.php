@@ -1,4 +1,5 @@
 <?php
+use Model\Categories;
 
 session_start();
 
@@ -7,6 +8,7 @@ session_start();
 use Controller\PageStructure;
 use Controller\Rooter;
 use Controller\Admin;
+use Model\FullData;
 
 //funkcija automatiškai iš sirtingų failų užkrauna bet kurioje kodo vietoje iškviečiamą klasę
 spl_autoload_register(function($class){
@@ -58,6 +60,14 @@ $page=isset($_GET['page']) ? $_GET['page'] : "";
 
 // jeigu buvo iškviestas login puspalis, atvaizduojame login formą:
 Rooter::isLoginNeeded();
+
+
+
+
+$duomenys=new FullData();
+echo "<pre>";
+print_r($duomenys);
+echo "</pre>";
 ?>
 
 
