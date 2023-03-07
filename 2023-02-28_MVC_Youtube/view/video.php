@@ -6,56 +6,88 @@
 
 <div class="video-page">
 
-
-
       <div class="video-box">
 
-      <?php
-            foreach($videoList as $key=>$value) :
-                  if ($_GET['id'] != $value['id'])
-                        continue;
-      ?>
             <h2>
-                  <?=$value['name']?>;
+                  <?=$videoList['video']['name']?>;
             </h2>
             
-            <iframe src="<?=$value['video_url']?>">
-                  
-            </iframe>
+            <iframe src="<?=$videoList['video']['video_url']?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; gyroscope" allowfullscreen></iframe>
             
             <div class="video-actions">
                   <div>
-                        <img src="content/avatars/..." alt="user logo" />
-                        User name
-                        subscribers number
-                        subscribe
+                        <div class="user-logo">
+                              <img src="content/avatars/<?=$videoList['user']['avatar']?>" alt="user logo" />
+                        </div>
+                        
+                        <div>
+                              <h4>
+                                    <?=$videoList['user']['nickname']?>
+                              </h4>
+
+                              <a href="#">
+                                    <div class="user-action-button">
+                                          follow
+                                    </div>
+                              </a>
+                        </div>
+                        
                   </div>
                   <div>
-                        Like
-                        Add to playlist
-                        Add to waiting list
+                        <a href="#">
+                              <span class="material-symbols-outlined">
+                                    thumb_up
+                              </span>
+                        </a>
+                        <a href="#">
+                              <span class="material-symbols-outlined">
+                                    playlist_add
+                              </span>
+                        </a>
+                        <a href="#">
+                              <span class="material-symbols-outlined">
+                                    hourglass_empty
+                              </span>
+                        </a>
                   </div>
             </div>
             
             <div class="video-stat">
-                  views, date added
-                  description
+                  <div>
+                        views No...
+                  </div>
+                  <div>
+                        Added on <?=$videoList['video']['date_added']?>
+                  </div>
+            </div>
+            
+            <h3>Video description</h3>
+            <div class="video-description">
+                  
+                  <span>
+                        description
+                  </span>
             </div>
 
-      <?php
-            endforeach;
-      ?>
-
+            <h3>Comments</h3>
+            <a href="#">
+                  <span class="material-symbols-outlined">
+                        add_comment
+                  </span>
+            </a>
             <div class="video-coments">
+                  
                   <div>
-                        Add coment
+                        
                   </div>
                   <div class="user-coment">
-                        <div>
-                              <img src="content/avatars/..." alt="commenter logo" />
+                        <div >
+                              <h5>name</h5>
+                              <h6>Date</h6>
+                              <img class="avatar" src="content/avatars/..." alt="commenter logo" />
                         </div>
                         <div>
-                              <h6>name</h6>
+                              
                               <span>Komment</span>
                         </div>
                   </div>
@@ -63,14 +95,14 @@
 
 
       </div>
-      <div class="side-videos">
 
+      <div class="side-videos">
+            VideoList aside
       </div>
 </div>
-
+</main>
 <?php
 
       echo"<pre>";
       print_r($videoList);
 ?>
-</main>

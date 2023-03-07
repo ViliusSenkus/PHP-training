@@ -32,17 +32,21 @@ class PageStructure{
             
             //
             $actualbar = self::getActualBar();
-            $videoList = new \Model\Video();        
+            $video = new \Model\Video();        
 
+            //formuojamas dainų masyvas pagal pasirinktą kategoriją
             if(isset($_GET['category'])){
-                  $videoList=$videoList->video_by_category();
+                  $videoList=$video->videos_by_category();
             }else{
-                   $videoList = $videoList->get();
+                   $videoList = $video->get();
             }
-            
-            include "view/".$part.".php";
-            
 
+            //formuojamas vienos dainos informacijos masyvas pagal dainos id
+            if (isset($_GET['id']))
+                  $videoList=$video->full_video_info($_GET['id'])[0];        
+
+
+            include "view/".$part.".php";
             
       }
   
