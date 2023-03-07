@@ -1,4 +1,13 @@
+<main>
+
+<?php
+      include 'view/main/actual.php';
+?>
+
 <div class="video-page">
+
+
+
       <div class="video-box">
 
       <?php
@@ -64,3 +73,4 @@
       echo"<pre>";
       print_r($videoList);
 ?>
+</main>

@@ -62,12 +62,10 @@ $page=isset($_GET['page']) ? $_GET['page'] : "";
 Rooter::isLoginNeeded();
 
 
-
-
-$duomenys=new FullData();
-echo "<pre>";
-print_r($duomenys);
-echo "</pre>";
+// $video=new Model\Video();
+// echo "<pre>";
+// print_r($video->video_by_category());
+// echo "</pre>";
 ?>
 
 

@@ -44,22 +44,24 @@
                         <?php
                               $videodate = strtotime($video['date_added']);
                               $nowdate = strtotime(date('Y-m-d H:i:s'));
-                              $seconds = ($nowdate-$videodate+(2*60*60));
+                              $seconds = ($nowdate-$videodate);
 
-                              $secs = floor($seconds % 60);
-                              $mins = floor($seconds /60 % 60);
-                              $hours = floor($seconds / (60*60*24));
-                              $days = floor($seconds / (24 * 60 * 60) % 60);
-                              
-                              if ($days>1){
-                                    echo "$days d ago";
-                              }elseif($hours>1){
-                                    echo "$hours h ago";
-                              }elseif($mins>1)
-                                    echo "$mins min ago";
-                              else{
-                                    echo "$secs s ago";
+                              if (floor($seconds/(60*60*24*365)) >= 1){
+                                    $passedTime=floor($seconds/(60*60*24*365))." years ago";
+                              }elseif(floor($seconds/(60*60*24*31)) >= 1){
+                                    $passedTime=floor($seconds/(60*60*24*31))." months ago";
+                              }elseif(floor($seconds/(60*60*24*7)) >= 1){
+                                    $passedTime=floor($seconds/(60*60*24*7))." weeks ago";
+                              }elseif(floor($seconds/(60*60*24)) >= 1){
+                                    $passedTime=floor($seconds/(60*60*24))." days ago";
+                              }elseif(floor($seconds/(60*60)) >= 1){
+                                    $passedTime=floor($seconds/(60*60))." hours ago";
+                              }elseif(floor($seconds/(60)) < 1){
+                                    $passedTime=floor($seconds/(60))." minutes ago";
                               }
+                              
+                              echo $passedTime;
+                              
                         ?>
                               </span>
                         </div>
