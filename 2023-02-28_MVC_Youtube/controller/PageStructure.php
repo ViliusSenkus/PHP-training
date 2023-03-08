@@ -16,15 +16,19 @@ class PageStructure{
             $sidebar = $sidebar->get();
             include "view/sidebar.php";
       }        
-          
+            
+      public static function getActualBar(){
+            $actualbar = new \Model\Categories();
+            $actualbar = $actualbar->get();
+            return $actualbar;
+      }
 
-      /*
-      Pagal gautą $_GET parametrą suformuoja informaciją pagrindiniame lange atvaizduojamam turiniui ir nukreipia/prideda atitinkamą view/$_GET['page'].php failą.:
-            Jeigu GET admimview - nukreipiama i 
-      */
-            
       public static function mainSpace($part="main"){
-            
+            /*
+            Pagal gautą $_GET parametrą suformuoja informaciją pagrindiniame lange atvaizduojamam turiniui ir nukreipia/prideda atitinkamą view/$_GET['page'].php failą.:
+            Jeigu GET admimview - nukreipiama i 
+            */
+
             // if'as skirtas administratoriaus langu keitimui
             if(isset($_GET['adminview'])){
                   $admin = new Admin();
@@ -54,11 +58,6 @@ class PageStructure{
             
       }
   
-      public static function getActualBar(){
-            $actualbar = new \Model\Categories();
-            $actualbar = $actualbar->get();
-            return $actualbar;
-      }
 }
                   
 ?>

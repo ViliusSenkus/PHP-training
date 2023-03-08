@@ -74,7 +74,6 @@ class Rooter{
 
             } 
       }
-
       
       public static function getUserHeader(){
             $role=$_SESSION['role'];

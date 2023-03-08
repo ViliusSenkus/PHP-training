@@ -21,7 +21,6 @@ class Admin {
                         include "view/admin/admin_tables.php";
             }
             
-
       
       public static function getAdminEvent(){
             isset ($_POST['adm_act']) ? $action=$_POST['adm_act'] : $action=false;

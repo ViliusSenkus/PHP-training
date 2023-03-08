@@ -29,21 +29,18 @@ namespace View;
                   <div class="block"><a href="./"><img src="content/img/linktube_s.png"></a></div>
             </div>
             <div class="block">
-                  <form method="GET">
+                  <form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                         <div class="block">
-                              <input id="main-search" type="text" name="serach_query" value="Search" />
-                              <span class="material-symbols-outlined icon-back-grey">
+                              <input type="text" name="page" value="search" hidden />
+                              <input id="main-search" type="text" name="serach_query" placeholder="Search" />
+                              
+                              <button type="submit" class="material-symbols-outlined icon-back-grey">
                                     search
-                              </span>
+                              </button>
                         </div>
                   </form>
             </div>
             <div class="block">
-                  <!-- Šitas blokas turi rodyti reikšmes atsižvelgiant į prisijungimą:
-                        user=0 - neprisijungta
-                        user=1 - useris
-                        user=2 - adminas
-                  -->
 
-                  <!-- Nepridetas funkcionalumas: paspaudus ant user logo turi atsirasti userio meniu -->
+            <!-- PASTABA: Blokas uždaromas tagais esančiaias header folderio failuose. -->
             

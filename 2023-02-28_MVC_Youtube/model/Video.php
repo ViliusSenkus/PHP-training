@@ -54,6 +54,10 @@ class Video extends Database{
             return $data;            
       }
 
+      public function search($text){
+            $result = self::$db->query("SELECT * FROM videos WHERE name like '%$text%' ")->fetch_all(MYSQLI_ASSOC);
+            return $result;
+      }
 }
 
 ?>

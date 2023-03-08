@@ -9,7 +9,9 @@ use Controller\PageStructure;
 use Controller\Rooter;
 use Controller\Admin;
 use Model\LinkedData\UserData;
+use Controller\Search;
 use Model\FullData;
+
 
 //funkcija automatiškai iš sirtingų failų užkrauna bet kurioje kodo vietoje iškviečiamą klasę
 spl_autoload_register(function($class){
@@ -21,9 +23,10 @@ spl_autoload_register(function($class){
 Rooter::logoff(); //jeigu atsijunginėjama nuo vartotojo - sunaikinama sesija.
 Rooter::signup();
 Rooter::login();
-
+                       
 //nustatome koks vartotojas prisijungęs. Atliekama prieš viso turinio užkrovimą, kad atvaizduoti teisingą/reikiamą turinį.
-UserData::getUser();
+UserData::getUser(); 
+//Čia(aukščiau) turi būti paduodami visi įmanomi prisujungusio vartotojo duomenys viename kintamajame
 
 
 //pridedamas headeris.
@@ -32,16 +35,14 @@ PageStructure::getHeader();
 //pridedamas sidebaras.
 PageStructure::getSidebarMenu();
 
-
-                        // echo "index.php faile (~33 eilute) pagautas veiksmas su tokiais kintamaisais: <br />";
-                        // echo "<pre> session - ";
-                        // print_r($_SESSION);
-                        // echo "<br />GETas - ";
-                        // print_r($_GET);
-                        // echo "<br />POSTas - ";
-                        // print_r($_POST);
-                        // echo "</pre>";
-
+echo "<br />";
+echo "<pre> session - ";
+print_r($_SESSION);
+echo "<br />GETas - ";
+print_r($_GET);
+echo "<br />POSTas - ";
+print_r($_POST);
+echo "</pre>";
 
 //ADMIN CRUD veiksmai:
 Admin::getAdminEvent();
@@ -49,9 +50,18 @@ Admin::getAdminEvent();
 //nustatomas koks turinys bus pagrindiniame naršyklės plote.
 $page=isset($_GET['page']) ? $_GET['page'] : "";
 
-      switch ("$page") {
+/* !!!!!!!!!!!!!!
+cai reikia ideti modeli arba kontroleri gaunanti reikiama info apie prisijungusi vartotoja
+!!!!!!!!!!!!!! */
+
+
+      switch ("$page") { // puslapiai turi skirtis priklausomai nuo pasirinkto sidemenu punkto
             case "video":
                   PageStructure::mainSpace("video");
+                  break;
+            case "search":
+                  if($_GET['serach_query'])
+                        Search::search($_GET['serach_query']);
                   break;
             default:
                   PageStructure::mainSpace();
@@ -62,11 +72,6 @@ $page=isset($_GET['page']) ? $_GET['page'] : "";
 // jeigu buvo iškviestas login puspalis, atvaizduojame login formą:
 Rooter::isLoginNeeded();
 
-
-// $video=new Model\Video();
-// echo "<pre>";
-// print_r($video->video_by_category());
-// echo "</pre>";
 ?>
 
 

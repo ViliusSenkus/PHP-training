@@ -10,6 +10,8 @@ $avatar=$_SESSION['avatar'];
       </span>
     
 </div>
+
+<!-- DEV: Nepridetas funkcionalumas - paspaudus ant user logo turi atsirasti userio meniu -->
 <div class="avatar">
       <img src="content/avatars/<?=$avatar?>" alt="logo"/>
       <div><?=$_SESSION['user']?></div>
