@@ -1,3 +1,31 @@
+<style>
+      #add-comment:hover{
+            cursor: pointer;
+      }
+      #comment-form form{
+            display:flex;
+            flex-direction: column;
+            width: 450px;
+      }
+      #comment-form form input{
+            width:450px;
+            margin-bottom: 5px;
+      }
+      #comment-form form textarea{
+            resize: none;
+            padding: 10px;
+            height: 100px;
+            width: 450px;
+      }
+      #comment-form form button{
+            margin:10px;
+            align-self: center;
+            width:150px;
+            padding: 2px 0;
+      }
+</style>
+
+
 <main>
 
 <?php
@@ -84,7 +112,7 @@
                               <label>
                                     Comment:
                               </label>
-                              <textarea name="comment_text"></textarea>
+                              <textarea name="comment_text" maxlength="200" wrap="hard"></textarea>
                               <button type="submit">Comment</button>
                         </form>
 
