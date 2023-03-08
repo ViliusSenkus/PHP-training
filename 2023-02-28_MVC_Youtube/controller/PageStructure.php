@@ -48,16 +48,30 @@ class PageStructure{
 
             //formuojamas vienos dainos informacijos masyvas pagal dainos id
             if (isset($_GET['id']))
-                  $videoList=$video->full_video_info($_GET['id'])[0];        
+                  $videoList=$video->full_video_info($_GET['id'])[0];
+                  
+            
 
+            if (isset($_POST['act']) && $_POST['act'] == "new_commnet"){
+                  unset($_POST['act']);
+                  $comments = new \Model\Comments();
+                  $comments->set($_POST);
+            }
+            
             // if ($part=="video"){  //Bandžiau įdeti followinga.
             //       $data= new \Model\FullData();
             //       $data->follow();
             // }
-            include "view/".$part.".php";
-            
+            include "view/".$part.".php";      
       }
-  
+           
+            
+                  
+                  
+                  
+                          
+
+            
 }
                   
 ?>

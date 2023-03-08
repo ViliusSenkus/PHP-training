@@ -44,11 +44,41 @@ class Video extends Database{
                   $catName=self::$db->query("SELECT category FROM categories WHERE id='$catId'")->fetch_all()[0][0];
                   $catNames[]=$catName;
             }
+
+            $comments = new \Model\Comments();
+            $comments=$comments->commentsByVideos($id);
             
+            $comentedUser= new Users();
+            foreach($comments as $k=>$v){
+                  if ($v['registered']=="1"){
+                        $commenterId=$v['commenter'];
+                        $comments[$k]=array(
+                              'video_id' => $v['video_id'],
+                              'comment' => $v['comment'],
+                              'date_added' => $v['date_added'],
+                              'commenter' => $comentedUser->getName($commenterId),
+                              'avatar' =>  $comentedUser->getAvatar($commenterId)
+                        );   
+                  } else {
+                        $comments[$k]=array(
+                              'video_id' => $v['video_id'],
+                              'comment' => $v['comment'],
+                              'date_added' => $v['date_added'],
+                              'commenter' => $v['commenter'],
+                              'avatar' =>  "Avatar-0.png"
+                        );   
+                        
+
+                  }
+            }
+
+
+
             $data[]=array(
                   "video"=>$videoInfo,
                   "user"=>$userInfo,
-                  "categories"=>$catNames
+                  "categories"=>$catNames,
+                  "comments"=>$comments
             );
 
             return $data;            

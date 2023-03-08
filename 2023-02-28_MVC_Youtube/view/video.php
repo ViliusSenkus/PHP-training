@@ -23,6 +23,22 @@
             width:150px;
             padding: 2px 0;
       }
+      .user-coment{
+            margin : 5px;
+            padding: 5px;
+            box-shadow: inset 0 0 5px grey;
+      }
+      .comment-data{
+            width:100px;
+      }
+      .coment-text{
+            margin:1px;
+            padding:5px;
+            background-color: #f1f1f1;
+            width:100%
+      }
+
+
 </style>
 
 
@@ -30,8 +46,8 @@
 
 <?php
       include 'view/main/actual.php';
+      
 ?>
-
 <div class="video-page">
 
       <div class="video-box">
@@ -105,14 +121,39 @@
                   
                   <div id="comment-form">
                         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                              <label>
-                                    Name:
-                              </label>
-                              <input type="text" name="comment_name" />
+                              
+                              <?php
+                                    if (!isset($_SESSION['id'])){
+                              ?>
+                                    <label>
+                                          Name:
+                                    </label>
+                                    <input type="text" name="commenter" />
+                                    
+                              <?php
+                                    }else{
+                                          $userId=$_SESSION['id'];
+                                          $user=$_SESSION['user'];
+                              ?>
+                                    <input type="text" name="commenter" value="<?=$userId?>" hidden />
+                                    <input type="text" name="registered" value="1" hidden />
+ 
+                                    <div class="user-logo">
+                                          <img src="content/avatars/<?=$_SESSION['avatar']?>" alt="user logo">
+                                          <h4>
+                                                <?=$user?>
+                                          </h4>
+                                    </div>    
+                              <?php
+                                    }
+                              ?>
                               <label>
                                     Comment:
                               </label>
-                              <textarea name="comment_text" maxlength="200" wrap="hard"></textarea>
+                              <textarea name="comment" maxlength="200" wrap="hard"></textarea>
+
+                              <input type="text" name="act" value="new_commnet" hidden />
+                              <input type="text" name="video_id" value="<?=$videoList['video']['id']?>" hidden />
                               <button type="submit">Comment</button>
                         </form>
 
@@ -120,20 +161,39 @@
             
             <div class="video-coments">
                   
-                  <div>
-                        
-                  </div>
+<?php     
+            foreach($videoList['comments']as $k=>$v) :
+?>
                   <div class="user-coment">
-                        <div >
-                              <h5>name</h5>
-                              <h6>Date</h6>
-                              <img class="avatar" src="content/avatars/..." alt="commenter logo" />
+                        <div class="user-logo">
+                              <img src="content/avatars/<?=$v['avatar']?>" alt='commenter logo' />
                         </div>
-                        <div>
+                        <div class="comment-data">
+                              <h5><?=$v['commenter']?></h5>
+                              <h6><?=$v['date_added']?></h6>
+
+                        </div>
+                        <div class="coment-text">
                               
-                              <span>Komment</span>
+                              <span><?=$v['comment']?></span>
                         </div>
                   </div>
+
+
+                  <!-- 
+    [id] => 2
+    [video_id] => 1
+    [commenter] => user
+    [registered] => 1
+    [comment] => Nesamone kažkokia, strikalioja po scena, bėgioja kaip 
+nuplyšusi.
+    [date_added] => 2023-03-08 17:41:38
+    [avatar] => Avatar-2.png
+                   -->
+            
+<?php
+            endforeach;
+?>
             </div>
 
 
