@@ -21,3 +21,10 @@ $avatar=$_SESSION['avatar'];
             </span>
       </a>
 </div>
+
+
+
+<!-- headerio uždatymui reikalingi elementai žemiau: -->
+            </div>
+      </div>
+</header>

@@ -44,3 +44,10 @@ namespace View\Header;
             </span>
       </a>
 </div>
+
+
+
+<!-- headerio uždatymui reikalingi elementai žemiau: -->
+            </div>
+      </div>
+</header>

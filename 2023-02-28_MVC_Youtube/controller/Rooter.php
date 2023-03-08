@@ -15,24 +15,32 @@ class Rooter{
                   $usersData = $users->get();
 
                   foreach($usersData as $user){
-                        if ($user['nickname'] == $name)
-                        echo "toks vardas užimtas"; //įdėti iššokantį langą ar pan.
-                        break;
+                        if ($user['nickname'] == $name){
+                              echo "<script>alert('Name is taken by someone else, please choose another one');</script>";;
+                        return; 
+                        }                      
                   }
 
                   //tikriname password
                   if(strlen($password)<4){
-                        echo "slaptazodis per trumpas"; //įdėti iššokantį langą ar pan.
+                        echo "<script>alert('Password is too short');</script>";
+                        return;
                   }
                   
                   $password = md5($password);
 
                   $newuser=array('nickname'=>$name, 'password'=>$password, 'avatar'=>$avatar);
-                  // $avatar=real_escape_string($avatar); eina kartu su sql uzklausa :(.
+                  // Pastaba: $avatar=real_escape_string($avatar); eina kartu su sql uzklausa.
                  
                   //įdedame įrašą į users lentelę
                   $users->set($newuser);
-             
+
+                  // $_POST['login']='true';
+                  // $_POST['username']=$name;
+                  // $_POST['password']=md5($password);
+
+                  // self::login();
+
                   header("Location: ./"); //kaip saugiai perduoti duomenis sitoje vietoje i login() per userio interfeisa?
              
                   //priskiriame vartotoją prie Sesijos ("priloginame");
@@ -67,11 +75,7 @@ class Rooter{
             } 
       }
 
-      public static function getUser(){
-            // isset($_SESSION['role']) ? $_SESSION['role'] : $user=0;
-            // $_SESSION['role']=$user;
-      }
-
+      
       public static function getUserHeader(){
             $role=$_SESSION['role'];
 

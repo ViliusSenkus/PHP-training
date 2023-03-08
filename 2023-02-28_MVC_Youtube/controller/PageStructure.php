@@ -8,6 +8,7 @@ class PageStructure{
 
       public static function getHeader(){
             include "view/header.php";
+            Rooter::getUserHeader();
       }     
       
       public static function getSidebarMenu(){
@@ -45,7 +46,10 @@ class PageStructure{
             if (isset($_GET['id']))
                   $videoList=$video->full_video_info($_GET['id'])[0];        
 
-
+            // if ($part=="video"){  //Bandžiau įdeti followinga.
+            //       $data= new \Model\FullData();
+            //       $data->follow();
+            // }
             include "view/".$part.".php";
             
       }

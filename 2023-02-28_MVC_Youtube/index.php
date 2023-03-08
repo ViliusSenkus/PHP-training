@@ -8,6 +8,7 @@ session_start();
 use Controller\PageStructure;
 use Controller\Rooter;
 use Controller\Admin;
+use Model\LinkedData\UserData;
 use Model\FullData;
 
 //funkcija automatiškai iš sirtingų failų užkrauna bet kurioje kodo vietoje iškviečiamą klasę
@@ -17,12 +18,12 @@ spl_autoload_register(function($class){
 });
 
 // tikrinamas log in ir sign up statusas, jeigu prisijungta praeinama toliau.
-Rooter::logoff();
+Rooter::logoff(); //jeigu atsijunginėjama nuo vartotojo - sunaikinama sesija.
 Rooter::signup();
 Rooter::login();
 
-//nustatome koks vartotojas prisijungęs. Atliekama prieš viso turinio užkrovimą, kad atvaizduotyi teisingą/reikiamą turinį.
-Rooter::getUser();
+//nustatome koks vartotojas prisijungęs. Atliekama prieš viso turinio užkrovimą, kad atvaizduoti teisingą/reikiamą turinį.
+UserData::getUser();
 
 
 //pridedamas headeris.

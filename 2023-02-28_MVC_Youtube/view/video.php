@@ -27,7 +27,7 @@
 
                               <a href="#">
                                     <div class="user-action-button">
-                                          follow
+                                          follow/following/none
                                     </div>
                               </a>
                         </div>

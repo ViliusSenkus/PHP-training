@@ -12,3 +12,11 @@ namespace View\Header;
             LogIn
       </span>
 </a>
+
+
+
+
+<!-- headerio uždatymui reikalingi elementai žemiau: -->
+            </div>
+      </div>
+</header>

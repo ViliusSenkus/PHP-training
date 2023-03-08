@@ -39,17 +39,11 @@ namespace View;
                   </form>
             </div>
             <div class="block">
-                  <!-- Štas blokas turi rodyti reikšmes atsižvelgiant į prisijungimą:
+                  <!-- Šitas blokas turi rodyti reikšmes atsižvelgiant į prisijungimą:
                         user=0 - neprisijungta
                         user=1 - useris
                         user=2 - adminas
                   -->
-<?php
 
-     \Controller\Rooter::getUserHeader();
-
-?>
                   <!-- Nepridetas funkcionalumas: paspaudus ant user logo turi atsirasti userio meniu -->
-            </div>
-      </div>
-</header>
+            
