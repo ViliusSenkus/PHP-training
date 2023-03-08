@@ -70,11 +70,26 @@
             </div>
 
             <h3>Comments</h3>
-            <a href="#">
-                  <span class="material-symbols-outlined">
+            
+                  <span id="add-comment" class="material-symbols-outlined">
                         add_comment
                   </span>
-            </a>
+                  
+                  <div id="comment-form">
+                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                              <label>
+                                    Name:
+                              </label>
+                              <input type="text" name="comment_name" />
+                              <label>
+                                    Comment:
+                              </label>
+                              <textarea name="comment_text"></textarea>
+                              <button type="submit">Comment</button>
+                        </form>
+
+                  </div>
+            
             <div class="video-coments">
                   
                   <div>
@@ -106,3 +121,13 @@
       echo"<pre>";
       print_r($videoList);
 ?>
+<script>
+      document.querySelector("#comment-form").style.display="none";
+      document.querySelector("#add-comment").addEventListener('click', ()=>{
+            if(document.querySelector("#comment-form").style.display=="block"){
+                  document.querySelector("#comment-form").style.display="none";
+            }else{
+                  document.querySelector("#comment-form").style.display="block";
+            };
+      })
+</script>
