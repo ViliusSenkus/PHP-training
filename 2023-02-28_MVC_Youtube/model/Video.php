@@ -41,7 +41,7 @@ class Video extends Database{
             $categories=self::$db->query("SELECT DISTINCT category_id FROM links__video_category WHERE video_id='$id'");
             foreach($categories as $v){
                   $catId=$v['category_id'];
-                  $catName=self::$db->query("SELECT category FROM categories WHERE id='$catId'")->fetch_all()[0][0];
+                  $catName=self::$db->query("SELECT * FROM categories WHERE id='$catId'")->fetch_all(MYSQLI_ASSOC)[0];
                   $catNames[]=$catName;
             }
 

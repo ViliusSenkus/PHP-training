@@ -1,4 +1,13 @@
 <style>
+      .video-categories-list{
+            display: inline-block;
+            padding:2px 5px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin: 5px;
+            text-decoration: none;
+            color: #5d5d5d;
+      }
       #add-comment:hover{
             cursor: pointer;
       }
@@ -105,6 +114,21 @@
                   </div>
             </div>
             
+            <div>
+                  <?php
+                        foreach ($videoList['categories'] as $v) :
+                  ?>
+                        <a class='video-categories-list' href="?category=<?=$v['id']?>">
+                              <span >
+                                    <?=$v['category']?>
+                              </span>
+                        </a> 
+                  <?php
+                        endforeach;
+                  ?>
+            </div>      
+
+
             <h3>Video description</h3>
             <div class="video-description">
                   
