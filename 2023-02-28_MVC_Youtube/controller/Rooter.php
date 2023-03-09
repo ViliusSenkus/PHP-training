@@ -35,13 +35,12 @@ class Rooter{
                   //įdedame įrašą į users lentelę
                   $users->set($newuser);
 
-                  // $_POST['login']='true';
-                  // $_POST['username']=$name;
-                  // $_POST['password']=md5($password);
+                  // $_SESSION['user']=$_POST['username'];;
+                  // $_SESSION['role']='1';
+                  // $_SESSION['id']=$user->insert_id; //šitas nesuveikia
+                  // $_SESSION['avatar']=$_POST['avatar'];
 
-                  // self::login();
-
-                  header("Location: ./"); //kaip saugiai perduoti duomenis sitoje vietoje i login() per userio interfeisa?
+                  header("Location: ./"); 
              
                   //priskiriame vartotoją prie Sesijos ("priloginame");
             }

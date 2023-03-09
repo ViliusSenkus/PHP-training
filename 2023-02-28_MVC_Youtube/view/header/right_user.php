@@ -12,9 +12,24 @@ $avatar=$_SESSION['avatar'];
 </div>
 
 <!-- DEV: Nepridetas funkcionalumas - paspaudus ant user logo turi atsirasti userio meniu -->
-<div class="avatar">
+<div class="avatar" id="header-avatar">
       <img src="content/avatars/<?=$avatar?>" alt="logo"/>
       <div><?=$_SESSION['user']?></div>
+      <div id="user-menu" style="display:none;">
+            <ul>
+                  <li>
+                        <a href="?page=user">
+                              User page
+                        </a>
+                  </li>
+                  <li>
+                        <a href="?page=user&act=addvid">
+                              Add video
+                        </a>
+                  </li>
+            </ul>
+            
+      </div>
 </div>
 <div>
       <a href="?log=off">

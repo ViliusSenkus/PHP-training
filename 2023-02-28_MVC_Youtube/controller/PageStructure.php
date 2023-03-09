@@ -57,7 +57,7 @@ class PageStructure{
                   $comments = new \Model\Comments();
                   $comments->set($_POST);
             }
-            
+         
             // if ($part=="video"){  //Bandžiau įdeti followinga.
             //       $data= new \Model\FullData();
             //       $data->follow();

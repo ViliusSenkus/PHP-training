@@ -233,13 +233,3 @@ nuplyšusi.
       echo"<pre>";
       print_r($videoList);
 ?>
-<script>
-      document.querySelector("#comment-form").style.display="none";
-      document.querySelector("#add-comment").addEventListener('click', ()=>{
-            if(document.querySelector("#comment-form").style.display=="block"){
-                  document.querySelector("#comment-form").style.display="none";
-            }else{
-                  document.querySelector("#comment-form").style.display="block";
-            };
-      })
-</script>

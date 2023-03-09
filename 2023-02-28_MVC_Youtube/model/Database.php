@@ -61,5 +61,6 @@ abstract class Database{
       public function getTableHeaders(){
             return self::$db->query("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'linktube' AND TABLE_NAME = '$this->table'")->fetch_all();
       }
+
 }
 ?>

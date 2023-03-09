@@ -24,11 +24,22 @@
                               <img class="video-thumb" src="<?=$video['thumb_url']?>" alt="" />
                         </a>
                   </div>
-
+                
                   <dvi class="video-info">
                         <div>
                               <a href="?user=<?=$video['user']?>">
-                                    <img class="video-user" src="content/avatars/Avatar-<?=$video['user']?>.png" ald="user_avatar" />
+                              <?php 
+                                    $users = new \Model\Users();
+                                    $users = $users->get();
+                                    $img="";
+                                    foreach($users as $user){
+                                          if ($user['id']==$video['user']){
+                                          $img=$user['avatar'];
+                                          break;
+                                          }
+                                    }
+                              ?>
+                                    <img class="video-user" src="content/avatars/<?=$img?>" alt="user_avatar" />
                               </a>
                         </div>
                         <div class="video-name">
@@ -44,7 +55,7 @@
                         <?php
                               $videodate = strtotime($video['date_added']);
                               $nowdate = strtotime(date('Y-m-d H:i:s'));
-                              $seconds = ($nowdate-$videodate);
+                              $seconds = ($nowdate-$videodate)+3600;
 
                               if (floor($seconds/(60*60*24*365)) >= 1){
                                     $passedTime=floor($seconds/(60*60*24*365))." years ago";
@@ -56,7 +67,7 @@
                                     $passedTime=floor($seconds/(60*60*24))." days ago";
                               }elseif(floor($seconds/(60*60)) >= 1){
                                     $passedTime=floor($seconds/(60*60))." hours ago";
-                              }elseif(floor($seconds/(60)) < 1){
+                              }elseif(floor($seconds/(60)) < 60){
                                     $passedTime=floor($seconds/(60))." minutes ago";
                               }
                               
