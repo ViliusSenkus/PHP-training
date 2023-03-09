@@ -20,14 +20,13 @@ class User{
                         $videoData=$data;
                         unset($videoData['category']);
                         $video=new \Model\Video();
-                        $video->set($data);
+                        $video->set($videoData);
                         
                         $vidId=(mysqli_insert_id($video::$db));
                        
 
                         foreach ($data['category'] as $cat)
-                              \Model\Video::$db->query("INSERT INTO links__video_category (video_id, category_id) VALUES ('$vidId','$cat')");
-                       
+                              \Model\Video::$db->query("INSERT INTO links__video_category (video_id, category_id) VALUES ('$vidId','$cat')");                       
                         
                         break;
                   default:

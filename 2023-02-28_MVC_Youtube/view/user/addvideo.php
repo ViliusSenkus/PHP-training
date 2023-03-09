@@ -28,7 +28,7 @@
                   foreach ($categories as $cat) :
             ?>          
                         <div class="checkbox"> 
-                              <input type="checkbox" name="category[]" value="<?=$cat['category']?>"/>
+                              <input type="checkbox" name="category[]" value="<?=$cat['id']?>"/>
                               <span><?=$cat['category']?></span>
                         </div> 
                         
