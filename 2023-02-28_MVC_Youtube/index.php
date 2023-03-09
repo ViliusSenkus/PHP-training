@@ -79,7 +79,7 @@ cai reikia ideti modeli arba kontroleri gaunanti reikiama info apie prisijungusi
                               include 'view/user/addvideo.php';
                               break;
                         default:
-                              include 'view/user/main.html';
+                              User::rooter();
                               break;
                   }      
                   break;

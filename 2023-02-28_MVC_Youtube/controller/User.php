@@ -31,5 +31,34 @@ class User{
             }
 
       }
+
+      public static function rooter(){
+            $subpage=false;
+            
+            if(isset($_GET['subpage']))
+                  $subpage=$_GET['subpage'];
+
+            switch ($subpage){
+                  case "playlists":
+                        echo "Page not constructed yet";
+                        break;
+                  case "videos":
+                        echo "Page not constructed yet";
+                        break;
+                  case "follows":
+                        echo "Page not constructed yet";
+                        break;
+                  case "comments":
+                        echo "Page not constructed yet";
+                        break;
+                  default:
+                        $videos = new \Model\Video;
+                        $userVideoList = $videos->get();
+                        
+                        
+                        include 'view\user\userMain.php';
+                        break;
+            }
+      }
 }
 ?>

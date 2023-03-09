@@ -1,0 +1,40 @@
+ <style>
+      .user-main-menu{
+            display:flex;
+            flex-direction: row;
+            justify-content: start;
+            gap: 10px;
+      }
+      .user-main-menu li{
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            padding: 3px 10px;
+            color: black;
+      }
+      .user-main-menu a{
+            text-decoration: none;
+      }
+ </style>
+ 
+ <nav>
+      <ul class="user-main-menu">
+            <a href="?page=user">
+                  <li>Home</li>
+            </a>
+            <a href="?page=user&subpage=videos">
+                <li>My Videos</li>
+            </a>
+            <a href="?page=user&subpage=playlists">
+                <li>My playlists</li>
+           </a> 
+            <a href="?page=user&subpage=follows">
+                <li>My Follows</li>
+           </a> 
+            <a href="?page=user&subpage=comments">
+                <li>My Comments</li>
+           </a> 
+            <a href="?page=user&act=addvid">
+                  <li>Add Video</li>
+            </a>
+      </ul>
+</nav>
