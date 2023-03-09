@@ -35,14 +35,14 @@ PageStructure::getHeader();
 //pridedamas sidebaras.
 PageStructure::getSidebarMenu();
 
-echo "<br />";
-echo "<pre> session - ";
-print_r($_SESSION);
-echo "<br />GETas - ";
-print_r($_GET);
-echo "<br />POSTas - ";
-print_r($_POST);
-echo "</pre>";
+                                                            // echo "<br />";
+                                                            // echo "<pre> session - ";
+                                                            // print_r($_SESSION);
+                                                            // echo "<br />GETas - ";
+                                                            // print_r($_GET);
+                                                            // echo "<br />POSTas - ";
+                                                            // print_r($_POST);
+                                                            // echo "</pre>";
 
 //ADMIN CRUD veiksmai:
 Admin::getAdminEvent();
@@ -58,7 +58,7 @@ cai reikia ideti modeli arba kontroleri gaunanti reikiama info apie prisijungusi
 !!!!!!!!!!!!!! */
 
 
-      switch ("$page") { // puslapiai turi skirtis priklausomai nuo pasirinkto sidemenu punkto
+      switch ("$page") { // puslapiai turi skirtis priklausomai nuo pasirinkto side-menu punkto
             case "video":
                   PageStructure::mainSpace("video");
                   break;
@@ -125,16 +125,6 @@ Rooter::isLoginNeeded();
 
       showHide("#header-avatar", "#user-menu");
       showHide("#add-comment", "#comment-form");
-
-      //Userio meniu
-      // let userMenu=document.querySelector("#user-menu");
-      // document.querySelector("#header-avatar").addEventListener('click', ()=>{
-      //       if (userMenu.style.display="none"){
-      //             userMenu.style.display="block";
-      //       }else{
-      //             userMenu.style.display="nonek";
-      //       };
-      // })
 </script>
 
       </body>

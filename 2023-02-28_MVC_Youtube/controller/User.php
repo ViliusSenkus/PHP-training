@@ -7,10 +7,6 @@ class User{
       public static function getUserAction(){
             isset($_POST['userAction']) ? $action=$_POST['userAction'] : $action=false;
             $data = $_POST;
-            
-            echo"<pre>";
-            print_r($_POST);
-            echo "</pre>";
           
             switch ($action){
                   case 'userAddVideo':
