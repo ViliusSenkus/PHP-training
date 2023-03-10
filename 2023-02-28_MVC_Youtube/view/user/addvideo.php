@@ -32,6 +32,13 @@
             <?php
                   $counter=0;
                   foreach ($categories as $cat) :
+                        if ($counter==0) :
+            ?>
+                        <input type="checkbox" name="category[]" value="<?=$cat['id']?>" checked hidden/>
+            <?php
+                              $counter++;      
+                              continue;
+                        endif;                                     
             ?>    
                   <div class="checkbox"> 
                         <input type="checkbox" name="category[]" value="<?=$cat['id']?>"/>
@@ -47,7 +54,7 @@
             <input type="text" name="user" value="<?$_SESSION['id']?>"hidden/>
             <input type="text" name="userAction" value="userAddVideo" hidden/>
             <button type="submit">Add</button>
-      <form>
+      </form>
 </div>
       
 
@@ -68,16 +75,16 @@
             const allDivCheck = document.querySelectorAll(".checkbox");
             const lastDivCheck = allDivCheck[(allDivCheck.length)-1];
             lastDivCheck.appendChild(document.createElement("input"));
+            lastDivCheck.appendChild(spanNode);
+            
             
             const allInputs=document.querySelectorAll(".checkbox input");
             console.log(allInputs);
             const lastInput=allInputs[allInputs.length-1];
             lastInput.setAttribute("type", "checkbox");
-            lastInput.setAttribute("name", "category[]");
-            lastInput.setAttribute("categoryName", newCat);
+            lastInput.setAttribute("name", "new_cat[]");
+            lastInput.setAttribute("value", newCat);
             lastInput.setAttribute("checked", "true");
 
-            console.log(spanNode);
-            lastDivCheck.appendChild(spanNode);
       })
 </script>
