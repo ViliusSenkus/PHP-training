@@ -7,6 +7,9 @@ class User{
       public static function getUserAction(){
             isset($_POST['userAction']) ? $action=$_POST['userAction'] : $action=false;
             $data = $_POST;
+
+            // tikriname ar yra prideta nauju kategoriju:
+            // if (isset($_POST['']))
           
             switch ($action){
                   case 'userAddVideo':

@@ -2,6 +2,7 @@
 
       <div class="row-videos">      
 <?php
+      $counter=0;
       foreach ($userVideoList as $video) :
 ?>    
             <div class="video-container">
@@ -68,7 +69,9 @@
      
       
 <?php
+      $counter++;
+      if ($counter >= 8)
+            break;
       endforeach;
 ?>
  </div>
-
