@@ -81,6 +81,12 @@
             <button type="submit">Add</button>
       </form>
 </div>
+<div>
+      <h5>Notes</h5>
+      <div>
+            Best to insert video thumbnails url from <a href="https://youtube-thumbnail-grabber.com/" >here</a> as Normal Image (120x90) size.
+      </div>
+</div>
       
 
 <script>
