@@ -1,8 +1,32 @@
 <style>
+      #user-add-video-page{
+            margin: 20px 0;
+      }
+      #user-add-video-page form{
+            display:flex;
+            flex-direction: column;
+            width:600px;
+      }
+      #user-add-video-page input{
+            padding:2px;
+      }
+      #user-add-video-page h4{
+            margin-top:15px;
+      }
+      #user-add-video-page .row input{
+            width: 400px;
+      }
+      #user-add-video-page button{
+            padding: 5px;
+            margin:10px;
+            width:100px;
+            text-align: center;
+      }
       .cats{
             display: flex;
             flex-direction: row;
             justify-content: start;
+            flex-wrap: wrap;
       }
       .checkbox{
             padding:3px 10px;
@@ -11,7 +35,8 @@
             border-radius: 5px;
       }
 </style>
-<div>
+<div id="user-add-video-page">
+      <h3>Fill in form to add a new video</h3>
       <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <label>Video name:</label>
             <input type="text" name="name" />
@@ -21,7 +46,7 @@
             <input type="text" name="thumb_url" />
             <div>
                   <h4>Choose Categories from the list</h4>
-                  <div>
+                  <div class="row">
                         <span>Or add new one</span>
                         <input id="new_cat_input" type="text" name="category" />
                         <span class="material-symbols-outlined">

@@ -66,22 +66,8 @@ cai reikia ideti modeli arba kontroleri gaunanti reikiama info apie prisijungusi
                   if($_GET['serach_query'])
                         Search::search($_GET['serach_query']);
                   break;
-            case "user":
-                  $action="none";
-                  if(isset($_GET['act']))
-                        $action=$_GET['act'];
-                        
-                        $categories=new Categories();
-                        $categories=$categories->get();
-
-                  switch ("$action"){
-                        case "addvid":
-                              include 'view/user/addvideo.php';
-                              break;
-                        default:
-                              User::rooter();
-                              break;
-                  }      
+            case "user":                       
+                  User::rooter();
                   break;
             default:
                   PageStructure::mainSpace();
