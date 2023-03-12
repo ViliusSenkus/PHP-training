@@ -322,7 +322,8 @@ main{
       display:flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: start;
+      gap: 50px;
 }
 .video-container{
       display: flex;

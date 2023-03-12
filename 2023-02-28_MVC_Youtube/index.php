@@ -76,11 +76,13 @@ $page=isset($_GET['page']) ? $_GET['page'] : "";
             case "library":
             case "liked":
             case "later":
-            case "playlists":
             case "history":
             case "popular":
                   include 'view/main/notice.html';
-                  break;                  
+                  break; 
+            case "playlists":                 
+                  Rooter::playlist();
+                  break;
             default:
                   PageStructure::mainSpace();
                   break;
