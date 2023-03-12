@@ -78,9 +78,9 @@
                                     <?=$videoList['user']['nickname']?>
                               </h4>
 
-                              <a href="#">
+                              <a href="./?page=video&id=<?=$videoList['video']['id']?>&act=follow">
                                     <div class="user-action-button">
-                                          follow/following/none
+                                          follow
                                     </div>
                               </a>
                         </div>
