@@ -32,8 +32,7 @@ UserData::getUser();
 //pridedamas headeris.
 PageStructure::getHeader();
 
-//pridedamas sidebaras.
-PageStructure::getSidebarMenu();
+
 
                                                             // echo "<br />";
                                                             // echo "<pre> session - ";
@@ -53,11 +52,6 @@ User::getUserAction();
 //nustatomas koks turinys bus pagrindiniame naršyklės plote.
 $page=isset($_GET['page']) ? $_GET['page'] : "";
 
-/* !!!!!!!!!!!!!!
-cai reikia ideti modeli arba kontroleri gaunanti reikiama info apie prisijungusi vartotoja
-!!!!!!!!!!!!!! */
-
-
       switch ("$page") { // puslapiai turi skirtis priklausomai nuo pasirinkto side-menu punkto
             case "video":
                   PageStructure::mainSpace("video");
@@ -69,6 +63,24 @@ cai reikia ideti modeli arba kontroleri gaunanti reikiama info apie prisijungusi
             case "user":                       
                   User::rooter();
                   break;
+            case "music":
+                  header("Location: ./?category=4");
+                  break;
+            case "movies":
+                  header("Location: ./?category=5");
+                  break;
+            case "programming":
+                  header("Location: ./?category=6");
+                  break;
+            case "shorts":
+            case "library":
+            case "liked":
+            case "later":
+            case "playlists":
+            case "history":
+            case "popular":
+                  include 'view/main/notice.html';
+                  break;                  
             default:
                   PageStructure::mainSpace();
                   break;
@@ -78,6 +90,8 @@ cai reikia ideti modeli arba kontroleri gaunanti reikiama info apie prisijungusi
 // jeigu buvo iškviestas login puspalis, atvaizduojame login formą:
 Rooter::isLoginNeeded();
 
+//pridedamas sidebaras.
+PageStructure::getSidebarMenu();
 ?>
 
 

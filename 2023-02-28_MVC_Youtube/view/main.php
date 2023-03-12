@@ -84,12 +84,5 @@
       endforeach;
 ?>
  </div>
-
-
-      <h4> other views to show instead of this one (main): </h4>
-            <ul>Like:
-                  <li>video - for one video play</li>
-                  <li>shorts - for short video list - how are they played directly or in separate window?</li> others from sidemenu;
-            </ul>
          
 </main>

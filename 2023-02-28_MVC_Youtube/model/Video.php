@@ -28,9 +28,9 @@ class Video extends Database{
                   }
             }
 
-            $fullcategorisedvideoinfo = self::$db->query("SELECT * FROM videos WHERE $videosInCategory")->fetch_all(MYSQLI_ASSOC);
+            $fullCategorisedVideoInfo = self::$db->query("SELECT * FROM videos WHERE $videosInCategory")->fetch_all(MYSQLI_ASSOC);
 
-            return ($fullcategorisedvideoinfo);      
+            return ($fullCategorisedVideoInfo);      
       }
 
       public function full_video_info($id){

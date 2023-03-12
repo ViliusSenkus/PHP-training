@@ -26,10 +26,10 @@ class PageStructure{
       public static function mainSpace($part="main"){
             /*
             Pagal gautą $_GET parametrą suformuoja informaciją pagrindiniame lange atvaizduojamam turiniui ir nukreipia/prideda atitinkamą view/$_GET['page'].php failą.:
-            Jeigu GET admimview - nukreipiama i 
+            Jeigu GET admimview - nukreipiama i admino puslapį
             */
 
-            // if'as skirtas administratoriaus langu keitimui
+            // if'as skirtas administratoriaus langų keitimui
             if(isset($_GET['adminview'])){
                   $admin = new Admin();
                   return $admin -> getTable($_GET['adminview']);
@@ -39,7 +39,7 @@ class PageStructure{
             $actualbar = self::getActualBar();
             $video = new \Model\Video();        
 
-            //formuojamas dainų masyvas pagal pasirinktą kategoriją
+            //formuojamas video įrašų masyvas pagal pasirinktą kategoriją
             if(isset($_GET['category'])){
                   $videoList=$video->videos_by_category();
             }else{
@@ -57,11 +57,7 @@ class PageStructure{
                   $comments = new \Model\Comments();
                   $comments->set($_POST);
             }
-         
-            // if ($part=="video"){  //Bandžiau įdeti followinga.
-            //       $data= new \Model\FullData();
-            //       $data->follow();
-            // }
+            
             include "view/".$part.".php";      
       }
            
