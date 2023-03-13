@@ -16,6 +16,11 @@
       #user-add-video-page .row input{
             width: 400px;
       }
+      #user-add-video-page textarea{
+            width: 600px;
+            height: 200px;
+            resize: none;
+      }
       #user-add-video-page button{
             padding: 5px;
             margin:10px;
@@ -39,11 +44,11 @@
       <h3>Fill in form to add a new video</h3>
       <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <label>Video name:</label>
-            <input type="text" name="name" />
+            <input type="text" name="name" required />
             <label>Video URL:</label>
-            <input type="text" name="video_url" />
+            <input type="url" name="video_url" required />
             <label>Video image URL:</label>
-            <input type="text" name="thumb_url" />
+            <input type="url" name="thumb_url" required />
             <div>
                   <h4>Choose Categories from the list</h4>
                   <div class="row">
@@ -75,7 +80,9 @@
                         break;
                   endforeach;    
             ?>
-            </div>    
+            </div>
+            <label>About video:</label>
+            <textarea name="description"></textarea>  
             <input type="text" name="user" value="<?$_SESSION['id']?>"hidden/>
             <input type="text" name="userAction" value="userAddVideo" hidden/>
             <button type="submit">Add</button>

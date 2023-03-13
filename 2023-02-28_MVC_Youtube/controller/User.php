@@ -11,7 +11,15 @@ class User{
                         case 'userAddVideo':
                               // priskiriame gautus doumenis kintamajam lengvesniam naudojimui.
                               $data = $_POST;
-                              
+                              if (  $data['name'] == "" ||
+                                    $data['video_url'] == "" ||
+                                    $data['thumb_url'] == "" ||
+                                    $data['video_url'] == ""
+                              ){
+                                    echo "Not all needed data added";
+                                    return;
+                              }
+
                               // atmetam nebereikalingus duomenis
                               unset($data['userAction']);
                               $data['user']=$_SESSION['id'];
