@@ -53,4 +53,14 @@ $megztinis->rodyk();
 
 
 
+        $image_url = "https://cdn.lorem.space/images/shoes/.cache/600x900/alexander-rotker-l8p1aWZqHvE-unsplash.jpg";  //URL
+
+        $url_pathinfo = pathinfo($image_url);  
+        $image_name = $url_pathinfo['filename'].'.'.$url_pathinfo['extension']; //FILE NAME
+
+        $image_path = $_SERVER ['DOCUMENT_ROOT'].$image_name;
+            echo "<br /> Serveris: <br/>";
+        file_put_contents ($image_path, file_get_contents($image_url));
+
+
 ?>
